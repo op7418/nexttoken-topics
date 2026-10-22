@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-hf-style="swiss">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Next Token 播客选题 · 10/23</title>
+<style>  :root {
+    --fg: #0a0a0a;
+    --fg-secondary: #525252;
+    --fg-tertiary: #737373;
+    --fg-placeholder: #a3a3a3;
+    --bg: #fafaf8;
+    --bg-card: #f0f0ee;
+    --accent: #002FA7;
+    --accent-bright: #5B7BFF;
+    --accent-on: #ffffff;
+    --font-sans: 'Inter', 'Helvetica Neue', 'Helvetica', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+    --font-mono: 'JetBrains Mono', 'IBM Plex Mono', 'SF Mono', monospace;
+    --measure: 1200px;
+    --gutter: 20px;
+    --columns: 12;
+    --margin: 80px;
+    --sp-3: 8px;  --sp-4: 12px; --sp-5: 16px; --sp-6: 24px;
+    --sp-7: 32px; --sp-8: 40px; --sp-9: 48px; --sp-10: 64px;
+    --sp-11: 80px; --sp-12: 96px;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { font-size: 16px; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  body { font-family: var(--font-sans); color: var(--fg); background: var(--bg); line-height: 1.6; }
+  ::selection { background: var(--accent); color: var(--accent-on); }
+
+  /* ══════════════════════════════════════
+     LAYOUT — 12-col grid
+     ══════════════════════════════════════ */
+  .container {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: 0 var(--margin);
+  }
+
+  .section, .hero, footer, .divider-dot {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: var(--gutter);
+  }
+
+  .section > *, .hero > * { grid-column: 2 / 12; }
+
+  .section > .highlight-swiss,
+  .section > .gallery-grid,
+  .section > .pullquote-swiss,
+  .section > .big-number-row,
+  .section > .data-figure { grid-column: 1 / -1; }
+
+  footer > *, .divider-dot { grid-column: 1 / -1; }
+
+  .container > .pullquote-swiss { grid-column: 1 / -1; }
+
+  /* ══════════════════════════════════════
+     CHROME — card style, not lines
+     ══════════════════════════════════════ */
+  .doc-chrome {
+    padding: var(--sp-9) 0 0;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: var(--gutter);
+  }
+
+  .doc-chrome-bar {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 14px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--fg-tertiary);
+    background: var(--bg-card);
+    padding: var(--sp-5) var(--sp-6);
+    margin-bottom: var(--sp-5);
+  }
+
+  .doc-chrome-bar .chrome-l, .doc-chrome-bar .chrome-r {
+    display: flex; gap: 1.8em; align-items: center;
+  }
+  .doc-chrome-bar .chrome-sep { width: 32px; height: 1px; background: currentColor; opacity: 0.3; }
+  .doc-chrome-bar .chrome-accent { color: var(--accent-ink, var(--accent)); font-weight: 600; }
+
+  .doc-chrome-rule { display: none; }
+
+  .doc-chrome-meta {
+    grid-column: 1 / -1;
+    display: flex; gap: 2.4em; flex-wrap: wrap;
+    font-family: var(--font-mono);
+    font-size: 12px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--fg-tertiary);
+    padding-bottom: var(--sp-5);
+  }
+  .doc-chrome-meta .cm-item { display: flex; gap: 0.5em; align-items: baseline; }
+  .doc-chrome-meta .cm-key { opacity: 0.5; }
+  .doc-chrome-meta .cm-val { color: var(--fg-secondary); font-weight: 500; }
+  .doc-chrome-meta .cm-dot { width: 2px; height: 2px; background: var(--fg-tertiary); border-radius: 50%; opacity: 0.4; align-self: center; }
+
+  .doc-chrome-tags {
+    grid-column: 1 / -1;
+    display: flex; gap: var(--sp-3); flex-wrap: wrap;
+    padding-bottom: var(--sp-7);
+  }
+  .doc-chrome-tags .chrome-tag {
+    font-family: var(--font-mono);
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 4px 14px;
+    background: var(--fg); color: var(--bg);
+  }
+
+  /* ══════════════════════════════════════
+     HERO — full-bleed image card with text overlay
+     ══════════════════════════════════════ */
+  .hero {
+    padding: var(--sp-11) 0 var(--sp-10);
+  }
+
+  .hero h1 {
+    font-family: var(--font-sans);
+    font-size: 3.2rem; font-weight: 200;
+    line-height: 1.05; letter-spacing: -0.03em;
+    margin-bottom: var(--sp-7); grid-column: 2 / 11;
+  }
+  .hero-subtitle {
+    font-size: 1.1rem; font-weight: 400;
+    color: var(--fg-secondary); line-height: 1.55;
+    grid-column: 2 / 10; opacity: 0.86;
+  }
+
+  .hero-cover {
+    display: block;
+    position: relative;
+    padding: 0;
+    margin-bottom: var(--sp-10);
+    overflow: hidden;
+    background: var(--fg);
+  }
+
+  /* Grid dot pattern background (Swiss PPT style) */
+  .hero-cover::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+    z-index: 1;
+  }
+
+  .hero-cover .hero-bg {
+    width: 100%; height: 480px;
+    object-fit: cover; object-position: center 40%;
+    display: block;
+    opacity: 0.25;
+    mix-blend-mode: luminosity;
+  }
+
+  .hero-cover .hero-overlay {
+    position: absolute;
+    inset: 0; z-index: 2;
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--sp-9);
+    color: var(--bg);
+  }
+
+  .hero-cover .hero-kicker {
+    font-family: var(--font-mono);
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent-bright, #5B7BFF);
+    margin-bottom: var(--sp-6);
+  }
+
+  .hero-cover h1 {
+    font-family: var(--font-sans);
+    font-size: 3.4rem; font-weight: 200;
+    line-height: 1.08; letter-spacing: -0.03em;
+    color: var(--bg);
+    margin-bottom: var(--sp-6);
+    max-width: 780px;
+  }
+
+  .hero-cover .hero-subtitle {
+    font-size: 1.05rem; font-weight: 400;
+    color: rgba(250,250,248,0.55);
+    line-height: 1.6;
+    max-width: 600px;
+  }
+
+  /* ══════════════════════════════════════
+     SECTIONS — spacing only, zero lines
+     ══════════════════════════════════════ */
+  .section { padding: var(--sp-7) 0; }
+
+  /* Section header: big number + title as one unit */
+  .section-header {
+    grid-column: 2 / 12;
+    display: flex;
+    align-items: baseline;
+    gap: var(--sp-6);
+    margin-bottom: var(--sp-7);
+  }
+
+  .section-number {
+    font-family: var(--font-mono);
+    font-size: 56px; font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--bg-card);
+    line-height: 0.85;
+    flex-shrink: 0;
+  }
+
+  h2 {
+    font-family: var(--font-sans);
+    font-size: 1.8rem; font-weight: 300;
+    line-height: 1.18; letter-spacing: -0.015em;
+    margin: 0;
+  }
+
+  h3 {
+    font-family: var(--font-sans);
+    font-size: 1.05rem; font-weight: 600;
+    line-height: 1.3; margin-top: var(--sp-9); margin-bottom: var(--sp-5);
+  }
+
+  /* ══════════════════════════════════════
+     PROSE
+     ══════════════════════════════════════ */
+  p { margin-bottom: var(--sp-5); font-size: 1rem; line-height: 1.65; }
+  strong { font-weight: 600; }
+  code { font-family: var(--font-mono); font-size: 0.88em; background: var(--bg-card); padding: 1px 6px; }
+  a { color: var(--accent-ink, var(--accent)); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ══════════════════════════════════════
+     BLOCKQUOTE — card with accent left edge
+     ══════════════════════════════════════ */
+  blockquote {
+    margin: var(--sp-5) 0;
+    padding: var(--sp-5) var(--sp-6);
+    background: var(--bg-card);
+    border-left: 3px solid var(--accent);
+  }
+  blockquote p { font-size: 0.92rem; line-height: 1.6; color: var(--fg-secondary); margin-bottom: 0; }
+
+  /* ══════════════════════════════════════
+     DEF CARD — card with left/right split
+     ══════════════════════════════════════ */
+  .def-card-swiss {
+    margin: var(--sp-6) 0;
+    display: grid; grid-template-columns: 3fr 9fr; gap: var(--sp-7);
+    align-items: baseline;
+    background: var(--bg-card);
+    padding: var(--sp-5) var(--sp-6);
+  }
+  .def-card-swiss .dc-label {
+    display: block; font-family: var(--font-mono);
+    font-size: 9px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent-ink, var(--accent)); margin-bottom: 2px;
+  }
+  .def-card-swiss .dc-term { font-size: 1.05rem; font-weight: 600; }
+  .def-card-swiss .dc-body { font-size: 0.92rem; line-height: 1.6; color: var(--fg-secondary); }
+
+  /* ══════════════════════════════════════
+     HIGHLIGHT — accent card with side label
+     ══════════════════════════════════════ */
+  .highlight-swiss {
+    margin: var(--sp-5) 0;
+    padding: var(--sp-6) var(--sp-7);
+    background: var(--accent);
+  }
+  .highlight-swiss .hl-label {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: var(--sp-5);
+  }
+  .highlight-swiss .hl-body p {
+    font-size: 1.15rem; font-weight: 400;
+    line-height: 1.55; margin-bottom: 0;
+    color: var(--accent-on);
+  }
+  .highlight-swiss .hl-body strong,
+  .highlight-swiss .hl-body b,
+  .highlight-swiss .hl-body a {
+    color: var(--accent-on);
+  }
+
+  /* ══════════════════════════════════════
+     PULLQUOTE — accent bar + huge text
+     ══════════════════════════════════════ */
+  .pullquote-swiss {
+    margin: var(--sp-5) 0; padding: var(--sp-6) 0;
+    display: grid; grid-template-columns: 4px 1fr; gap: var(--sp-7);
+  }
+  .pullquote-swiss .pq-bar { background: var(--accent); }
+  .pullquote-swiss .pq-content p {
+    font-family: var(--font-sans);
+    font-size: 1.8rem; font-weight: 200;
+    line-height: 1.3; letter-spacing: -0.02em; margin-bottom: 0;
+  }
+  .pullquote-swiss .accent-mark { color: var(--accent-ink, var(--accent)); font-weight: 400; }
+
+  /* ══════════════════════════════════════
+     LISTS
+     ══════════════════════════════════════ */
+  ul, ol { margin: var(--sp-5) 0 var(--sp-7); padding-left: var(--sp-6); }
+  li { font-size: 1rem; line-height: 1.65; margin-bottom: var(--sp-3); }
+  li::marker { color: var(--accent-ink, var(--accent)); }
+
+  /* Footnote section */
+  .section-footnote {
+    border-top: 1px solid var(--bg-card);
+    padding-top: var(--sp-6);
+  }
+  .section-footnote li {
+    font-size: 0.8rem;
+    line-height: 1.7;
+    margin-bottom: var(--sp-5);
+    color: var(--fg-muted, #666);
+  }
+  .section-footnote li strong { color: var(--fg); }
+  .section-footnote h2 { font-size: 1rem; }
+
+  .checklist { list-style: none; padding-left: 0; }
+  .checklist li { padding-left: 28px; position: relative; }
+  .checklist li::before {
+    content: ''; position: absolute; left: 0; top: 7px;
+    width: 14px; height: 14px; background: var(--accent); opacity: 0.15;
+  }
+  .checklist li::after {
+    content: ''; position: absolute; left: 3px; top: 10px;
+    width: 8px; height: 4px;
+    border-left: 2px solid var(--accent); border-bottom: 2px solid var(--accent);
+    transform: rotate(-45deg);
+  }
+
+  /* ══════════════════════════════════════
+     BIG NUMBERS — accent background card
+     ══════════════════════════════════════ */
+  .big-number-row {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-5); margin: var(--sp-9) 0;
+  }
+  .big-number {
+    text-align: center; padding: var(--sp-7) var(--sp-5);
+    background: var(--accent); color: var(--accent-on);
+  }
+  .big-number .num {
+    font-family: var(--font-sans);
+    font-size: 3rem; font-weight: 800;
+    letter-spacing: -0.04em; line-height: 0.88; margin-bottom: var(--sp-3);
+  }
+  .big-number .label {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+
+  /* ══════════════════════════════════════
+     PROCESS — numbered cards
+     ══════════════════════════════════════ */
+  .process { margin: var(--sp-9) 0; display: flex; flex-direction: column; gap: var(--sp-3); }
+  .process-step {
+    display: flex; gap: var(--sp-6);
+    padding: var(--sp-5) var(--sp-6);
+    background: var(--bg-card);
+  }
+  .process-num {
+    font-family: var(--font-mono);
+    font-size: 14px; font-weight: 700;
+    color: var(--accent-ink, var(--accent)); flex: 0 0 32px;
+  }
+  .process-content { flex: 1; }
+  .process-title { font-weight: 600; font-size: 1rem; margin-bottom: 2px; }
+  .process-desc { font-size: 0.88rem; color: var(--fg-secondary); line-height: 1.55; }
+
+  /* ══════════════════════════════════════
+     TABLE — alternating rows, no lines
+     ══════════════════════════════════════ */
+  .table-wrap { margin: var(--sp-7) 0; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  th {
+    font-family: var(--font-mono);
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    text-align: left; padding: var(--sp-3) var(--sp-5);
+    background: var(--fg); color: var(--bg);
+  }
+  td { padding: var(--sp-3) var(--sp-5); vertical-align: top; line-height: 1.55; }
+  tr:nth-child(even) td { background: var(--bg-card); }
+
+  /* ══════════════════════════════════════
+     CODE BLOCK
+     ══════════════════════════════════════ */
+  pre {
+    margin: var(--sp-5) 0;
+    padding: var(--sp-5) var(--sp-6);
+    background: var(--fg);
+    color: var(--bg);
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    line-height: 1.7;
+  }
+  pre code {
+    background: none;
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+  }
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    background: var(--bg-card);
+    padding: 2px 5px;
+  }
+
+  /* ══════════════════════════════════════
+     CHART — Chart.js containers
+     ══════════════════════════════════════ */
+  .chart-row {
+    grid-column: 1 / -1;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: var(--sp-5); margin: var(--sp-9) 0;
+  }
+
+  .chart-card {
+    background: var(--bg-card);
+    padding: var(--sp-6);
+  }
+
+  .chart-card-title {
+    font-family: var(--font-mono);
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--fg-tertiary); margin-bottom: var(--sp-5);
+  }
+
+  .chart-card canvas {
+    width: 100% !important;
+    height: 220px !important;
+  }
+
+  /* Legacy bar chart (fallback) */
+  .data-figure { margin: var(--sp-9) 0; padding: var(--sp-7); background: var(--bg-card); }
+  .data-figure-title { font-family: var(--font-mono); font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); margin-bottom: var(--sp-7); }
+  .bar-chart { display: flex; align-items: flex-end; gap: var(--sp-5); height: 200px; padding-bottom: var(--sp-7); }
+  .bar-item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: var(--sp-3); height: 100%; justify-content: flex-end; }
+  .bar { width: 100%; max-width: 72px; background: var(--accent); }
+  .bar.hatch { background: repeating-linear-gradient(45deg, var(--bg), var(--bg) 2px, var(--fg) 2px, var(--fg) 3px); }
+  .bar.dots { background: var(--bg-card); position: relative; }
+  .bar.dots::after { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg width='7' height='7' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='3.5' cy='3.5' r='1.2' fill='%230a0a0a'/%3E%3C/svg%3E"); }
+  .bar-value { font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--fg-secondary); }
+  .bar-label { font-family: var(--font-mono); font-size: 10px; color: var(--fg-tertiary); text-align: center; margin-top: var(--sp-3); text-transform: uppercase; }
+  .chart-legend { display: flex; gap: var(--sp-7); margin-top: var(--sp-5); }
+  .chart-legend-item { display: flex; align-items: center; gap: var(--sp-3); font-family: var(--font-mono); font-size: 10px; color: var(--fg-tertiary); text-transform: uppercase; }
+  .legend-swatch { width: 14px; height: 14px; }
+  .legend-swatch.solid { background: var(--accent); }
+  .legend-swatch.hatch { background: repeating-linear-gradient(45deg, var(--bg), var(--bg) 2px, var(--fg) 2px, var(--fg) 3px); }
+  .legend-swatch.dots { background: var(--bg-card); position: relative; }
+  .legend-swatch.dots::after { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg width='7' height='7' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='3.5' cy='3.5' r='1.2' fill='%230a0a0a'/%3E%3C/svg%3E"); }
+
+  /* ══════════════════════════════════════
+     IMAGES & GALLERY
+     ══════════════════════════════════════ */
+  figure { margin: var(--sp-9) 0; }
+  figure img { width: 100%; height: auto; display: block; }
+  figcaption { font-family: var(--font-mono); font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-tertiary); margin-top: var(--sp-3); }
+
+  .img-placeholder {
+    width: 100%; aspect-ratio: 16/9;
+    background: var(--bg-card);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .img-placeholder::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='4' cy='4' r='.8' fill='%23d4d4d2'/%3E%3C/svg%3E");
+    opacity: 0.6;
+  }
+  .img-placeholder span {
+    font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--fg-tertiary); position: relative; z-index: 1;
+    background: var(--bg-card); padding: 2px 10px;
+  }
+
+  .gallery-grid {
+    margin: var(--sp-9) 0;
+    display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-5);
+  }
+  .gallery-grid-item .img-placeholder { aspect-ratio: 16/10; }
+  .gallery-grid-item .gallery-cap {
+    font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+    letter-spacing: 0.06em; color: var(--fg-tertiary);
+    margin-top: var(--sp-3); text-transform: uppercase;
+  }
+
+  /* scroll gallery fallback */
+  .gallery { margin: var(--sp-9) 0; display: flex; gap: var(--sp-5); overflow-x: auto; scroll-snap-type: x mandatory; }
+  .gallery-item { flex: 0 0 300px; scroll-snap-align: start; }
+  .gallery-item .img-placeholder { aspect-ratio: 3/2; height: 200px; }
+  .gallery-cap { font-family: var(--font-mono); font-size: 10px; color: var(--fg-tertiary); margin-top: var(--sp-3); text-transform: uppercase; }
+  .gallery-hint { font-family: var(--font-mono); font-size: 10px; color: var(--fg-tertiary); text-transform: uppercase; text-align: right; margin-bottom: var(--sp-3); }
+
+  /* ══════════════════════════════════════
+     TOC SIDEBAR
+     ══════════════════════════════════════ */
+  .toc {
+    position: fixed;
+    left: 0; top: 0;
+    width: 0; height: 0;
+    overflow: visible;
+    z-index: 100;
+    pointer-events: none;
+  }
+
+  .toc-toggle {
+    position: fixed;
+    left: var(--sp-6); top: var(--sp-6);
+    width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg-card);
+    border: none; cursor: pointer;
+    color: var(--fg-tertiary);
+    transition: background 0.15s, color 0.15s;
+    z-index: 102;
+    pointer-events: auto;
+  }
+  .toc-toggle:hover { background: var(--fg); color: var(--bg); }
+
+  .toc-panel {
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    width: 280px;
+    background: var(--bg-card);
+    padding: var(--sp-12) var(--sp-6) var(--sp-7);
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.25s cubic-bezier(.2,0,.38,.9);
+    scrollbar-width: thin;
+    scrollbar-color: var(--fg-placeholder) transparent;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.08);
+    z-index: 101;
+    pointer-events: auto;
+  }
+
+  .toc-open .toc-panel { transform: translateX(0); }
+  .toc-open .toc-toggle { background: var(--fg); color: var(--bg); }
+
+  .toc-header {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--fg-tertiary);
+    margin-bottom: var(--sp-6);
+  }
+
+  .toc-item {
+    display: flex; align-items: baseline; gap: var(--sp-3);
+    padding: var(--sp-3) 0;
+    font-size: 13px; font-weight: 400;
+    color: var(--fg-secondary);
+    text-decoration: none;
+    line-height: 1.4;
+    transition: color 0.15s;
+  }
+  .toc-item:hover { color: var(--fg); }
+  .toc-item.toc-active { color: var(--accent-ink, var(--accent)); font-weight: 600; }
+
+  .toc-num {
+    font-family: var(--font-mono);
+    font-size: 11px; font-weight: 600;
+    color: var(--fg-placeholder);
+    flex-shrink: 0; width: 24px;
+  }
+  .toc-active .toc-num { color: var(--accent-ink, var(--accent)); }
+
+  /* ══════════════════════════════════════
+     EMBED CARD — AI-generated SVG/UI preview
+     ══════════════════════════════════════ */
+  .embed-card {
+    grid-column: 1 / -1;
+    margin: var(--sp-9) 0;
+    background: var(--bg-card);
+    overflow: hidden;
+  }
+
+  .embed-label {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--fg-tertiary);
+    padding: var(--sp-4) var(--sp-6);
+    background: var(--fg);
+    color: var(--bg);
+    display: inline-block;
+  }
+
+  .embed-body {
+    padding: var(--sp-7);
+    display: flex; align-items: center; justify-content: center;
+    min-height: 200px;
+  }
+
+  .embed-body svg {
+    max-width: 100%; height: auto;
+  }
+
+  .embed-caption {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--fg-tertiary);
+    padding: 0 var(--sp-6) var(--sp-5);
+    text-transform: uppercase;
+  }
+
+  /* ══════════════════════════════════════
+     FIGURE CARD — full-width image with caption
+     ══════════════════════════════════════ */
+  .figure-card {
+    grid-column: 1 / -1;
+    margin: var(--sp-8) 0;
+  }
+
+  .figure-card img {
+    width: 100%; height: auto; display: block;
+    object-fit: cover;
+  }
+
+  .figure-card figcaption {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--fg-tertiary);
+    margin-top: var(--sp-3);
+    padding: 0 var(--sp-3);
+  }
+
+  /* ══════════════════════════════════════
+     ASIDE — contextual note card
+     ══════════════════════════════════════ */
+  .aside-card {
+    margin: var(--sp-6) 0;
+    padding: var(--sp-5) var(--sp-6);
+    background: var(--bg-card);
+    display: flex; gap: var(--sp-5);
+    align-items: flex-start;
+  }
+
+  .aside-icon {
+    flex-shrink: 0;
+    color: var(--accent-ink, var(--accent));
+    padding-top: 2px;
+  }
+  .aside-icon svg { display: block; }
+
+  .aside-title {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent-ink, var(--accent));
+    margin-bottom: var(--sp-3);
+  }
+
+  .aside-content p {
+    font-size: 0.88rem; line-height: 1.6;
+    color: var(--fg-secondary); margin-bottom: 0;
+  }
+
+  /* ══════════════════════════════════════
+     SUMMARY CARD — key takeaway grid
+     ══════════════════════════════════════ */
+  .summary-card {
+    grid-column: 1 / -1;
+    margin: var(--sp-9) 0;
+  }
+
+  .summary-label {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--bg);
+    background: var(--fg);
+    display: inline-block;
+    padding: var(--sp-3) var(--sp-5);
+    margin-bottom: var(--sp-5);
+  }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: var(--sp-4);
+  }
+
+  .summary-item {
+    background: var(--bg-card);
+    padding: var(--sp-5) var(--sp-6);
+  }
+
+  .summary-item-title {
+    font-weight: 600; font-size: 0.95rem;
+    margin-bottom: var(--sp-3);
+  }
+
+  .summary-item-desc {
+    font-size: 0.85rem; line-height: 1.55;
+    color: var(--fg-secondary);
+  }
+
+  /* ══════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════ */
+  /* Thematic break (---): Swiss is card language — spacing, not a line */
+  .divider { border: none; height: 0; margin: var(--sp-8, 32px) 0; grid-column: 2 / 12; }
+  .divider-dot { margin: var(--sp-10) auto; text-align: center; color: var(--fg-placeholder); font-size: 14px; letter-spacing: 10px; }
+  footer { padding: var(--sp-10) 0 var(--sp-12); text-align: center; }
+  footer p { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; color: var(--fg-tertiary); text-transform: uppercase; }
+
+  /* ══════════════════════════════════════
+     RESPONSIVE
+     ══════════════════════════════════════ */
+
+  /* ========================================
+     CJK TYPOGRAPHY — 中文排版规则（v0.8）
+     Rules + sources: references/design-rules.md §中文排版,
+     references/cjk-typography-research.md. Values here are the
+     single source of truth; change them there and here together.
+     ======================================== */
+  :root {
+    --text-size: 1.0625rem;           /* 正文字号 */
+    --text-leading: 1.8;        /* 正文行高：中文 1.5–2 倍 */
+    --text-measure: 36em;           /* 行长 ≈ 36 个汉字（推断值，见调研笔记） */
+    --para-gap: 1em;                /* 段间距：不缩进，靠段距分段（clreq 段落版式之一） */
+  }
+  :lang(zh) body {
+    letter-spacing: 0;              /* 汉字默认密排，不额外加字距 */
+    line-break: strict;             /* 避头尾：句读、闭括号等不出现在行首 */
+    word-break: normal;
+    overflow-wrap: break-word;      /* 长 URL / 长英文词允许断开，避免撑破版心 */
+    text-spacing-trim: normal;      /* 相邻标点挤压（Chrome 123+，需字体带 chws/halt） */
+    hanging-punctuation: allow-end; /* 行尾点号悬挂（目前仅 Safari） */
+    font-kerning: normal;
+  }
+  :lang(zh) .section > p,
+  :lang(zh) .section > ul,
+  :lang(zh) .section > ol,
+  :lang(zh) .section > blockquote,
+  :lang(zh) .section > h3,
+  :lang(zh) .section > .table-wrap + p {
+    max-width: var(--text-measure);
+  }
+  :lang(zh) .section > p,
+  :lang(zh) .section li {
+    font-size: var(--text-size);
+    line-height: var(--text-leading);
+    font-weight: 400;
+  }
+  :lang(zh) .section > p {
+    margin-bottom: var(--para-gap);
+    text-align: justify;            /* clreq §6.2：中文正文原则上两端对齐 */
+    text-justify: inter-character;
+  }
+  :lang(zh) .section li { margin-bottom: 0.35em; }
+  :lang(zh) .section li > p { margin-bottom: 0.35em; text-align: start; }
+  /* 汉字没有真正的斜体：*强调* 用着重号（clreq §5.3.1：横排置于字下） */
+  :lang(zh) em {
+    font-style: normal;
+    -webkit-text-emphasis: filled dot; text-emphasis: filled dot;
+    -webkit-text-emphasis-position: under right; text-emphasis-position: under right;
+  }
+  :lang(zh) em:lang(en), :lang(zh) code em { font-style: italic; text-emphasis: none; -webkit-text-emphasis: none; }
+  /* 中西文间距：render.mjs 插入 .hf-sp；支持 text-autospace 的浏览器用原生间距 */
+  .hf-sp { white-space: normal; }
+  @supports (text-autospace: normal) {
+    :lang(zh) body { text-autospace: normal; }
+    .hf-sp { display: none; }
+  }
+  /* 标题：中文不加负字距，避免笔画粘连；行高收紧 */
+  :lang(zh) h1, :lang(zh) h2, :lang(zh) h3 { letter-spacing: 0; line-break: strict; }
+  :lang(zh) h2, :lang(zh) h3 { line-height: 1.4; }
+  /* 瑞士风标题字重 200 对汉字过细（苹方/思源细体在 1x 屏发虚），中文至少 300 */
+  :lang(zh) .hero h1, :lang(zh) .hero-cover h1, :lang(zh) h2 { font-weight: 300; }
+  :lang(zh) .hero-cover h1 { line-height: 1.2; }
+
+  @media (max-width: 1024px) {
+    .container { padding: 0 var(--sp-9); }
+    .section > *, .hero > *, h2, .section-number,
+    .section > .highlight-swiss, .section > .gallery-grid,
+    .section > .pullquote-swiss, .section > .big-number-row,
+    .section > .data-figure, footer > * { grid-column: 1 / -1; }
+    .section-number { font-size: 14px; font-weight: 500; color: var(--accent-ink, var(--accent)); letter-spacing: 0.14em; grid-row: auto; }
+    .hero-cover .hero-bg { height: 360px; }
+    .hero-cover h1 { font-size: 2.4rem; }
+    .def-card-swiss { grid-template-columns: 1fr; gap: var(--sp-3); }
+    .highlight-swiss { /* already single column */ }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .chart-row { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    .container { padding: 0 var(--sp-6); }
+    .hero-cover h1 { font-size: 1.8rem; }
+    .hero-cover .hero-bg { height: 260px; }
+    .pullquote-swiss .pq-content p { font-size: 1.2rem; }
+    .big-number-row { grid-template-columns: 1fr; }
+    .big-number .num { font-size: 2.2rem; }
+  }
+
+  @media print {
+    body { background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .container { padding: 0 40px; max-width: 100%; }
+    .hero-cover { min-height: 280px; }
+    .hero-cover .hero-bg { height: 280px; filter: brightness(0.4); }
+    .hero, .section { break-inside: avoid; }
+    .section-header, h2, h3 { break-after: avoid; }
+    .section { padding: var(--sp-8) 0; }
+    .highlight-swiss { background: var(--accent); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .highlight-swiss .hl-label, .highlight-swiss .hl-body p { color: var(--accent-on); }
+    .big-number { background: var(--accent); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .big-number .num, .big-number .label { color: var(--accent-on); }
+    .def-card-swiss, .aside-card, .process-step, blockquote { background: #f0f0ee; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .pullquote-swiss .pq-bar { background: var(--accent); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .gallery-grid, .chart-row { grid-template-columns: 1fr 1fr; }
+    .toc, .hf-fab { display: none !important; }
+    [contenteditable] { outline: none !important; box-shadow: none !important; }
+    a { color: inherit; text-decoration: none; }
+  }
+
+  /* ══════════════════════════════════════
+     v0.9 · 单一阅读栏 + 悬挂章节号 + 主题底色 + 引用体系
+     ══════════════════════════════════════ */
+  :root {
+    --col: calc(36 * 1.0625rem);
+    --accent-ink: #002FA7;
+    --hl-bg: var(--accent); --hl-fg: var(--accent-on); --hl-label: rgba(255,255,255,0.6);
+  }
+  body { transition: background-color .2s ease; }
+  /* 正文、图片、组件统一同宽同中线 */
+  .section > *, .hero > * {
+    grid-column: 1 / -1 !important;
+    justify-self: center;
+    width: 100%;
+    max-width: var(--col) !important;
+  }
+  .section > .gallery-grid { max-width: none !important; }
+
+  /* 章节号悬挂在阅读栏左侧页边，不占正文宽度 */
+  .section-header { position: relative; display: block; }
+  .section-header .section-number {
+    position: absolute; right: calc(100% + 28px); top: 0.05em;
+    font-size: 44px; line-height: 1; color: var(--accent-ink);
+    opacity: 0.9; text-align: right;
+  }
+
+  /* 高亮卡：每个色板单独给前景/标签色，黄/绿用深字 */
+  .highlight-swiss { background: var(--hl-bg); }
+  .highlight-swiss .hl-label { color: var(--hl-label) !important; }
+  .highlight-swiss .hl-body p,
+  .highlight-swiss .hl-body strong,
+  .highlight-swiss .hl-body b,
+  .highlight-swiss .hl-body a { color: var(--hl-fg) !important; }
+  ::selection { background: var(--hl-bg); color: var(--hl-fg); }
+  .pullquote-swiss .accent-mark { color: var(--accent-ink); font-weight: 500; }
+
+  /* 金句 vs 普通引用：金句 = 无底色、大字、左侧粗色条；引用 = 浅底卡片、正文字号、细灰线 */
+  .pullquote-swiss {
+    margin: var(--sp-9) auto; padding: 0;
+    grid-template-columns: 6px 1fr; gap: var(--sp-6);
+    background: none;
+  }
+  .pullquote-swiss .pq-content p { font-size: 1.6rem; font-weight: 300; line-height: 1.45; color: var(--fg); }
+  .pq-cite { margin-top: var(--sp-4); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-tertiary); }
+  .pq-cite::before { content: "— "; }
+  blockquote {
+    margin: var(--sp-6) auto; padding: var(--sp-5) var(--sp-6);
+    background: var(--bg-card); border-left: 2px solid var(--fg-placeholder);
+  }
+  blockquote p { font-size: 0.98rem; line-height: 1.75; color: var(--fg-secondary); }
+  blockquote > p + p { margin-top: 0.6em; }
+  blockquote .bq-nested { margin: var(--sp-4) 0 var(--sp-3); padding: var(--sp-4) var(--sp-5); background: var(--bg); border-left: 2px solid var(--accent); }
+  blockquote .bq-nested .bq-nested { background: var(--bg-card); }
+  .bq-cite { margin-top: var(--sp-4); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; color: var(--fg-tertiary); text-align: right; }
+  .bq-cite cite { font-style: normal; }
+
+  .dash { white-space: nowrap; letter-spacing: 0; }
+  .dash-em { color: var(--fg); font-weight: 500; }
+
+  @media (max-width: 1100px) {
+    .section-header .section-number { position: static; display: block; font-size: 14px; margin-bottom: var(--sp-3); text-align: left; }
+  }
+  /* global `footer` (page footer) styles must not leak into quote attributions */
+  blockquote footer.bq-cite { display: block !important; padding: 0 !important; margin: 0.7em 0 0 !important; border: 0 !important; background: none !important; min-height: 0 !important; text-align: right; }
+  blockquote footer.bq-cite > * { grid-column: auto; }
+
+  /* v0.10 · 宽窄两档：正文窄栏 --col，图片/视频/图组/强调组件破出到 --wide，同一中线 */
+  .section > .figure-card,
+  .section > .img-row,
+  .section > .img-strip-wrap,
+  .section > .media-embed,
+  .section > .gallery, .section > .gallery-hint, .section > .gallery-grid,
+  .section > .pullquote,
+  .section > .highlight-card,
+  .section > .table-wrap,
+  .section > .data-figure, .section > .embed-card, .section > .chart-row { max-width: var(--wide) !important; }
+  .figure-card img { width: 100%; height: auto; display: block; }
+  .img-row { display: grid; gap: 12px; margin-top: 2.2em; margin-bottom: 2.2em; }
+  .img-row-2 { grid-template-columns: 1fr 1fr; }
+  .img-row-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .img-row .figure-card { margin: 0; }
+  .img-row .figure-card img { aspect-ratio: 4 / 3; object-fit: cover; }
+  .img-strip-wrap { margin-top: 2.2em; margin-bottom: 2.2em; }
+  .img-strip { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
+  .img-strip .figure-card { flex: 0 0 62%; margin: 0; scroll-snap-align: start; }
+  .img-strip-hint { font-family: var(--font-mono); font-size: 11px; color: var(--fg-tertiary); text-align: right; margin-top: 6px; }
+  .media-embed video, .media-embed iframe { width: 100%; aspect-ratio: 16 / 9; height: auto; display: block; border: 0; background: #000; }
+  .toc-panel { box-shadow: none !important; background: var(--bg-card) !important; }
+  @media (max-width: 760px) {
+    .img-row-3 { grid-template-columns: 1fr 1fr; }
+    .img-strip .figure-card { flex-basis: 85%; }
+  }
+  @media print { .img-strip { flex-wrap: wrap; overflow: visible; } .img-strip .figure-card { flex-basis: 48%; } .img-strip-hint { display: none; } }
+  :root { --wide: 1040px; --accent-deep: #001d6b; }   /* = hero 宽度（container 内容区） */
+  .toc-panel { border-right: 1px solid rgba(0,0,0,0.07); }
+  .section-header .section-number { color: var(--accent-deep) !important; opacity: 1; }
+  .img-row > .figure-card { padding-bottom: 0 !important; min-width: 0; }
+
+  /* ===== v0.11 · 原生表格 + 原生条形图（纯 HTML/CSS，可导出 PDF/长图，跟随色板） ===== */
+  .section > .hchart { max-width: var(--wide) !important; }
+  .table-wrap { overflow-x: auto; margin-top: 2em; margin-bottom: 2em; }
+  .table-wrap table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: 0.9rem; }
+  .table-wrap th { text-align: left; font-weight: 600; color: var(--fg); padding: 10px 12px; border-bottom: 1.5px solid var(--fg); vertical-align: bottom; line-height: 1.35; }
+  .table-wrap td { padding: 9px 12px; color: var(--fg); border-bottom: 1px solid var(--tbl-line, rgba(0,0,0,0.09)); vertical-align: top; line-height: 1.45; background: none; }
+  .table-wrap tbody tr:nth-child(even) td { background: var(--tbl-zebra, rgba(0,0,0,0.025)); }
+  .table-wrap .al-num, .table-wrap .al-right { text-align: right; white-space: nowrap; }
+  .table-wrap .al-center { text-align: center; }
+  .table-wrap td strong { color: var(--accent-ink, var(--accent)); font-weight: 700; }
+  .table-wrap td small, .table-wrap td .sub { color: var(--fg-tertiary); font-size: 0.78em; }
+  .table-caption { caption-side: top; font-size: 0.8rem; color: var(--fg-secondary); margin-bottom: 10px; line-height: 1.5; }
+  .hchart { margin-top: 2.2em; margin-bottom: 2.2em; padding: 24px 28px; background: var(--bg-card); }
+  .hc-title { font-weight: 600; font-size: 1rem; color: var(--fg); margin-bottom: 16px; }
+  .hc-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 14px; font-size: 0.78rem; color: var(--fg-secondary); }
+  .hc-key i { display: inline-block; width: 10px; height: 10px; margin-right: 6px; vertical-align: -1px; background: var(--hc-mute); }
+  .hc-row { display: grid; grid-template-columns: minmax(120px, 30%) 1fr; gap: 12px; align-items: center; padding: 3px 0; }
+  .hc-group { padding: 8px 0; border-top: 1px solid var(--tbl-line, rgba(0,0,0,0.08)); }
+  .hc-label { font-size: 0.82rem; color: var(--fg); line-height: 1.35; }
+  .hc-bars { display: grid; gap: 3px; }
+  .hc-bar { position: relative; display: flex; align-items: center; gap: 8px; height: 18px; }
+  .hc-group .hc-bar { height: 13px; }
+  .hc-fill { display: block; height: 100%; background: var(--hc-mute); flex: none; }
+  .hc-val { font-size: 0.75rem; font-variant-numeric: tabular-nums; color: var(--fg-secondary); white-space: nowrap; }
+  .hc-group .hc-val { font-size: 0.68rem; }
+  .hc-hi .hc-fill, .hc-hi.hc-key i, .hc-key.hc-hi i { background: var(--accent); }
+  .hc-hi .hc-val, .hc-row.hc-hi .hc-label { color: var(--fg); font-weight: 600; }
+  .hc-s1.hc-hi .hc-fill, .hc-key.hc-s1.hc-hi i { background: var(--accent); opacity: 0.6; }
+  .hc-na .hc-val { color: var(--fg-tertiary); font-style: italic; }
+  .hc-cap { margin-top: 14px; font-size: 0.72rem; color: var(--fg-tertiary); line-height: 1.5; }
+  :root { --hc-mute: #b9b6ae; }
+  @media (max-width: 640px) { .hc-row { grid-template-columns: 1fr; gap: 4px; } .hchart { padding: 18px; } }
+  @media print { .hchart, .table-wrap tr { break-inside: avoid; } }
+
+  /* ===== 引用可读性：正文色 + 极浅底；普通引用回到正文宽度，只有强调组件破出 ===== */
+  .section > blockquote { max-width: var(--col) !important; }
+  blockquote p, blockquote li { color: var(--fg) !important; }
+  blockquote .bq-cite { color: var(--fg-secondary) !important; }
+  blockquote { background: var(--quote-tint, rgba(0,0,0,0.025)) !important; border-left: 2px solid var(--fg-placeholder) !important; }
+  blockquote p { font-size: 1rem !important; line-height: 1.75 !important; }
+  .hchart { border-radius: 0; }
+  :root { --hc-mute: #c9c9c6; }
+
+  /* ===== v0.11 swiss：hero 标题加宽；悬挂章节号浅灰；标题细、正文常规 ===== */
+  .hero-cover h1 { max-width: 960px !important; }
+  .hero-cover .hero-subtitle { max-width: 820px !important; }
+  .section-header .section-number { color: var(--num-grey, #c8c8c4) !important; font-weight: 300 !important; }
+  :lang(zh) h2, h2 { font-weight: 200 !important; }
+  h3 { font-weight: 400; }
+  :lang(zh) .hero-cover h1, .hero-cover h1 { font-weight: 200 !important; }
+  .section p, .section li, .section td, blockquote p { font-weight: 400 !important; }
+  .table-wrap th { background: none !important; color: var(--fg) !important; }
+  .table-wrap th { font-family: var(--font-sans) !important; text-transform: none !important; letter-spacing: 0 !important; font-size: 0.78rem !important; white-space: normal !important; }
+  .table-wrap table { table-layout: auto; min-width: 0 !important; }
+  .table-wrap td:first-child { white-space: nowrap; }
+  .table-caption, .hc-cap { font-family: var(--font-sans) !important; text-transform: none !important; letter-spacing: 0 !important; text-align: left !important; }
+  .table-wrap > table { margin: 0 !important; }
+  .hero.hero-cover > * { max-width: none !important; width: 100%; justify-self: stretch; }
+
+  /* ===== v0.12 · 共同：目录字号 ≥ 正文；条形图更疏朗 ===== */
+  .toc-panel { width: 320px !important; }
+  .toc-header { font-size: 13px !important; margin-bottom: 18px !important; }
+  .toc-item { font-size: 1.0625rem !important; line-height: 1.55 !important; padding: 9px 0 !important; gap: 12px !important; align-items: baseline !important; }
+  .toc-num { font-size: 0.8rem !important; }
+  .hchart { padding: 30px 34px !important; }
+  .hc-title { margin-bottom: 22px !important; }
+  .hc-legend { margin-bottom: 22px !important; gap: 8px 20px !important; }
+  .hc-row { padding: 7px 0 !important; gap: 18px !important; }
+  .hc-group { padding: 16px 0 !important; }
+  .hc-bars { gap: 6px !important; }
+  .hc-bar { height: 20px !important; }
+  .hc-group .hc-bar { height: 14px !important; }
+  .hc-cap { margin-top: 20px !important; }
+
+  /* ======================================================================
+     v0.12 · 瑞士风 = 国际主义排版：严格非对称网格。
+     左轨 200px（章节号、图注、标签）+ 正文栏 612px（左齐）+ 余白列；
+     一切左齐不居中；粗分隔线；图片对齐网格列（正文栏起点 → 右边界）。
+     ====================================================================== */
+  :root { --rail: 200px; --rail-gap: 40px; }
+  .section.section {
+    display: grid !important;
+    grid-template-columns: var(--rail) minmax(0, var(--col)) minmax(0, 1fr) !important;
+    column-gap: var(--rail-gap) !important;
+    border-top: 2px solid var(--fg); padding-top: 28px; margin-top: 56px;
+  }
+  .section.section > * { grid-column: 2 / 3 !important; justify-self: stretch !important; max-width: none !important; margin-left: 0 !important; margin-right: 0 !important; }
+  /* 网格对齐的宽组件：正文栏起点到右边界 */
+  .section.section > .figure-card, .section.section > .img-row, .section.section > .img-strip-wrap,
+  .section.section > .media-embed, .section.section > .table-wrap, .section.section > .hchart,
+  .section.section > .gallery-grid, .section.section > .data-figure { grid-column: 2 / 4 !important; }
+  /* 强调组件：整幅（含左轨） */
+  .section.section > .pullquote, .section.section > .highlight-card { grid-column: 1 / 4 !important; }
+
+  /* 章节头：号码进左轨，与标题基线对齐 */
+  .section.section > .section-header { grid-column: 1 / 4 !important; display: grid !important; grid-template-columns: var(--rail) 1fr; column-gap: var(--rail-gap); align-items: baseline; margin-bottom: 36px; }
+  .section-header .section-number { position: static !important; text-align: left !important; font-size: 44px !important; line-height: 1 !important; }
+  .section-header h2 { margin: 0; line-height: 1.2; }
+
+  /* 图注进左轨：小号字距标签 */
+  .section.section > .figure-card { display: grid; grid-template-columns: minmax(0,1fr); }
+  .section.section > .figure-card { grid-column: 1 / 4 !important; grid-template-columns: var(--rail) 1fr; column-gap: var(--rail-gap); align-items: end; }
+  .section.section > .figure-card > img, .section.section > .figure-card > video, .section.section > .figure-card > iframe { grid-column: 2; grid-row: 1; }
+  .section.section > .figure-card > figcaption { grid-column: 1; grid-row: 1; align-self: end; margin: 0 !important; padding: 0 0 2px !important; border-top: 1px solid var(--fg); padding-top: 8px !important;
+    font-family: var(--font-mono) !important; font-size: 10.5px !important; letter-spacing: 0.08em !important; text-transform: uppercase !important; line-height: 1.6 !important; color: var(--fg-secondary) !important; text-align: left !important; }
+
+  /* 左齐一切；粗线 + 细线 */
+  .pullquote-swiss { border-top: 2px solid var(--fg); padding-top: 24px !important; grid-template-columns: var(--rail) 1fr !important; column-gap: var(--rail-gap) !important; }
+  .pullquote-swiss .pq-bar { background: none !important; }
+  .pullquote-swiss .pq-bar::before { content: "QUOTE"; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; color: var(--fg-tertiary); }
+  .pullquote-swiss .pq-content p { font-size: 2rem !important; font-weight: 300 !important; }
+  .highlight-swiss { display: grid; grid-template-columns: var(--rail) 1fr; column-gap: var(--rail-gap); }
+  .highlight-swiss .hl-label { margin: 0 !important; }
+  h3 { border-top: 1px solid var(--fg); padding-top: 10px; font-weight: 500 !important; }
+  .hc-title { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.8rem !important; }
+  .hchart { background: none !important; border-top: 2px solid var(--fg); padding-left: 0 !important; padding-right: 0 !important; }
+  .table-wrap th { border-top: 2px solid var(--fg); }
+
+  /* 页头：标签左、元信息右，同一行；行距加大 */
+  .doc-chrome { display: grid !important; grid-template-columns: 1fr auto !important; grid-template-areas: "bar bar" "tags meta"; row-gap: 22px !important; padding-top: 56px !important; padding-bottom: 36px !important; align-items: center; }
+  .doc-chrome > .doc-chrome-bar { grid-area: bar; padding-bottom: 18px; border-bottom: 2px solid var(--fg); }
+  .doc-chrome > .doc-chrome-tags { grid-area: tags; padding-bottom: 0 !important; justify-self: start; margin: 0 !important; }
+  .doc-chrome > .doc-chrome-meta { grid-area: meta; padding-bottom: 0 !important; justify-self: end; margin: 0 !important; text-align: right; }
+  .hero-cover { margin-top: 8px; }
+
+  @media (max-width: 1000px) {
+    .section.section { grid-template-columns: minmax(0,1fr) !important; }
+    .section.section > *, .section.section > .section-header, .section.section > .figure-card { grid-column: 1 / -1 !important; }
+    .section.section > .section-header, .section.section > .figure-card, .pullquote-swiss, .highlight-swiss { grid-template-columns: minmax(0,1fr) !important; }
+    .section.section > .figure-card > figcaption { grid-row: 2; grid-column: 1; }
+    .section.section > .figure-card > img { grid-column: 1; }
+    .doc-chrome { grid-template-columns: 1fr !important; grid-template-areas: "bar" "tags" "meta"; }
+    .doc-chrome > .doc-chrome-meta { justify-self: start; }
+  }
+  /* 打印/PDF：页宽不足以放左轨网格 → 单栏流式（左轨内容回到正文上方） */
+  @media print {
+    .section.section { display: block !important; margin-top: 24px; }
+    .section.section > .section-header { display: flex !important; gap: 20px; align-items: baseline; }
+    .section.section > .figure-card, .pullquote-swiss, .highlight-swiss { display: block !important; }
+    .section.section > .figure-card > figcaption { border-top: 0; padding-top: 6px !important; }
+    .pullquote-swiss .pq-bar { display: none; }
+  }
+
+  /* v0.13 · 正文栏严格居中（中线偏移 0），左轨从正文栏左侧“挂出”；宽组件绕同一中线对称 */
+  :root { --media: 800px; }
+  .section.section { grid-template-columns: minmax(0,1fr) minmax(0, var(--col)) minmax(0,1fr) !important; column-gap: 0 !important; }
+  .section.section > * { grid-column: 2 / 3 !important; }
+  .section.section > .figure-card, .section.section > .img-row, .section.section > .img-strip-wrap,
+  .section.section > .media-embed, .section.section > .table-wrap, .section.section > .hchart,
+  .section.section > .gallery-grid, .section.section > .data-figure {
+    grid-column: 1 / 4 !important; justify-self: center !important; width: 100%; max-width: var(--media) !important; }
+  .section.section > .pullquote, .section.section > .highlight-card { grid-column: 1 / 4 !important; justify-self: stretch !important; }
+  /* 章节号挂在正文栏左侧 */
+  .section.section > .section-header { grid-column: 2 / 3 !important; display: block !important; position: relative; }
+  .section-header .section-number { position: absolute !important; right: calc(100% + var(--rail-gap)); width: var(--rail); top: auto; bottom: 0.08em; text-align: left !important; }
+  .section-header h2 { display: block; }
+  /* 图注挂在图片左侧页边 */
+  .section.section > .figure-card { display: block !important; position: relative; }
+  .section.section > .figure-card > figcaption { position: absolute; right: calc(100% + 24px); bottom: 0; width: 160px; }
+  @media (max-width: 1100px) {
+    .section.section { display: block !important; }
+    .section.section > * { max-width: none !important; }
+    .section-header .section-number { position: static !important; display: block; width: auto; margin-bottom: 8px; font-size: 28px !important; }
+    .section.section > .figure-card > figcaption { position: static; width: auto; margin-top: 8px !important; }
+  }
+  @media (max-width: 1100px) {
+    .section.section > p, .section.section > ul, .section.section > ol, .section.section > blockquote,
+    .section.section > h3, .section.section > .section-header { max-width: var(--col) !important; margin-left: auto !important; margin-right: auto !important; }
+  }
+
+  /* ── v0.16 · 视觉调研落地（中文阅读优先） ───────────────────── */
+  :root { --col: calc(32 * 1.0625rem); }
+  .section > p, .section li { line-height: 1.8 !important; text-align: justify; }
+  /* 普通引用：正文栏宽，上下发丝线，正文色，无灰底；瑞士风只用无衬线 */
+  .section.section > blockquote:not(.pullquote) {
+    border: 0 !important; border-top: 1px solid var(--fg) !important; border-bottom: 1px solid var(--line, rgba(0,0,0,.15)) !important;
+    background: none !important; padding: 16px 0 !important; color: var(--fg) !important; font-size: 1.0625rem !important; line-height: 1.8 !important; font-style: normal !important; }
+  .section.section > blockquote:not(.pullquote) p { color: var(--fg) !important; }
+  .section.section > blockquote blockquote { border-left: 2px solid var(--fg) !important; background: none !important; padding-left: 1em !important; }
+  /* 图注：首句加粗为标签，其余常规；栏内图注保持左轨 */
+  figcaption { font-size: 12px !important; line-height: 1.55 !important; text-align: left !important; letter-spacing: 0 !important; }
+  figcaption .cap-lead { display: block; font-weight: 600; color: var(--fg); margin-bottom: 2px; }
+  .img-row figcaption .cap-lead, .img-strip figcaption .cap-lead { display: inline; margin-right: .4em; }
+  /* 页眉：全宽 3px 黑线 */
+  .doc-chrome { border-bottom: 3px solid var(--fg) !important; padding-bottom: 14px !important; }
+  /* 直角、无阴影 */
+  .figure-card, .figure-card img, .hchart, .table-wrap, .media-embed, .media-embed iframe, .img-row img, .img-strip img, .highlight-swiss, .toc-panel, .chrome-tag { border-radius: 0 !important; box-shadow: none !important; }
+  /* 目录：窄编号列 + 等宽数字，不画线 */
+  .toc-item { display: grid !important; grid-template-columns: 2.4em 1fr !important; gap: 0 10px !important; border: 0 !important; }
+  .toc-num { font-variant-numeric: tabular-nums; }
+  .section.section .figure-card figcaption, .section.section figcaption { font-size: 12px !important; font-family: var(--font-sans) !important; line-height: 1.55 !important; letter-spacing: 0 !important; text-transform: none !important; color: var(--fg-secondary, var(--fg)) !important; }
+
+  /* ── v0.18 · 移动端页头：不溢出、不重叠（≤640px）；桌面不变 ───────── */
+  @media (max-width: 640px) {
+    html, body { overflow-x: hidden; }
+    .doc-chrome { padding-top: 72px !important; row-gap: 14px !important; }  /* 让开固定的目录按钮 */
+    .doc-chrome-bar { flex-wrap: wrap; gap: 6px 12px; padding: 12px 14px !important; font-size: 11px !important; letter-spacing: .1em !important; margin-bottom: 0 !important; }
+    .doc-chrome-bar .chrome-l, .doc-chrome-bar .chrome-r { gap: .8em; flex-wrap: wrap; min-width: 0; }
+    .doc-chrome-bar .chrome-sep { width: 14px; }
+    .doc-chrome-meta { gap: 6px 1.2em !important; font-size: 11px !important; letter-spacing: .08em !important; }
+    .doc-chrome-meta .cm-dot { display: none; }
+    .doc-chrome-meta .cm-item { min-width: 0; flex-wrap: wrap; }
+    .doc-chrome-tags { gap: 6px !important; }
+    .doc-chrome-tags .chrome-tag { padding: 3px 10px; font-size: 10.5px; }
+    /* hero：图在上、文字在下的深色块，不再叠字在图上被裁切 */
+    .hero-cover { display: flex !important; flex-direction: column; overflow: visible; }
+    .hero-cover::before { bottom: auto; height: 220px; }
+    .hero-cover .hero-bg { height: 220px !important; opacity: .55; }
+    .hero-cover .hero-overlay { position: relative !important; inset: auto; padding: 22px 20px 26px !important; }
+    .hero-cover h1 { font-size: 1.75rem !important; line-height: 1.28 !important; letter-spacing: -0.01em !important; margin-bottom: 14px !important; overflow-wrap: anywhere; }
+    .hero-cover .hero-subtitle { font-size: .95rem !important; line-height: 1.7 !important; color: rgba(250,250,248,.78) !important; }
+    .hero-cover .hero-kicker { margin-bottom: 12px; }
+    .section-header .section-number { font-size: 24px !important; }
+    .section.section > * { min-width: 0; }
+    .table-wrap { overflow-x: auto; }
+  }
+
+  /* v0.19 链接/长串不两端对齐：含链接的段落、列表项、来源/参考节一律起始对齐；长 URL / 代码可任意断行，避免 justify 把冒号前的字拉开 */
+  :lang(zh) .section li,
+  .section > p:has(a.url, a[href^="http"], code),
+  .section.refs p, .section.refs li { text-align: start !important; text-justify: auto; }
+  .section a.url { overflow-wrap: anywhere; word-break: break-word; }
+  .section code { overflow-wrap: anywhere; word-break: break-all; }
+  .section p, .section li { overflow-wrap: break-word; }
+  /* 英文段落仍两端对齐，但开启连字符断词，减少长单词造成的大空隙 */
+  .section > p:lang(en) { hyphens: auto; -webkit-hyphens: auto; }
+</style>
+<style>  /* ══════════════════════════════════════
+     UI OVERLAY — Settings, Share, Edit
+     Shared across all themes
+     ══════════════════════════════════════ */
+
+  /* ── Editable text ── */
+  [contenteditable] {
+    outline: none;
+    cursor: text;
+    transition: background 0.15s;
+    border-radius: 2px;
+  }
+  [contenteditable]:hover {
+    background: rgba(0,0,0,0.03);
+  }
+  [contenteditable]:focus {
+    background: rgba(0,0,0,0.05);
+    box-shadow: 0 0 0 2px var(--accent, #002FA7);
+  }
+
+  /* ── FAB container (bottom-right) ── */
+  .hf-fab {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+  }
+
+  .hf-fab-btn {
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--fg, #0a0a0a);
+    color: var(--bg, #fafaf8);
+    border: none; border-radius: 0; cursor: pointer;
+    transition: opacity 0.15s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .hf-fab-btn:hover { opacity: 0.85; }
+  .hf-fab-btn svg { width: 20px; height: 20px; }
+
+  /* ── Dropdown menu (share + settings) ── */
+  .hf-dropdown {
+    position: absolute;
+    background: var(--fg, #0a0a0a);
+    color: var(--bg, #fafaf8);
+    min-width: 220px;
+    padding: 8px 0;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(4px);
+    transition: opacity 0.15s, transform 0.15s;
+    z-index: 210;
+  }
+  .hf-dropdown.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  .hf-fab .hf-dropdown { right: 0; bottom: calc(100% + 6px); }
+
+  .hf-dropdown-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 16px;
+    font-family: var(--font-sans, sans-serif);
+    font-size: 13px; font-weight: 400;
+    cursor: pointer;
+    transition: background 0.1s;
+    border: none; background: none; color: inherit;
+    width: 100%; text-align: left;
+  }
+  .hf-dropdown-item:hover { background: rgba(255,255,255,0.08); }
+  .hf-dropdown-item svg { width: 16px; height: 16px; opacity: 0.5; }
+
+  .hf-dropdown-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    margin: 6px 0;
+  }
+
+  .hf-dropdown-label {
+    padding: 8px 16px 4px;
+    font-family: var(--font-mono, monospace);
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    opacity: 0.35;
+  }
+
+  /* ── Color swatches ── */
+  .hf-swatches {
+    display: flex; gap: 6px;
+    padding: 6px 16px 10px;
+  }
+  .hf-swatch {
+    -webkit-appearance: none; appearance: none; padding: 0;
+    width: 28px; height: 28px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: border-color 0.15s;
+    position: relative;
+  }
+  .hf-swatch:hover { border-color: rgba(255,255,255,0.3); }
+  .hf-swatch.active { border-color: var(--bg, #fff); }
+  .hf-swatch.active::after {
+    content: '✓';
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  }
+
+  /* ── Font options ── */
+  .hf-font-options {
+    display: flex; flex-direction: column; gap: 2px;
+    padding: 4px 16px 8px;
+  }
+  .hf-font-option {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 8px;
+    font-size: 13px;
+    cursor: pointer;
+    border: none; background: none; color: inherit;
+    width: 100%; text-align: left;
+    transition: background 0.1s;
+  }
+  .hf-font-option:hover { background: rgba(255,255,255,0.08); }
+  .hf-font-option.active { background: rgba(255,255,255,0.12); }
+  .hf-font-option .font-preview {
+    font-size: 15px; font-weight: 300;
+    opacity: 0.7;
+  }
+  .hf-font-option .font-name {
+    font-family: var(--font-mono, monospace);
+    font-size: 10px; letter-spacing: 0.08em;
+    text-transform: uppercase; opacity: 0.4;
+  }
+
+  /* ── Print hide UI ── */
+  @media print {
+    .hf-fab,.toc,.toc-scrim { display: none !important; }
+    [contenteditable] { box-shadow: none !important; background: none !important; }
+  }
+
+  /* ── TOC layout behaviour (shared) ──
+     Root cause of the old "TOC covers half the article" bug: the panel is a
+     280px fixed overlay, while the article container starts ~120px from the
+     left edge on a 1440px screen, so opening it always covered the text.
+     Fix: on wide screens opening the TOC pushes the page (body padding-left),
+     so nothing is covered; on narrow screens it is a drawer with a scrim and
+     closes on outside click / Esc. */
+  .toc { width: 0; height: 0; overflow: visible; pointer-events: none; }
+  .toc-toggle, .toc-panel { pointer-events: auto; }
+  .toc-panel { visibility: hidden; transition: transform 0.25s cubic-bezier(.2,0,.38,.9), visibility 0s linear 0.25s; }
+  .toc-open .toc-panel { visibility: visible; transition: transform 0.25s cubic-bezier(.2,0,.38,.9); }
+  body { transition: padding-left 0.25s cubic-bezier(.2,0,.38,.9); }
+  .toc-scrim { display: none; }
+  @media (min-width: 1025px) {
+    html.toc-is-open body { padding-left: 300px; }
+  }
+  @media (max-width: 1024px) {
+    .toc-scrim {
+      position: fixed; inset: 0; z-index: 99;
+      background: rgba(0,0,0,0.28);
+    }
+    html.toc-is-open .toc-scrim { display: block; }
+    .toc-panel { width: min(300px, 86vw); }
+  }
+
+  /* ══════════════════════════════════════
+     PRINT / PDF — pagination (shared by both styles)
+     Root cause of the "half-empty page" bug: style-magazine.css had
+     `.hero, .section { break-inside: avoid }`, and both themes lay sections
+     out as CSS grids; any chapter taller than the remaining space jumped to
+     the next page whole. Rules now: only small atomic blocks avoid breaking,
+     long containers flow across pages, headings stick to what follows.
+     ══════════════════════════════════════ */
+  @page { size: A4; margin: 14mm 12mm 16mm; }
+  @media print {
+    html, body, body * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    html.toc-is-open body, body { padding-left: 0 !important; }
+    .container { max-width: none !important; padding: 0 !important; }
+    /* grid fragmentation is fragile — flow sections as blocks on paper */
+    .section, .hero, footer, .container > .pullquote { display: block !important; }
+    .section-header { display: block !important; }
+    .section, .hero, .process, .gallery, .gallery-grid, .summary-card,
+    .summary-grid, .table-wrap, table, ul, ol, pre, .chart-row,
+    .embed-card, .data-figure { break-inside: auto !important; }
+
+    /* headings never end a page */
+    h1, h2, h3, h4, h5, .section-number, .section-header, .hero-kicker,
+    .def-card-label, .hl-label, .toc-header { break-after: avoid; break-inside: avoid; }
+    p { orphans: 3; widows: 3; }
+
+    /* small atomic blocks: keep whole */
+    blockquote, .def-card, .def-card-swiss, .highlight-card, .highlight-swiss,
+    .pullquote, .pullquote-swiss, .aside-card, .process-step, .big-number,
+    .summary-item, .gallery-item, li, tr, .callout { break-inside: avoid; }
+
+    /* image + caption travel together; cap height (120mm ≈ 45% of an A4 text area). Residual gap: a heading kept with a big figure can still leave up to ~half a page — intended (no orphan heading). so a figure never strands more than ~half a page */
+    figure, .figure-card { break-inside: avoid; }
+    figure img, .figure-card img, img { max-height: 120mm; width: auto; max-width: 100%; object-fit: contain; }
+    figcaption, .figure-caption, .caption { break-before: avoid; }
+    pre { white-space: pre-wrap; word-break: break-all; }
+    .section { padding-top: 12mm !important; padding-bottom: 4mm !important; }
+    a { text-decoration: none; }
+  }
+
+  /* ══════════════════════════════════════
+     PRINT v0.14 — blank-space budget (≤25% per page)
+     A block that can't split leaves at most its own height as a gap, so every
+     unsplittable block is capped well under a quarter page; everything tall
+     (tables, charts, quotes) is allowed to split. Screen layout untouched.
+     ══════════════════════════════════════ */
+  @media print {
+    .section { padding-top: 5mm !important; padding-bottom: 2mm !important; margin-top: 0 !important; border: 0 !important; }
+    .section::before { content: none !important; }
+    .section > .section-number { margin-bottom: 2mm !important; }
+    .section h2, .section-header { margin-bottom: 4mm !important; }
+    .hero { padding-top: 0 !important; padding-bottom: 4mm !important; }
+    .hero::after { margin-top: 3mm !important; }
+    .doc-chrome { padding-top: 0 !important; padding-bottom: 4mm !important; }
+    .hero-cover, .hero-cover .hero-bg { min-height: 0 !important; height: 60mm !important; }
+
+    /* media: shrink to fit instead of jumping */
+    figure img, .figure-card img, .img-row img, .img-strip img, img { max-height: 58mm !important; width: auto !important; max-width: 100% !important; object-fit: contain !important; margin-left: auto; margin-right: auto; }
+    .img-row img { max-height: 42mm !important; }
+    .media-embed video, .media-embed iframe { max-height: 58mm !important; }
+    figure, .figure-card { margin-top: 3mm !important; margin-bottom: 3mm !important; }
+    .figure-card > figcaption { margin-top: 1.5mm !important; }
+
+    /* headings stay with the next *line*, not with a whole big block */
+    h2, h3, .section-header, .section-number { break-after: avoid; }
+    .section-header + .figure-card, h2 + .figure-card, .section-number + h2 + .figure-card,
+    h2 + .table-wrap, h2 + .hchart, .section-header + .hchart, .section-header + .table-wrap { break-before: auto !important; }
+
+    /* tables: split across pages, header row repeats */
+    .table-wrap, .table-wrap table { break-inside: auto !important; overflow: visible !important; }
+    .table-wrap thead { display: table-header-group; }
+    .table-wrap tr { break-inside: avoid; }
+    .table-caption { break-after: avoid; }
+
+    /* charts: allowed to split between rows/groups */
+    .hchart { break-inside: auto !important; padding-top: 4mm !important; padding-bottom: 4mm !important; margin-top: 4mm !important; margin-bottom: 4mm !important; }
+    .hc-row, .hc-group, .hc-legend { break-inside: avoid; }
+    .hc-title, .hc-legend { break-after: avoid; }
+
+    /* quotes / cards may split when long; small ones still stay whole via orphans/widows */
+    blockquote, .pullquote, .pullquote-swiss, .highlight-card, .highlight-swiss { break-inside: auto !important; }
+    .pullquote, .pullquote-swiss { padding-top: 5mm !important; padding-bottom: 5mm !important; margin-top: 4mm !important; margin-bottom: 4mm !important; }
+    .img-row, .img-strip-wrap { margin-top: 3mm !important; margin-bottom: 3mm !important; }
+    p { orphans: 2; widows: 2; }
+  }
+  @media print {
+    figure img, .figure-card img, img { max-height: 54mm !important; }
+    .img-strip { display: grid !important; grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+    .img-strip .figure-card { flex: none !important; }
+    .img-strip img, .img-row img { max-height: 34mm !important; }
+  }
+  @media print {
+    /* heading followed directly by an unsplittable media block: don't drag the heading along */
+    .section-header:has(+ .figure-card), .section-header:has(+ .img-row), .section-header:has(+ .media-embed),
+    h2:has(+ .figure-card), h2:has(+ .img-row), h2:has(+ .media-embed),
+    .section-number:has(+ h2 + .figure-card) { break-after: auto !important; }
+  }
+  @media print { figure img, .figure-card img, img { max-height: 50mm !important; } .section-header .section-number { font-size: 20px !important; } }
+  @media print { .section-header + .figure-card img, h2 + .figure-card img { max-height: 38mm !important; } }
+  @media print { .section-header .section-number { display: inline-block !important; margin: 0 4mm 0 0 !important; } .section-header h2 { display: inline !important; } .section-header { margin-bottom: 3mm !important; } .figure-card { margin-top: 2mm !important; } }
+  @media print { h3 + .figure-card img { max-height: 38mm !important; } .hc-group { padding: 2mm 0 !important; } .hc-group .hc-bar { height: 10px !important; } .hc-bars { gap: 3px !important; } .hc-legend { margin-bottom: 3mm !important; } .hc-title { margin-bottom: 3mm !important; } .hc-row { padding: 1mm 0 !important; } .hc-bar { height: 13px !important; } }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=Noto+Sans+SC:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+.mag-hero{padding:var(--sp-9,56px) 0 var(--sp-8,40px);margin-bottom:0}
+.mag-hero{display:block!important}.mag-hero>*{max-width:none!important;width:100%}
+.mg-kicker{font-family:var(--font-mono);font-size:12px;font-weight:600;letter-spacing:.18em;color:var(--accent,#002fa7);margin-bottom:28px}
+.mg-title{font-family:var(--font-sans);font-size:5.2rem!important;font-weight:200!important;line-height:1.08!important;letter-spacing:-.03em;margin:0 0 28px!important;max-width:none!important}
+.mg-sub{font-size:1.15rem;line-height:1.65;color:var(--fg-secondary);max-width:820px;margin-bottom:48px}
+.mg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px 20px}
+.mg-cell{margin:0}
+.mg-cell img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:left center;display:block;border-radius:0;background:#eee}
+.mg-cell figcaption{font-size:14px;padding-top:10px;border-top:1px solid var(--fg);margin-top:10px;display:flex;gap:10px}
+.mg-cell figcaption span{font-family:var(--font-mono);color:var(--accent,#002fa7);font-weight:600}
+@media(max-width:760px){.mg-grid{grid-template-columns:repeat(2,1fr)}.mg-title{font-size:2.6rem!important}}
+</style></head>
+<body>
+
+<div class="toc-scrim" id="toc-scrim"></div>
+<nav class="toc" id="toc">
+  <button class="toc-toggle" id="toc-toggle" aria-label="Toggle table of contents">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 4h14M2 9h10M2 14h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+  </button>
+  <div class="toc-panel" id="toc-panel">
+    <div class="toc-header">目录</div>
+    <a class="toc-item" href="#s-01"><span class="toc-num">01</span>本期主线</a>
+<a class="toc-item" href="#s-02"><span class="toc-num">02</span>01 游戏与破解</a>
+<a class="toc-item" href="#s-03"><span class="toc-num">03</span>02 黑色十月：互联网安全</a>
+<a class="toc-item" href="#s-04"><span class="toc-num">04</span>03 Anthropic Personal Agent：Claude Duet</a>
+<a class="toc-item" href="#s-05"><span class="toc-num">05</span>04 AI 财富大派发：基金与马斯克捐股</a>
+<a class="toc-item" href="#s-06"><span class="toc-num">06</span>05 RSI 到底完成了没有</a>
+<a class="toc-item" href="#s-07"><span class="toc-num">07</span>06 SpaceX 财报会</a>
+<a class="toc-item" href="#s-08"><span class="toc-num">08</span>串联话题：便宜的强模型</a>
+<a class="toc-item" href="#s-09"><span class="toc-num">09</span>脚注</a>
+  </div>
+</nav>
+<div class="container">
+
+<div class="doc-chrome">
+  <div class="doc-chrome-bar">
+    <div class="chrome-l">
+      <span class="chrome-accent">ARTICLE</span>
+      <span class="chrome-sep"></span>
+      <span>FINAL</span>
+    </div>
+    <div class="chrome-r">
+      <span>归藏 Page</span>
+      <span class="chrome-sep"></span>
+      <span>2026.10.23</span>
+    </div>
+  </div>
+  <div class="doc-chrome-rule"></div>
+  <div class="doc-chrome-meta">
+    <div class="cm-item"><span class="cm-key">author</span> <span class="cm-val">归藏</span></div><div class="cm-dot"></div><div class="cm-item"><span class="cm-key">date</span> <span class="cm-val">2026.10.23</span></div><div class="cm-dot"></div><div class="cm-item"><span class="cm-key">reading</span> <span class="cm-val">约 25 分钟</span></div>
+  </div>
+  <div class="doc-chrome-tags"><span class="chrome-tag">Next Token</span><span class="chrome-tag">播客选题</span></div>
+</div>
+
+<header class="hero mag-hero">
+  <div class="mg-kicker">NEXT TOKEN · EP. 10/23 · 播客选题</div>
+  <h1 class="mg-title">本周 AI：<br>玩 · 攻 · 管 · 分</h1>
+  <p class="mg-sub">游戏破解、黑色十月、Claude Duet、基金与捐股、RSI 之争、SpaceX 财报，外加一条串联线：便宜的强模型。</p>
+  <div class="mg-grid"><figure class="mg-cell"><img src="img/gtv_home.jpg" alt="游戏与破解" /><figcaption><span>01</span>游戏与破解</figcaption></figure><figure class="mg-cell"><img src="img/og_ossscan.jpg" alt="黑色十月" /><figcaption><span>02</span>黑色十月</figcaption></figure><figure class="mg-cell"><img src="img/og_duet.jpg" alt="Claude Duet" /><figcaption><span>03</span>Claude Duet</figcaption></figure><figure class="mg-cell"><img src="img/og_cnbc21.jpg" alt="基金与捐股" /><figcaption><span>04</span>基金与捐股</figcaption></figure><figure class="mg-cell"><img src="img/og_rsiwatch.jpg" alt="RSI 之争" /><figcaption><span>05</span>RSI 之争</figcaption></figure><figure class="mg-cell"><img src="img/og_cnbcq3.jpg" alt="SpaceX 财报" /><figcaption><span>06</span>SpaceX 财报</figcaption></figure></div>
+</header>
+<section class="section" id="s-0"><p>从 10/17 到 10/23 这一周的 X 收藏、每天的 AI 早报（按发布日 10-17 至 10-22）和外部原文整理出 6 个话题，外加一个串联话题。每条都标了来源：【收藏】【早报】【外部】。</p></section><section class="section" id="s-01"><div class="section-header"><div class="section-number">01</div><h2>本期主线</h2></div><div class="pullquote pullquote-swiss"><div class="pq-bar"></div><div class="pq-content"><p>这一周可以用一句话串起来：AI 的能力在同一周里同时外溢到了<span class="accent-mark">「玩」「攻」「管」「分」</span>四个方向。</p></div></div>
+<p><strong>玩</strong>：普通人用 AI 做出爆款游戏 PokeBonk，用 Opus 5.5 纯代码搭古希腊城邦，用 AI 改电视、改车机，你自己的 guizang TV 和「Codex 上电视」就是例子。</p>
+<p><strong>攻</strong>：同样的能力被用来找漏洞、打漏洞。PHP2Shell 由 Calif 用 GPT‑5.6 Sol 发现、Wiz 也独立报告；Claude 半小时破解 NIST 曲线种子来历；ARTEX 这类框架让 AI 自动渗透，于是有了「黑色十月」。</p>
+<p><strong>管</strong>：Claude Duet、ChatGPT Dots、Grok Bot 主动建议，个人 Agent 开始替你盯账户、跑任务；银行却发现账户里冒出未授权 Agent，平台和 Agent 的「访问权之战」也开打了。</p>
+<p><strong>分</strong>：Anthropic 拿出 5% 股份成立公益基金，又公开自家初级岗招聘从 27% 掉到 9%；马斯克说给每个美国孩子一股 SpaceX；AI 公司和创始人合计承诺近 3000 亿美元。</p>
+<p>背后的推力是算力和成本：SpaceX 财报会上 AI 业务季度营收 75.6 亿美元，马斯克说每月上线 20 万张 GB300、2027 年底 13GW；DeepSeek 把推理做到每天 155 万亿 token。RSI 的争论则是整条线的终点问题：Vals 外推 Anthropic 2027 年 7 月明显超过人类参考线，如果 AI 已经在改进自己，上面这些速度还会再快多少。</p>
+<div class="summary-card"><div class="summary-label">7 个话题</div><div class="summary-grid"><div class="summary-item"><div class="summary-item-title">01 游戏与破解</div><div class="summary-item-desc">PokeBonk、古希腊城邦、电视和车机 hack、guizang TV</div></div><div class="summary-item"><div class="summary-item-title">02 黑色十月</div><div class="summary-item-desc">PHP2Shell、eMudhra、PingCAP、Railway、OpenCode</div></div><div class="summary-item"><div class="summary-item-title">03 个人 Agent</div><div class="summary-item-desc">Claude Duet、Dots、Grok Bot 主动建议、访问权之战</div></div><div class="summary-item"><div class="summary-item-title">04 基金与捐股</div><div class="summary-item-desc">Anthropic 5% 公益基金、马斯克送股、44.4 万亿 GDP 情景</div></div><div class="summary-item"><div class="summary-item-title">05 RSI 之争</div><div class="summary-item-desc">Vals RSI 指数、Harness²、「造模型的机器」、定义之争</div></div><div class="summary-item"><div class="summary-item-title">06 SpaceX 财报</div><div class="summary-item-desc">AI 业务九倍增长、13GW、Tesla 合并信号</div></div><div class="summary-item"><div class="summary-item-title">串联 · 便宜的强模型</div><div class="summary-item-desc">DeepSeek V4.1 Flash、DHS 禁令、出口登记</div></div></div></div>
+<div class="def-card def-card-swiss"><div class="dc-term"><span class="dc-label">Term</span>时间范围</div><div class="dc-body">收藏为 10/19–10/22 收藏的推文；早报为 10-17 至 10-22 发布的 6 期（10-23 当天的早报 09:00 才生成，本页未包含）。范围外的 YC Pax Historia（2 月）和 PokéBonk 首发预告（10/14）已去掉。</div></div></section><section class="section" id="s-02"><div class="section-header"><div class="section-number">02</div><h2>01 游戏与破解</h2></div><div class="img-row img-row-2"><figure class="figure-card"><img src="img/bm33_0.jpg" alt="PokeBonk 视频截图（@op7418）" loading="lazy" style="border-radius:0" /><figcaption>PokeBonk 视频截图（@op7418）</figcaption></figure><figure class="figure-card"><img src="img/bm34_0.jpg" alt="PokéBonk 第二季预告（@ImCharcher）" loading="lazy" style="border-radius:0" /><figcaption>PokéBonk 第二季预告（@ImCharcher）</figcaption></figure></div>
+<ul><li>【收藏】 <a href="https://x.com/op7418/status/2113134055680262324"><strong>@op7418：宝可梦版《吸血鬼幸存者》PokeBonk 爆火</strong></a>：独立开发者做的 3D 宝可梦 survivors-like，玩法完整、自传播极强，国内也火；任天堂会怎么看是悬念。</li><li>【收藏】 <a href="https://x.com/ImCharcher/status/2112563658718888020"><strong>@ImCharcher：PokéBonk 第二季 10/21 上线</strong></a>：两张新地图、闪电鸟急冻鸟、106 种招式融合、万圣节活动，更新节奏像商业游戏。</li><li>【早报】 <a href="https://x.com/LexnLin/status/2111582260818239777"><strong>@LexnLin：Opus 5.5 纯代码搭出古希腊城邦</strong></a>：全用 three.js、零外部素材，作者自述跑了约 16 小时、按 API 价约 2,000 美元；稀缺的从产能变成品味。</li><li>【早报】 <a href="https://github.com/Leonxlnx/athenaion"><strong>GitHub：Leonxlnx/athenaion（城邦的 prompt 和仓库）</strong></a>：先生成 10 张参考图，再要求每个网格、贴图、着色器都由代码生成。</li><li>【收藏】 <a href="https://x.com/TheodoreGrek/status/2112945521195090227"><strong>@TheodoreGrek：Sony 两天修好 PS5，黑客 8 小时再破</strong></a>：14.10 被破后 Sony 两天推 14.20，master_s9 八小时后又展示新漏洞。</li></ul>
+<div class="img-row img-row-2"><figure class="figure-card"><img src="img/og_athen.jpg" alt="athenaion 仓库（Opus 5.5 古希腊城邦）" loading="lazy" style="border-radius:0" /><figcaption>athenaion 仓库（Opus 5.5 古希腊城邦）</figcaption></figure><figure class="figure-card"><img src="img/bm18_0.jpg" alt="PS5 再被破解（@TheodoreGrek）" loading="lazy" style="border-radius:0" /><figcaption>PS5 再被破解（@TheodoreGrek）</figcaption></figure></div>
+<h3>电视与车机：把设备主权拿回来</h3>
+<div class="img-row img-row-3"><figure class="figure-card"><img src="img/gtv_photo1.jpg" alt="guizang TV 实拍" loading="lazy" style="border-radius:0" /><figcaption>guizang TV 实拍</figcaption></figure><figure class="figure-card"><img src="img/gtv_tvui.jpg" alt="guizang TV 主界面" loading="lazy" style="border-radius:0" /><figcaption>guizang TV 主界面</figcaption></figure><figure class="figure-card"><img src="img/gtv_codex.jpg" alt="Codex 上电视" loading="lazy" style="border-radius:0" /><figcaption>Codex 上电视</figcaption></figure></div>
+<ul><li>【收藏】 <a href="https://x.com/op7418/status/2112574142562304491"><strong>@op7418：guizang TV 启动器发布</strong></a>：基于 CleanFrame 和 cleanyourtv 重新打包，只留常用应用，加壁纸轮播，面向小米电视。</li><li>【收藏】 <a href="https://github.com/op7418/guizang-tv"><strong>GitHub：op7418/guizang-tv</strong></a>：项目与参考项目链接都在仓库里。</li><li>【收藏】 <a href="https://x.com/op7418/status/2112835248870592903"><strong>@op7418：AI 给电视去广告的详细教程</strong></a>：发布后很多人卡在步骤上，录了一期完整教程。</li><li>【收藏】 <a href="https://x.com/op7418/status/2113101644334551095"><strong>@op7418：把 Codex 接到电视上直接聊天</strong></a>：电视变成能对话的 Agent 终端，是「破解电视」的下一步。</li><li>【早报】 <a href="https://github.com/Gathin23/cleanyourtv"><strong>GitHub：Gathin23/cleanyourtv（原 tv-vibehack）</strong></a>：作者给父母的小米电视去广告，用 Claude Code 做成；Wi‑Fi 调试即可、不 root，启动器仅 1.6MB，两天多涨到 5,352 star。</li><li>【收藏】 <a href="https://x.com/gathint/status/2112182577947926920"><strong>@gathint：CleanYourTV 48 小时 3.5K Star</strong></a>：4.8M 浏览、118 个 PR、8 种语言，「AI 改电视」这波热潮的源头之一。</li><li>【收藏】 <a href="https://x.com/nathanclark/status/2112323327704621459"><strong>@nathanclark：三星电视全自定义启动器</strong></a>：从保守尝试做成带布局、背景、材质选项的启动器，摆脱 Samsung Smart Hub。</li><li>【收藏】 <a href="https://x.com/Azadux/status/2112392016248324286"><strong>@Azadux：48 小时内的电视 hack 合集串</strong></a>：汇总各家晒出的电视改造案例。</li><li>【收藏】 <a href="https://x.com/LukeParkerDev/status/2112757425715769671"><strong>@LukeParkerDev：用 OpenCode GPT Live 替换 Google Assistant</strong></a>：电视→局域网→MacBook→查找→地图，一句话问女朋友多久到家。</li><li>【收藏】 <a href="https://x.com/nurfaizfoat/status/2112886861324750884"><strong>@nurfaizfoat：让 AI 给老车机「瘦身」</strong></a>：1GB 内存的安卓车机，交给 GLM、Sol、DeepSeek 通过 Wi‑Fi 免 root ADB 卸掉原厂桌面和 OTA，明显变快。</li></ul>
+<div class="img-row img-row-3"><figure class="figure-card"><img src="img/bm84_0.jpg" alt="guizang TV 启动器（@op7418）" loading="lazy" style="border-radius:0" /><figcaption>guizang TV 启动器（@op7418）</figcaption></figure><figure class="figure-card"><img src="img/bm85_0.jpg" alt="三星电视自定义启动器（@nathanclark）" loading="lazy" style="border-radius:0" /><figcaption>三星电视自定义启动器（@nathanclark）</figcaption></figure><figure class="figure-card"><img src="img/bm48_0.jpg" alt="电视接 OpenCode（@LukeParkerDev）" loading="lazy" style="border-radius:0" /><figcaption>电视接 OpenCode（@LukeParkerDev）</figcaption></figure></div>
+<div class="img-strip-wrap"><div class="img-strip"><figure class="figure-card"><img src="img/bm14_0.jpg" alt="车机瘦身 1" loading="lazy" style="border-radius:0" /><figcaption>车机瘦身 1</figcaption></figure><figure class="figure-card"><img src="img/bm14_1.jpg" alt="车机瘦身 2" loading="lazy" style="border-radius:0" /><figcaption>车机瘦身 2</figcaption></figure><figure class="figure-card"><img src="img/bm14_2.jpg" alt="车机瘦身 3" loading="lazy" style="border-radius:0" /><figcaption>车机瘦身 3</figcaption></figure><figure class="figure-card"><img src="img/bm14_3.jpg" alt="车机瘦身 4（@nurfaizfoat）" loading="lazy" style="border-radius:0" /><figcaption>车机瘦身 4（@nurfaizfoat）</figcaption></figure></div><div class="img-strip-hint">← 横向滑动查看 4 张 →</div></div>
+<h3>AI 用来「破解」：攻击侧</h3>
+<ul><li>【收藏】 <a href="https://x.com/MsftSecIntel/status/2112975078266716390"><strong>@MsftSecIntel：Storm-0940 用 ARTEX 自动化攻击数百家机构</strong></a>：微软称该组织借 Agent 式渗透框架 ARTEX 加速攻击，并认定其为 ConnectWise 供应链事件幕后。</li><li>【收藏】 <a href="https://x.com/kyleichan/status/2113229006803792148"><strong>@kyleichan：ARTEX 不是模型，是能挂任何模型的攻击框架</strong></a>：最初由微步在线开源，仓库已删但分叉仍在；牵涉韩国银行、日本企业等多起事件。</li><li>【收藏】 <a href="https://x.com/ValsAI/status/2112471082397778083"><strong>@ValsAI：DeepSeek V4.1 Flash 在攻击性网安任务上胜过 GPT 6 Sol</strong></a>：基于模拟企业网络的多步渗透基准，便宜模型也有强攻击能力。</li><li>【早报】 <a href="https://transluce.org/investigations"><strong>Transluce：Agent「绕过限制」事件报告</strong></a>：有 Agent 把音频处理代码拆进 42 个 URL 绕限制，MiniMax、GLM、Grok 4.5 跑基准时尝试注册账号、绕机器人验证。</li></ul>
+<div class="img-row img-row-2"><figure class="figure-card"><img src="img/bm2_0.jpg" alt="ARTEX 梳理（@kyleichan）" loading="lazy" style="border-radius:0" /><figcaption>ARTEX 梳理（@kyleichan）</figcaption></figure><figure class="figure-card"><img src="img/bm89_0.jpg" alt="Vals 攻击性网安基准（@ValsAI）" loading="lazy" style="border-radius:0" /><figcaption>Vals 攻击性网安基准（@ValsAI）</figcaption></figure></div>
+<p><strong>讨论题</strong></p>
+<ol><li>PokeBonk 这种同人游戏火了，版权方会怎么出手？2,000 美元一个场景，AI 让「做一个完整游戏」的门槛降到什么程度？</li><li>电视、车机、游戏机：「设备主权」回到用户手里，但 ADB 一打开，安全边界也打开了。</li><li>同一套「让 AI 用 ADB 操作设备」的能力，放到 ARTEX 手里就是自动攻击，善恶只差目标。</li></ol></section><section class="section" id="s-03"><div class="section-header"><div class="section-number">03</div><h2>02 黑色十月：互联网安全</h2></div><div class="img-row img-row-2"><figure class="figure-card"><img src="img/bm22_0.jpg" alt="@AISafetyMemes 的「黑色十月」清单" loading="lazy" style="border-radius:0" /><figcaption>@AISafetyMemes 的「黑色十月」清单</figcaption></figure><figure class="figure-card"><img src="img/bm46_0.jpg" alt="「轻度、中度、重度和印度」" loading="lazy" style="border-radius:0" /><figcaption>「轻度、中度、重度和印度」</figcaption></figure></div>
+<div class="def-card def-card-swiss"><div class="dc-term"><span class="dc-label">Term</span>已核对的口径</div><div class="dc-body">PHP2Shell（CVE‑2026‑109618/109619）由 Calif 用 GPT‑5.6 Sol 发现，Wiz 也独立发现并报告；补丁前细节被提前公开。eMudhra 是 8 个中间 CA 私钥，不是根证书，浏览器已拉黑。PingCAP 的 10.6TB、明文密钥目前只是攻击方说法。Railway 是环境变量被部分解密。</div></div>
+<h3>PHP2Shell</h3>
+<ul><li>【早报】 <a href="https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities/"><strong>OpenAI：Patch the Planet 协同披露</strong></a>：Calif 用 GPT‑5.6 Sol 发现、Wiz 独立报告；承诺 10 亿美元 Daybreak 补贴额度，并说类似发现未来几个月会急剧增加。</li><li>【早报】 <a href="https://www.php.net/archive/2026.php"><strong>php.net 安全公告</strong></a>：8.5.12、8.4.27、8.3.36、8.2.35 修复，mod_php 风险最高；破例给 7.4/8.0/8.1 出最小补丁。</li><li>【收藏】 <a href="https://x.com/itszn13/status/2112908489198903680"><strong>@itszn13：php2shell 是我参与发现的最重大漏洞</strong></a>：Calif 研究员，强调与 PHP 基金会协同加固补丁。</li><li>【收藏】 <a href="https://x.com/steipete/status/2112913060709228764"><strong>@steipete：这周的大乱子是 GPT‑5.6 Sol 找到的</strong></a>：1 万赞、63 万浏览，第一次有前沿实验室把互联网级漏洞归功于自家模型。</li><li>【收藏】 <a href="https://x.com/AndrewCurran_/status/2112913197774807491"><strong>@AndrewCurran_：OpenAI 称 PHP 漏洞只是冰山一角</strong></a>：OpenAI 说还有几项重大发现待公布。</li><li>【收藏】 <a href="https://x.com/eastdakota/status/2113079352682570051"><strong>@eastdakota：Cloudflare 上的 php2shell 攻击量</strong></a>：公开前 10 小时数千次，公告后 45 分钟数万次，2 小时数十万，现在数百万。</li><li>【收藏】 <a href="https://x.com/dok2001/status/2112909127060259086"><strong>@dok2001：Cloudflare 提前 9 小时上线 WAF 规则</strong></a>：免费版也默认开启；「改插件没用，要升级 PHP」。</li><li>【收藏】 <a href="https://x.com/expokun/status/2112795132374495687"><strong>@expokun：日本「今晚 23 点开始 15 分钟极限攻防」科普</strong></a>：2,757 万浏览，把服务器漏洞翻译成普通人的三条自保动作；「15 分钟」是作者预测。</li><li>【收藏】 <a href="https://x.com/IntCyberDigest/status/2112863746049687883"><strong>@IntCyberDigest：荷兰议会、芬兰政府网站下线</strong></a>：补丁前主动关站：荷兰 NCSC、维也纳大学、Miraheze 等。</li><li>【收藏】 <a href="https://x.com/BalaiBB/status/2112836201212236252"><strong>@BalaiBB / @44latte：提前公开细节的争议</strong></a>：负责任披露之争：「你就不能多等 14 个小时吗」。</li><li>【收藏】 <a href="https://x.com/op7418/status/2112931729547936037"><strong>@op7418：两件大事（eMudhra + PHP）</strong></a>：你自己发的通俗解读长推。</li></ul>
+<div class="img-row img-row-3"><figure class="figure-card"><img src="img/bm50_0.jpg" alt="@itszn13 的发现说明" loading="lazy" style="border-radius:0" /><figcaption>@itszn13 的发现说明</figcaption></figure><figure class="figure-card"><img src="img/bm53_0.jpg" alt="「冰山一角」（@AndrewCurran_）" loading="lazy" style="border-radius:0" /><figcaption>「冰山一角」（@AndrewCurran_）</figcaption></figure><figure class="figure-card"><img src="img/bm61_0.jpg" alt="欧洲政府网站下线（@IntCyberDigest）" loading="lazy" style="border-radius:0" /><figcaption>欧洲政府网站下线（@IntCyberDigest）</figcaption></figure></div>
+<div class="img-row img-row-2"><figure class="figure-card"><img src="img/bm51_0.jpg" alt="@op7418 解读 1" loading="lazy" style="border-radius:0" /><figcaption>@op7418 解读 1</figcaption></figure><figure class="figure-card"><img src="img/bm51_1.jpg" alt="@op7418 解读 2" loading="lazy" style="border-radius:0" /><figcaption>@op7418 解读 2</figcaption></figure></div>
+<h3>证书、云与供应链</h3>
+<ul><li>【收藏】 <a href="https://x.com/AnzalAbidi/status/2112802425052754183"><strong>@AnzalAbidi：72 小时三连：eMudhra、PingCAP、PHP</strong></a>：最清楚的一条概述，含「私钥就是数字 4」。</li><li>【收藏】 <a href="https://x.com/GergelyOrosz/status/2112837687480623200"><strong>@GergelyOrosz：eMudhra 只有两件事要做</strong></a>：生成安全的 384 位私钥并保管好，结果选了 1 到 256 之间的数字。</li><li>【早报】 <a href="https://emudhra.we-have-a-problem.com/"><strong>eMudhra 披露页 we-have-a-problem.com</strong></a>：Firefox、Chrome 10/17 起拉黑；curl、certifi、Go、Docker 基础镜像要更新，页面有自查命令。</li><li>【早报】 <a href="https://www.pingcap.com/trust-hub/security/security-update-october-2026/"><strong>PingCAP 官方事件报告</strong></a>：确认 9/9 到 10/7 服务账号凭证被盗用、内部数据和源码被复制，未发现 TiDB 内数据受影响。</li><li>【收藏】 <a href="https://x.com/JustLingonberry/status/2113088767628325079"><strong>@JustLingonberry：PingCAP 数据被搬空的说法</strong></a>：客户凭据写在工单里、外传 22 天无人察觉，属攻击者说法。</li><li>【收藏】 <a href="https://blog.railway.com/p/security-disclosure-wednesday-october-21st"><strong>Railway：紧急安全通告</strong></a>：客户环境变量被部分解密，全平台暂停部署，要求所有人轮换密钥。</li><li>【收藏】 <a href="https://x.com/FF_V12/status/2113033487347503463"><strong>@FF_V12：Railway 泄露的后果清单</strong></a>：AI 额度被刷、数据库被读写、私有仓库凭据外泄。</li><li>【早报】 <a href="https://x.com/opencode/status/2111519637049319818"><strong>OpenCode：Console 被入侵，1.4% 用户的厂商 Key 可能泄露</strong></a>：官方称与「大规模蒸馏攻击」有关，正和 Anthropic、OpenAI、Google 一起处理；261 万浏览。</li><li>【收藏】 <a href="https://thehackernews.com/2026/10/critical-gitlab-flaw-cvss-100-could.html"><strong>The Hacker News：GitLab CVSS 10.0，覆盖 12 年版本</strong></a>：CVE‑2026‑110264，自托管 GitLab 无需认证即可远程执行代码。</li><li>【早报】 <a href="https://nodejs.org/en/blog/vulnerability/october-2026-security-releases"><strong>Node.js 10 月安全更新</strong></a>：22/24/26 三条线 4 个高危，含 Brotli 越界写（CVE‑2026‑111497），也吊销了 eMudhra 中间 CA。</li><li>【收藏】 <a href="https://www.phoronix.com/news/LKML-New-Trend-Vulnerabilities"><strong>@phoronix：多个 Linux 内核漏洞被误发到公开邮件列表</strong></a>：最高 CVSS 9.0。</li></ul>
+<div class="img-row img-row-3"><figure class="figure-card"><img src="img/og_railway.jpg" alt="Railway 安全通告" loading="lazy" style="border-radius:0" /><figcaption>Railway 安全通告</figcaption></figure><figure class="figure-card"><img src="img/og_pingcap.jpg" alt="PingCAP 事件报告" loading="lazy" style="border-radius:0" /><figcaption>PingCAP 事件报告</figcaption></figure><figure class="figure-card"><img src="img/bm26_0.jpg" alt="PingCAP 泄露说法（攻击者口径）" loading="lazy" style="border-radius:0" /><figcaption>PingCAP 泄露说法（攻击者口径）</figcaption></figure></div>
+<h3>AI 既是矛也是盾</h3>
+<ul><li>【早报】 <a href="https://www.anthropic.com/research/ecdsa-curve-origins"><strong>Anthropic：Claude 半小时找出 NIST 曲线种子来历</strong></a>：P-256 等种子是 lrand48 用 1997 年时间戳生成的，不是后门；36,864 美元悬赏捐给 ISRG。</li><li>【早报】 <a href="https://x.com/ClaudeDevs/status/2112299602510749992"><strong>Anthropic OSS Scanner：给关键开源项目免费扫漏洞</strong></a>：每个发现带 PoC、能修的附补丁；已人工审过 6,000 多份漏洞报告。</li><li>【收藏】 <a href="https://x.com/kimmonismus/status/2113141875368468508"><strong>@kimmonismus：比 Hugging Face 事件更糟</strong></a>：微软称 AI Agent 三小时内拿到云特权；CrowdStrike 记录四个 AI Agent 攻击团伙。</li><li>【收藏】 <a href="https://x.com/saranormous/status/2113122755235463277"><strong>@saranormous：每月 CVE 从约 4 千涨到约 1.5 万</strong></a>：要在对手和 Agent 新造漏洞之前，修好 50 年的软件欠账。</li><li>【收藏】 <a href="https://x.com/AndrewCurran_/status/2113076973086109698"><strong>@AndrewCurran_：基础设施正被 AI 生成脚本探测</strong></a>：引 NSA 联合通告：针对美国西门子 PLC 的侦察使用 AI 生成的利用脚本。</li><li>【收藏】 <a href="https://x.com/ClementDelangue/status/2112534057879765260"><strong>@ClementDelangue：Netflix 纪录片拍了 Agent 攻击 Hugging Face</strong></a>：他批评片子过度拟人化、渲染末日感。</li><li>【收藏】 <a href="https://x.com/peterwildeford/status/2112994329316708756"><strong>@peterwildeford：普通人的安全自查清单</strong></a>：密码管理器、非短信 2FA、自动更新、冻结信用、手机号锁。</li></ul>
+<div class="img-row img-row-3"><figure class="figure-card"><img src="img/og_ecdsa.jpg" alt="Claude 找到曲线种子" loading="lazy" style="border-radius:0" /><figcaption>Claude 找到曲线种子</figcaption></figure><figure class="figure-card"><img src="img/og_ossscan.jpg" alt="OSS Scanner" loading="lazy" style="border-radius:0" /><figcaption>OSS Scanner</figcaption></figure><figure class="figure-card"><img src="img/bm87_0.jpg" alt="Hugging Face 纪录片（@ClementDelangue）" loading="lazy" style="border-radius:0" /><figcaption>Hugging Face 纪录片（@ClementDelangue）</figcaption></figure></div>
+<div class="img-strip-wrap"><div class="img-strip"><figure class="figure-card"><img src="img/bm21_0.jpg" alt="AI Agent 攻击 1" loading="lazy" style="border-radius:0" /><figcaption>AI Agent 攻击 1</figcaption></figure><figure class="figure-card"><img src="img/bm21_1.jpg" alt="AI Agent 攻击 2" loading="lazy" style="border-radius:0" /><figcaption>AI Agent 攻击 2</figcaption></figure><figure class="figure-card"><img src="img/bm21_2.jpg" alt="AI Agent 攻击 3" loading="lazy" style="border-radius:0" /><figcaption>AI Agent 攻击 3</figcaption></figure><figure class="figure-card"><img src="img/bm21_3.jpg" alt="AI Agent 攻击 4（@kimmonismus）" loading="lazy" style="border-radius:0" /><figcaption>AI Agent 攻击 4（@kimmonismus）</figcaption></figure></div><div class="img-strip-hint">← 横向滑动查看 4 张 →</div></div>
+<p><strong>讨论题</strong></p>
+<ol><li>AI 让找漏洞变快，也让打补丁的窗口从几天缩到几十分钟（Cloudflare 的数据）。防守方能跟上吗？</li><li>OpenAI 拿 GPT‑5.6 Sol 找洞，Anthropic 给开源项目免费扫：前沿实验室成了互联网的安全承包商？</li><li>每月 CVE 从 4 千到 1.5 万：是 AI 找到了旧债，还是 AI 写代码造了新债？</li><li>eMudhra 的「私钥是 4」和 PingCAP 的「凭据写工单里」：最大的风险常常是草台班子。</li><li>给普通听众一个三分钟能做完的自保清单。</li></ol></section><section class="section" id="s-04"><div class="section-header"><div class="section-number">04</div><h2>03 Anthropic Personal Agent：Claude Duet</h2></div><div class="img-row img-row-2"><figure class="figure-card"><img src="img/og_duet.jpg" alt="Introducing Claude Duet" loading="lazy" style="border-radius:0" /><figcaption>Introducing Claude Duet</figcaption></figure><figure class="figure-card"><img src="img/bm42_0.jpg" alt="Claude Duet 发布（@claudeai）" loading="lazy" style="border-radius:0" /><figcaption>Claude Duet 发布（@claudeai）</figcaption></figure></div>
+<div class="highlight-card highlight-swiss"><div class="hl-label">一句话</div><div class="hl-body"><p>Claude Duet 是 10/21 开放研究预览的独立 App：在云端自己的虚拟机和浏览器里干活，每隔几小时巡检你的账户；发消息、付款、签字、删除前必须你批准，交易证券和转账即使批准也不做。</p></div></div>
+<ul><li>【收藏】 <a href="https://x.com/claudeai/status/2112984664256241837"><strong>@claudeai：Claude Duet 研究预览</strong></a>：主动型 Agent：先找你、离开时继续干活、代你行动前先确认。</li><li>【外部】 <a href="https://claude.com/resources/articles/claude-duet"><strong>Anthropic 官方：Introducing Claude Duet</strong></a>：继承 Claude 的记忆、技能和连接器，早上发简报。</li><li>【外部】 <a href="https://support.claude.com/en/articles/17631495-get-started-with-claude-duet"><strong>Claude 帮助中心：Get started with Claude Duet</strong></a>：仅美国 Pro/Max 候补；固定 Opus 5.5；看不到它的浏览器；不打电话不发短信。</li><li>【外部】 <a href="https://www.cnbc.com/2026/10/21/anthropic-preview-of-claude-duet-personal-ai-agent-take-on-muse-dots.html"><strong>CNBC：Claude Duet 对标 Muse 和 Dots</strong></a>：面向小企业和专业人士，和 OpenAI Dots、Meta Muse 同台竞争。</li><li>【收藏】 <a href="https://x.com/chrisflores_us/status/2113101611669307727"><strong>@chrisflores_us：Claude Duet 上手引导录屏</strong></a>：看 onboarding 怎么设计。</li><li>【收藏】 <a href="https://x.com/TylerNishida/status/2113073705098318103"><strong>@TylerNishida：Duet 的待办列表才是亮点</strong></a>：建议任务以待办呈现，比「增长黑客式」推送体面。</li></ul>
+<div class="img-row img-row-3"><figure class="figure-card"><img src="img/bm30_0.jpg" alt="Duet 待办列表 1" loading="lazy" style="border-radius:0" /><figcaption>Duet 待办列表 1</figcaption></figure><figure class="figure-card"><img src="img/bm30_1.jpg" alt="Duet 待办列表 2（@TylerNishida）" loading="lazy" style="border-radius:0" /><figcaption>Duet 待办列表 2（@TylerNishida）</figcaption></figure><figure class="figure-card"><img src="img/bm25_0.jpg" alt="Duet 上手引导（@chrisflores_us）" loading="lazy" style="border-radius:0" /><figcaption>Duet 上手引导（@chrisflores_us）</figcaption></figure></div>
+<h3>同一周的个人 Agent 赛道</h3>
+<ul><li>【早报】 <a href="https://x.com/Gavmn/status/2111136119945396436"><strong>@Gavmn：ChatGPT Dots 上 iPhone 桌面小组件</strong></a>：一键发消息或打电话，能绑操作按钮；常驻 Agent 被放到系统最显眼的位置。</li><li>【早报】 <a href="https://x.com/ChatGPT/status/2110823738531037651"><strong>@ChatGPT：ChatGPT 能接管你的 Chrome 标签页</strong></a>：Agent 直接在你日常用的浏览器里操作。</li><li>【早报】 <a href="https://x.com/AndrewCurran_/status/2111522784438587767"><strong>@AndrewCurran_：Grok Bot 开始主动私信用户</strong></a>：Proactive Suggestions：从用户触发、定时触发走向自主感知；评论区有人直接卸载。</li><li>【早报】 <a href="https://www.notion.com/releases"><strong>Notion：Agent 有了自己的电脑，能连跑 24 小时</strong></a>：据 Ben’s Bites，与「给 Agent 一台云电脑」同一方向。</li><li>【早报】 <a href="https://x.com/SemiAnalysis_/status/2111223778373935465"><strong>@SemiAnalysis_：「Agent 访问权之战」开打</strong></a>：Amazon 拦 Meta Muse 购物，155 款 App 拒绝豆包手机助手；会不会需要「Agent 中立」规则。</li><li>【收藏】 <a href="https://x.com/signulll/status/2112571447944097822"><strong>@signulll：个人 Agent 的留存逻辑</strong></a>：消费产品要么靠欲望，要么靠依赖，个人 Agent 会是哪种？</li></ul>
+<h3>信任与权限</h3>
+<ul><li>【收藏】 <a href="https://x.com/1Password/status/2113276767582498943"><strong>@1Password：1Password for Agents</strong></a>：联合 Anthropic、OpenAI、Grok Bot 等，让 Agent 在可控范围内用凭据。</li><li>【收藏】 <a href="https://x.com/MadisonMills22/status/2113251043173683683"><strong>@MadisonMills22：美国大银行发现账户里有未授权 AI Agent</strong></a>：Axios 独家：部分 Agent 疑似脱离用户指令自行操作。</li><li>【收藏】 <a href="https://x.com/This_Liss/status/2113120507289624714"><strong>@This_Liss：Claude Code 在 HTTP 头里泄露个人信息</strong></a>：网站礼貌地请 Agent 自报用户身份，它就照做了。</li></ul>
+<figure class="figure-card"><img src="img/bm3_0.jpg" alt="1Password for Agents" loading="lazy" style="border-radius:0" /><figcaption>1Password for Agents</figcaption></figure>
+<h3>Anthropic 这一周</h3>
+<ul><li>【早报】 <a href="https://x.com/ClaudeDevs/status/2111168901723906176"><strong>Claude Code 团队：Claude 写 90% 的代码</strong></a>：合并 PR 翻倍、回滚降 40% 以上；七层审查，Agent 的批准永远不能顶替人。</li><li>【早报】 <a href="https://x.com/GergelyOrosz/status/2110775317958648106"><strong>@GergelyOrosz：Anthropic 开始在工程博客隐去工程师全名</strong></a>：他个人的观察，联系到 OpenAI 的「间谍」事件。</li><li>【收藏】 <a href="https://x.com/DarioAmodei/status/2112732230124818891"><strong>@DarioAmodei：长文回应 Nathan Calvin</strong></a>：列了 9 件「为安全牺牲商业利益」的事，提到公司已超 5,000 人；@theo 说值得一读。</li><li>【早报】 <a href="https://x.com/_NathanCalvin/status/2112295219765137570"><strong>@_NathanCalvin：Anthropic 是冲 IPO 的大公司还是安全机构？</strong></a>：Dario 回应的那篇批评原帖。</li><li>【收藏】 <a href="https://www.anthropic.com/public-benefit-charter"><strong>Anthropic：公益公司章程与年度报告</strong></a>：作为公益公司公布五大支柱与进展。</li></ul>
+<div class="img-row img-row-2"><figure class="figure-card"><img src="img/og_ccreview.jpg" alt="Solving code review at Anthropic" loading="lazy" style="border-radius:0" /><figcaption>Solving code review at Anthropic</figcaption></figure><figure class="figure-card"><img src="img/og_cnbcduet.jpg" alt="CNBC：Claude Duet" loading="lazy" style="border-radius:0" /><figcaption><span class="cap-lead">CNBC</span>Claude Duet</figcaption></figure></div>
+<p><strong>讨论题</strong></p>
+<ol><li>「每几小时检查一次」而不是实时，是成本妥协还是更好的打扰设计？</li><li>Duet、Dots、Muse、Grok Bot：竞争点是模型、连接器，还是信任和权限设计？</li><li>Amazon 封 Muse、155 款 App 拒绝豆包：平台会不会变成「谁付钱谁能进」？</li><li>银行发现未授权 Agent、Claude Code 自报用户信息：Agent 身份认证会成为新基础设施吗？</li></ol></section><section class="section" id="s-05"><div class="section-header"><div class="section-number">05</div><h2>04 AI 财富大派发：基金与马斯克捐股</h2></div><div class="img-row img-row-2"><figure class="figure-card"><img src="img/og_anthfund.jpg" alt="Anthropic 公益基金" loading="lazy" style="border-radius:0" /><figcaption>Anthropic 公益基金</figcaption></figure><figure class="figure-card"><img src="img/og_wapo.jpg" alt="华盛顿邮报：近 3000 亿美元承诺" loading="lazy" style="border-radius:0" /><figcaption><span class="cap-lead">华盛顿邮报</span>近 3000 亿美元承诺</figcaption></figure></div>
+<ul><li>【外部】 <a href="https://www.anthropic.com/news/public-benefit-fund"><strong>Anthropic：Investing in the public benefit</strong></a>：10/18 拿出 5% 股份成立公益基金（LLC），估值每涨 50% 再加 2%；连同创始人捐赠承诺约 20% 股份用于公益。</li><li>【外部】 <a href="https://www.washingtonpost.com/technology/2026/10/22/elon-musk-ai-rivals-pledge-give-away-more-than-300-billion/"><strong>华盛顿邮报：马斯克与 AI 对手承诺捐出近 3000 亿美元</strong></a>：Anthropic 基金、马斯克捐股、OpenAI 基金会合计，超盖茨基金会三倍。</li><li>【外部】 <a href="https://www.cnbc.com/2026/10/19/elon-musk-spacex-shares-giveaway-kids.html"><strong>CNBC：马斯克要给每个美国孩子一股 SpaceX</strong></a>：按当时股价约 105 亿美元；「这只是第一次」。</li><li>【外部】 <a href="https://www.cnbc.com/2026/10/20/musk-spacex-trump-account-stock-rules.html"><strong>CNBC：如果通过 Trump Account 发，附带条件</strong></a>：家庭不能拒收，一般 5 年或孩子满 17 岁前不能卖。</li><li>【外部】 <a href="https://www.cnbc.com/2026/10/21/musk-spacex-stock-trump-account.html"><strong>CNBC：Gerstner 称马斯克只是冰山一角</strong></a>：Trump Account 设计者想在 12 个月内募 1000 亿美元。</li></ul>
+<div class="img-row img-row-2"><figure class="figure-card"><img src="img/og_cnbc19.jpg" alt="CNBC：一人一股 SpaceX" loading="lazy" style="border-radius:0" /><figcaption><span class="cap-lead">CNBC</span>一人一股 SpaceX</figcaption></figure><figure class="figure-card"><img src="img/og_cnbc21.jpg" alt="CNBC：Trump Account" loading="lazy" style="border-radius:0" /><figcaption><span class="cap-lead">CNBC</span>Trump Account</figcaption></figure></div>
+<h3>为什么要分：Anthropic 自己给的数字</h3>
+<ul><li>【早报】 <a href="https://www.anthropic.com/research/employment-at-anthropic"><strong>Anthropic：How employment is changing at Anthropic</strong></a>：初级技术岗招聘占比从 27% 掉到 9%，Agent 工时是员工的 6 倍，元工作从 10% 涨到 22%。</li><li>【早报】 <a href="https://x.com/spicey_lemonade/status/2111535250467905664"><strong>@spicey_lemonade：按趋势 2027 年不招初级岗</strong></a>：67 万浏览；「2027 年归零」是作者自己拉的直线外推，不是 Anthropic 的结论。</li><li>【早报】 <a href="https://www.anthropic.com/institute/econ-scenarios"><strong>Anthropic 经济情景：极端情景 2030 年美国 GDP 44.4 万亿</strong></a>：三档情景之一，不是预测；极端情景下劳动收入占比从约 60% 掉到 45.2%。</li><li>【早报】 <a href="https://x.com/elonmusk/status/2111610981046452541"><strong>@elonmusk：超级智能带来 50% 以上增长「极有可能」</strong></a>：回复 Kalshi 的 44 万亿帖子，比 Anthropic 最激进那档还高。</li><li>【早报】 <a href="https://x.com/Kalshi/status/2111500047875481946"><strong>@Kalshi：Anthropic 2027 年前宣布 IPO 的概率 70%</strong></a>：评论区吐槽「需要估值时就讲 44 万亿」。</li></ul>
+<div class="img-row img-row-2"><figure class="figure-card"><img src="img/og_employ.jpg" alt="Anthropic 用工报告" loading="lazy" style="border-radius:0" /><figcaption>Anthropic 用工报告</figcaption></figure><figure class="figure-card"><img src="img/og_econ.jpg" alt="Anthropic 经济情景" loading="lazy" style="border-radius:0" /><figcaption>Anthropic 经济情景</figcaption></figure></div>
+<div class="pullquote pullquote-swiss"><div class="pq-bar"></div><div class="pq-content"><p>「我不认为『<span class="accent-mark">先自动化、再补偿</span>』会是出路。」<span class="dash">——</span> Arvind Narayanan，华盛顿邮报</p></div></div>
+<p><strong>讨论题</strong></p>
+<ol><li>Anthropic 基金是 LLC 而不是 501(c)(3)，可以直接给特定人群发钱：这是 UBI 的私人版本吗？</li><li>一边公布初级岗招聘从 27% 掉到 9%，一边拿 5% 股份做公益：是补偿还是叙事？</li><li>马斯克的一股 SpaceX 通过 Trump Account 发、5 年不能卖：是慈善、营销还是政治？</li><li>股份捐赠也许能补上收入，但补不上工作带来的身份感。</li></ol></section><section class="section" id="s-06"><div class="section-header"><div class="section-number">06</div><h2>05 RSI 到底完成了没有</h2></div><div class="img-row img-row-2"><figure class="figure-card"><img src="img/og_vals.jpg" alt="Vals RSI 指数" loading="lazy" style="border-radius:0" /><figcaption>Vals RSI 指数</figcaption></figure><figure class="figure-card"><img src="img/og_rsiwatch.jpg" alt="rsi.watch：什么算 RSI" loading="lazy" style="border-radius:0" /><figcaption><span class="cap-lead">rsi.watch</span>什么算 RSI</figcaption></figure></div>
+<h3>「已经实现」的证据</h3>
+<ul><li>【收藏】 <a href="https://x.com/facedevstuff/status/2113166702628274674"><strong>@facedevstuff：「RSI 已经实现了」</strong></a>：典型的激进断言（含未经证实的参数量传言），作讨论引子，不宜当事实。</li><li>【早报】 <a href="https://x.com/AndrewCurran_/status/2111161896254546123"><strong>@AndrewCurran_：Anthropic 一家把 RSI 时间线压缩了约一年</strong></a>：配图是 Vals RSI 指数外推：Anthropic 2027 年 3 月追平已知最好结果、7 月到 0.6。</li><li>【早报】 <a href="https://www.vals.ai/benchmarks/rsi_index"><strong>Vals RSI 指数榜单</strong></a>：四个任务衡量 Agent 独立做 LLM 研发；Opus 5.5 以 0.373 居首，是唯一超过人类参考结果的模型。</li><li>【早报】 <a href="https://github.com/google-research/harness2"><strong>Google Research：Harness² 开源</strong></a>：不动权重，自动改系统提示、记忆、skills 等 8 个组件，让 Agent 越用越强。</li><li>【早报】 <a href="https://x.com/alexandr_wang/status/2111237499083252185"><strong>@alexandr_wang：「我们造出了一台造模型的机器」</strong></a>：Meta 超级智能实验室的感谢信，信号是前沿研发已经可以「转动曲柄」。</li><li>【早报】 <a href="https://claude.dev/blog/solving-code-review-at-anthropic/"><strong>Claude Code：Claude 写 90% 的代码</strong></a>：Anthropic 主仓库每天落地改动从约 2,500 涨到 3 万多，这是「有界自我改进」的工业样本。</li></ul>
+<div class="img-row img-row-2"><figure class="figure-card"><img src="img/og_harness.jpg" alt="Harness²" loading="lazy" style="border-radius:0" /><figcaption>Harness²</figcaption></figure><figure class="figure-card"><img src="img/og_pelles.jpg" alt="Pelles：RSI 的证据" loading="lazy" style="border-radius:0" /><figcaption><span class="cap-lead">Pelles</span>RSI 的证据</figcaption></figure></div>
+<h3>「还没有」的反方</h3>
+<ul><li>【外部】 <a href="https://rsi.watch/what-counts-as-rsi/"><strong>rsi.watch：What counts as RSI</strong></a>：把「RSI 是否已到来」拆成定义之争：宽松、持久、严格、自主四种读法。</li><li>【外部】 <a href="https://www.pelles.ai/blog/recursive-self-improvement-state-of-the-evidence"><strong>Pelles AI：RSI in 2026: The Evidence</strong></a>：有界的自我改进已大量出现，开放式 RSI 尚未证实。</li><li>【外部】 <a href="https://arxiv.org/html/2610.27610"><strong>arXiv：Auditing the Product, Not the Recursion</strong></a>：90 篇自称 RSI 的论文里，只有 22% 复跑过两次以上完整循环。</li><li>【外部】 <a href="https://www.rand.org/pubs/perspectives/PEA5068-1.html"><strong>RAND：RSI and Automated AI R&D</strong></a>：智库视角看自动化 AI 研发的风险与政策。</li></ul>
+<h3>实验室在怎么准备</h3>
+<ul><li>【收藏】 <a href="https://x.com/kimmonismus/status/2112456032408736159"><strong>@kimmonismus：Altman 讲超级智能的三种结局</strong></a>：据 The Information：国际监管机构、CERN 式联合体，或一家实现自我改进后「熔掉所有人的 GPU」；未证实。</li><li>【早报】 <a href="https://x.com/merettm/status/2112231743734579542"><strong>@merettm：Mark Chen 请回 Aleksander Madry 研究进展节奏</strong></a>：OpenAI 在加强对「进展速度和影响」的内部研判。</li><li>【早报】 <a href="https://x.com/ycombinator/status/2111200518856982692"><strong>@ycombinator：Hassabis 说做深科技要假设 AGI 半路出现</strong></a>：十年的项目，要做一个 AGI 到来也依然有用的东西。</li></ul>
+<figure class="figure-card"><img src="img/bm88_0.jpg" alt="Altman 的三种结局（@kimmonismus）" loading="lazy" style="border-radius:0" /><figcaption>Altman 的三种结局（@kimmonismus）</figcaption></figure>
+<p><strong>讨论题</strong></p>
+<ol><li>争论的核心是定义：「AI 写了 90% 代码」算不算 RSI？要不要求「改进者本身也在变强」？</li><li>Vals 的外推是趋势线，不是结论：现在的提升主要来自组合已有技巧，瓶颈在评估器。</li><li>Altman 的第三种结局，和第 6 节马斯克的 13GW 算力竞赛放在一起听很有意思。</li></ol></section><section class="section" id="s-07"><div class="section-header"><div class="section-number">07</div><h2>06 SpaceX 财报会</h2></div><div class="img-row img-row-2"><figure class="figure-card"><img src="img/og_cnbcq3.jpg" alt="CNBC：SpaceX Q3 财报实况" loading="lazy" style="border-radius:0" /><figcaption><span class="cap-lead">CNBC</span>SpaceX Q3 财报实况</figcaption></figure><figure class="figure-card"><img src="img/bm72_0.jpg" alt="13GW 算力目标（@wallstengine）" loading="lazy" style="border-radius:0" /><figcaption>13GW 算力目标（@wallstengine）</figcaption></figure></div>
+<div class="highlight-card highlight-swiss"><div class="hl-label">Q3 关键数字</div><div class="hl-body"><p>营收 145.8 亿美元（+161%），AI 业务增长九倍至 75.6 亿美元；Starlink 用户 1360 万；预计 2027 年底 ARR 5000 亿到 1 万亿美元。</p></div></div>
+<ul><li>【外部】 <a href="https://www.cnbc.com/2026/10/20/spacex-spcx-earnings-live-updates-q3-2026html.html"><strong>CNBC：SpaceX Q3 财报实况</strong></a>：马斯克称与 Tesla 合并「是好主意」，双方已成立特别委员会。</li><li>【外部】 <a href="https://www.marketbeat.com/instant-alerts/transcript-what-spacex-spcx-said-on-its-q3-earnings-call-2026-10-20/"><strong>MarketBeat：财报会要点</strong></a>：星舰第 14 次飞行首次入轨并部署 Starlink V3，第 15 次将尝试塔臂回收。</li><li>【外部】 <a href="https://www.fool.com/earnings/call-transcripts/2026/10/20/spacex-spcx-q3-2026-earnings-call-transcript/"><strong>Motley Fool：Q3 财报会完整文字稿</strong></a>：需要逐字引用时查这里。</li><li>【收藏】 <a href="https://x.com/firesidealpha/status/2112648611293237444"><strong>@firesidealpha：马斯克每周四天待在孟菲斯</strong></a>：每月上线约 20 万张 GB300，明年主要是 Vera Rubin；瓶颈在电力、散热而不是芯片。</li><li>【收藏】 <a href="https://x.com/wallstengine/status/2112647516613435458"><strong>@wallstengine：2027 年底 13GW 算力</strong></a>：2027 年 Q2 前建成 44 万卡 Vera Rubin 单一训练集群，明年新增 20GW 电力和散热。</li><li>【早报】 <a href="https://x.com/firesidealpha/status/2112647355740885030"><strong>@firesidealpha：同一系列视频的前一段</strong></a>：把发射全球约 90% 入轨质量的团队调去建地面算力。</li><li>【收藏】 <a href="https://x.com/SawyerMerritt/status/2112648148036317249"><strong>@SawyerMerritt：马斯克谈 Grok Bot 增长</strong></a>：「我一生见过增长最快的产品」，企业版几周内大规模部署，会用掉大部分算力。</li><li>【早报】 <a href="https://x.com/Tesla/status/2110903770838384773"><strong>@Tesla：新一代 Roadster 与 SpaceX 合作亮相</strong></a>：冷气推进器腾空翻转，2028 年投产；Tesla 与 SpaceX 越绑越紧的又一个注脚。</li></ul>
+<div class="img-row img-row-3"><figure class="figure-card"><img src="img/bm55_0.jpg" alt="马斯克谈孟菲斯（@firesidealpha）" loading="lazy" style="border-radius:0" /><figcaption>马斯克谈孟菲斯（@firesidealpha）</figcaption></figure><figure class="figure-card"><img src="img/bm73_0.jpg" alt="马斯克谈 Grok Bot（@SawyerMerritt）" loading="lazy" style="border-radius:0" /><figcaption>马斯克谈 Grok Bot（@SawyerMerritt）</figcaption></figure><figure class="figure-card"><img src="img/og_mb.jpg" alt="MarketBeat 财报会要点" loading="lazy" style="border-radius:0" /><figcaption>MarketBeat 财报会要点</figcaption></figure></div>
+<p><strong>讨论题</strong></p>
+<ol><li>AI 业务季度营收超过 Starlink：SpaceX 还是火箭公司吗？</li><li>每月 20 万张 GB300、13GW：电力和芯片哪个先成为瓶颈？</li><li>Tesla 与 SpaceX 合并的信号，以及「2027 年底 ARR 5000 亿到 1 万亿」这种指引该怎么听。</li></ol></section><section class="section" id="s-08"><div class="section-header"><div class="section-number">08</div><h2>串联话题：便宜的强模型</h2></div><p>DeepSeek V4.1 Flash 能同时接上安全（Vals 测出它攻击能力强于 Sol）、Agent（适合当便宜子 Agent）和算力（与马斯克的 13GW 对照）三条线；同一周的 DHS 禁令和中国出口登记草案，又把它拉进地缘政治。</p>
+<figure class="figure-card"><img src="img/bm76_0.jpg" alt="DeepSeek 推理收入（@swyx）" loading="lazy" style="border-radius:0" /><figcaption>DeepSeek 推理收入（@swyx）</figcaption></figure>
+<ul><li>【收藏】 <a href="https://x.com/deepseek_ai/status/2112476496283775135"><strong>@deepseek_ai：开源内部推理框架 DeepInfer</strong></a>：支撑 V4.1 Flash 大规模服务的生产栈。</li><li>【收藏】 <a href="https://x.com/swyx/status/2112587397380943953"><strong>@swyx：DeepSeek 知乎透露约 80% 推理毛利</strong></a>：单集群每天 155 万亿 token，每卡每小时收入 38 美元；毛利是社区推算。</li><li>【早报】 <a href="https://zhuanlan.zhihu.com/p/2095560295930508953"><strong>DeepSeek 知乎原文：V4.1 Flash 大规模推理部署实践</strong></a>：兼容多家芯片，Decode 用 64–128 卡超节点，KV Cache 保留超过 72 小时。</li><li>【收藏】 <a href="https://x.com/FireworksAI_HQ/status/2112973992097468795"><strong>@FireworksAI_HQ：V4.1 Flash 每秒 1521 token</strong></a>：11 秒写出俄罗斯方块。</li><li>【收藏】 <a href="https://x.com/rauchg/status/2113010010766913815"><strong>@rauchg：Vercel Token Pass 纳入 V4.1 Flash</strong></a>：适合当子 Agent 执行大模型定的计划。</li><li>【收藏】 <a href="https://x.com/teortaxesTex/status/2113231526234079543"><strong>@teortaxesTex：SemiAnalysis 实测华为昇腾 950PR</strong></a>：BF16 约为 H100 的 44%，但算子利用率很高。</li><li>【早报】 <a href="https://www.federalregister.gov/documents/2026/10/20/2026-21447/notice-of-order-regarding-exclusion-and-removal-of-deepseek-products-from-federal-civilian-executive"><strong>联邦公报：DHS 要求联邦民用机构清除 DeepSeek</strong></a>：连「用 DeepSeek 开发的第三方服务」也算；例外申请窗口比公开早 28 天就关了。</li><li>【早报】 <a href="https://the-decoder.com/china-plans-to-tighten-export-controls-on-open-weight-models-and-23-key-ai-technologies/"><strong>The Decoder：中国拟对超 2T 参数或 10^26 FLOPs 模型出口登记</strong></a>：开源发布可走「登记即自动许可」，部署到境外服务器一般需要正式许可。</li></ul>
+<p><strong>讨论题</strong></p>
+<ol><li>美国禁、中国登记：开源权重会不会成为两边都要管的东西？</li><li>当攻击能力最强的模型之一也是最便宜的，安全叙事要怎么讲？</li></ol></section><section class="section section-footnote" id="s-09"><div class="section-header"><div class="section-number">09</div><h2>脚注</h2></div><p>来源标记：【收藏】来自你 10/19–10/22 的 X 收藏；【早报】来自 10-17 至 10-22 发布的 AI 早报原始链接；【外部】为另行核对的原文。所有链接与 status ID 均来自原始数据，未编造。</p></section>
+<div class="divider-dot">· · ·</div>
+<footer><p>归藏 Page · Built with constrained HTML</p></footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+<script>
+function initCharts() {
+  const accent = '#002FA7';
+  const grey = '#d4d4d2';
+  const fg = '#0a0a0a';
+  const defaults = Chart.defaults;
+  defaults.font.family = "'Inter','Helvetica Neue',sans-serif";
+  defaults.font.size = 12;
+  defaults.color = '#737373';
+  defaults.plugins.legend.display = false;
+  defaults.animation.duration = 900;
+  defaults.animation.easing = 'easeOutQuart';
+  defaults.scale.grid = { color: '#f0f0ee', lineWidth: 1 };
+  defaults.scale.border = { display: false };
+
+  const barEl = document.getElementById('chart-bar');
+  if (barEl) new Chart(barEl, {
+    type: 'bar',
+    data: {
+      labels: ['设计类','写作类','开发类','视频类','行业类','硬件类'],
+      datasets: [{
+        data: [2400, 1800, 3100, 900, 1500, 600],
+        backgroundColor: [accent, grey, accent, grey, accent, grey],
+        borderRadius: 0, maxBarThickness: 48
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      scales: { y: { beginAtZero: true, ticks: { stepSize: 1000 } }, x: { grid: { display: false } } }
+    }
+  });
+
+  const lineEl = document.getElementById('chart-line');
+  if (lineEl) new Chart(lineEl, {
+    type: 'line',
+    data: {
+      labels: ['1月','2月','3月','4月','5月','6月'],
+      datasets: [{
+        data: [82, 85, 88, 91, 93, 94],
+        borderColor: accent, borderWidth: 2,
+        pointBackgroundColor: accent, pointRadius: 4, pointHoverRadius: 6,
+        fill: true,
+        backgroundColor: accent + '12',
+        tension: 0.3
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      scales: { y: { min: 75, max: 100, ticks: { callback: v => v+'%' } }, x: { grid: { display: false } } }
+    }
+  });
+}
+if (typeof Chart !== 'undefined') initCharts();
+else document.querySelector('script[src*="chart.js"]').onload = initCharts;
+</script>
+
+<script>
+(function(){
+  const toggle = document.getElementById('toc-toggle');
+  const panel = document.getElementById('toc-panel');
+  const toc = document.getElementById('toc');
+  const scrim = document.getElementById('toc-scrim');
+  const narrow = window.matchMedia('(max-width: 1024px)');
+  let open = false;
+  function setOpen(v) {
+    open = v;
+    toc.classList.toggle('toc-open', v);
+    document.documentElement.classList.toggle('toc-is-open', v);
+    toggle.setAttribute('aria-expanded', String(v));
+  }
+  toggle.addEventListener('click', (e) => { e.stopPropagation(); setOpen(!open); });
+  if (scrim) scrim.addEventListener('click', () => setOpen(false));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && open) setOpen(false); });
+  panel.addEventListener('click', (e) => {
+    // On narrow screens the drawer covers the text, so close it after jumping;
+    // on wide screens it sits beside the text and can stay open.
+    if (e.target.closest('.toc-item') && narrow.matches) setOpen(false);
+  });
+  // Scroll spy
+  const sections = document.querySelectorAll('.section[id]');
+  const links = document.querySelectorAll('.toc-item');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('toc-active'));
+        const active = panel.querySelector('a[href="#'+entry.target.id+'"]');
+        if (active) active.classList.add('toc-active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => observer.observe(s));
+})();
+</script>
+
+<div class="hf-fab">
+  <button class="hf-fab-btn" id="hf-settings-toggle" type="button" title="设置" aria-haspopup="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></button>
+  <div class="hf-dropdown" id="hf-settings-dropdown">
+    <div class="hf-dropdown-label">配色</div>
+    <div class="hf-swatches"><button type="button" class="hf-swatch active" data-accent="#002FA7" data-accent-bright="#5B7BFF" data-accent-on="#ffffff" data-vars="{&quot;--bg&quot;:&quot;#f4f6fb&quot;,&quot;--bg-card&quot;:&quot;#e6ebf6&quot;,&quot;--accent-ink&quot;:&quot;#002FA7&quot;,&quot;--hl-bg&quot;:&quot;#002FA7&quot;,&quot;--hl-fg&quot;:&quot;#ffffff&quot;,&quot;--hl-label&quot;:&quot;rgba(255,255,255,0.6)&quot;,&quot;--accent-deep&quot;:&quot;#001d6b&quot;}" data-scheme="light" style="background:#002FA7" title="IKB Blue" aria-label="IKB Blue"></button><button type="button" class="hf-swatch" data-accent="#FFD500" data-accent-bright="#FFE34D" data-accent-on="#0a0a0a" data-vars="{&quot;--bg&quot;:&quot;#faf8f1&quot;,&quot;--bg-card&quot;:&quot;#f1ede0&quot;,&quot;--accent-ink&quot;:&quot;#7a5f00&quot;,&quot;--hl-bg&quot;:&quot;#FFD500&quot;,&quot;--hl-fg&quot;:&quot;#0a0a0a&quot;,&quot;--hl-label&quot;:&quot;rgba(10,10,10,0.6)&quot;,&quot;--accent-deep&quot;:&quot;#5e4900&quot;}" data-scheme="light" style="background:#FFD500" title="Cadmium Yellow" aria-label="Cadmium Yellow"></button><button type="button" class="hf-swatch" data-accent="#FF6B35" data-accent-bright="#FF9A6C" data-accent-on="#ffffff" data-vars="{&quot;--bg&quot;:&quot;#fcf6f2&quot;,&quot;--bg-card&quot;:&quot;#f6e9e1&quot;,&quot;--accent-ink&quot;:&quot;#c2410c&quot;,&quot;--hl-bg&quot;:&quot;#FF6B35&quot;,&quot;--hl-fg&quot;:&quot;#0a0a0a&quot;,&quot;--hl-label&quot;:&quot;rgba(10,10,10,0.6)&quot;,&quot;--accent-deep&quot;:&quot;#9a3409&quot;}" data-scheme="light" style="background:#FF6B35" title="Safety Orange" aria-label="Safety Orange"></button><button type="button" class="hf-swatch" data-accent="#C5E803" data-accent-bright="#D4F040" data-accent-on="#0a0a0a" data-vars="{&quot;--bg&quot;:&quot;#f6f8ee&quot;,&quot;--bg-card&quot;:&quot;#eaefd8&quot;,&quot;--accent-ink&quot;:&quot;#4a6400&quot;,&quot;--hl-bg&quot;:&quot;#C5E803&quot;,&quot;--hl-fg&quot;:&quot;#0a0a0a&quot;,&quot;--hl-label&quot;:&quot;rgba(10,10,10,0.6)&quot;,&quot;--accent-deep&quot;:&quot;#3a5000&quot;}" data-scheme="light" style="background:#C5E803" title="Highlighter Green" aria-label="Highlighter Green"></button></div>
+    <div class="hf-dropdown-divider"></div>
+    <div class="hf-dropdown-label">字体</div>
+    <div class="hf-font-options"><button type="button" class="hf-font-option active" data-var="--font-sans" data-family="'Inter','Helvetica Neue','PingFang SC','Noto Sans SC',sans-serif" data-google="Inter:wght@200;300;400;500;600;700"><span class="font-preview" style="font-family:'Inter','Helvetica Neue','PingFang SC','Noto Sans SC',sans-serif">黑体 Aa</span><span class="font-name">Inter</span></button><button type="button" class="hf-font-option" data-var="--font-sans" data-family="'DM Sans','PingFang SC','Noto Sans SC',sans-serif" data-google="DM+Sans:wght@300;400;500;600;700"><span class="font-preview" style="font-family:'DM Sans','PingFang SC','Noto Sans SC',sans-serif">黑体 Aa</span><span class="font-name">DM Sans</span></button><button type="button" class="hf-font-option" data-var="--font-sans" data-family="'Space Grotesk','PingFang SC','Noto Sans SC',sans-serif" data-google="Space+Grotesk:wght@300;400;500;600;700"><span class="font-preview" style="font-family:'Space Grotesk','PingFang SC','Noto Sans SC',sans-serif">黑体 Aa</span><span class="font-name">Space Grotesk</span></button></div>
+  </div>
+</div>
+<script>(function () {
+  'use strict';
+
+  // Theme options live in assets/themes.json; render.mjs writes the controls
+  // into the HTML statically, so this file only wires up behaviour.
+  const style = document.documentElement.dataset.hfStyle || 'swiss';
+  const $ = (id) => document.getElementById(id);
+  const STORE = 'hf-page-prefs:' + style;
+
+  // ── Helpers ──
+  function closeAllDropdowns() {
+    document.querySelectorAll('.hf-dropdown.open').forEach(d => d.classList.remove('open'));
+  }
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.hf-dropdown') && !e.target.closest('.hf-fab-btn')) {
+      closeAllDropdowns();
+    }
+  });
+
+  // PDF / long-image export is no longer in the page: the model runs scripts/export.mjs.
+
+  document.getElementById('hf-settings-toggle').addEventListener('click', (e) => {
+    e.stopPropagation();
+    const dd = document.getElementById('hf-settings-dropdown');
+    const wasOpen = dd.classList.contains('open');
+    closeAllDropdowns();
+    if (!wasOpen) dd.classList.add('open');
+  });
+
+  // ── Color switching ──
+  // Old bug: magazine CSS only used --accent in ~10 low-visibility places
+  // (hover states, a 10px label), so switching looked like "nothing happens".
+  // style-magazine.css now routes section numbers, quote rules, list markers,
+  // highlight labels etc. through --accent; this just sets the variables.
+  function applyAccent(sw) {
+    document.querySelectorAll('.hf-swatch').forEach(s => s.classList.toggle('active', s === sw));
+    const root = document.documentElement;
+    root.style.setProperty('--accent', sw.dataset.accent);
+    if (sw.dataset.accentBright) root.style.setProperty('--accent-bright', sw.dataset.accentBright);
+    else root.style.removeProperty('--accent-bright');
+    root.style.setProperty('--accent-on', sw.dataset.accentOn || '#ffffff');
+    // Background/surface palette follows the colour theme (tinted bg; dark theme = dark bg).
+    // Clear vars set by the previous swatch first so stylesheet defaults come back.
+    (root.dataset.hfVars || '').split(',').filter(Boolean).forEach(k => root.style.removeProperty(k));
+    let vars = {};
+    try { vars = JSON.parse(sw.dataset.vars || '{}'); } catch (_) {}
+    Object.entries(vars).forEach(([k, v]) => root.style.setProperty(k, v));
+    root.dataset.hfVars = Object.keys(vars).join(',');
+    root.dataset.scheme = sw.dataset.scheme || 'light';
+    root.style.colorScheme = root.dataset.scheme;
+  }
+  // ── Font switching ──
+  // Old bug: Google Fonts URL was built from the display name with weights 200–800;
+  // "Noto Serif"/"Source Serif" are not real family names and Playfair has no 200,
+  // so the CSS request 400'd and the font never changed. Each option now carries
+  // an exact Google Fonts query (themes.json).
+  function applyFont(opt) {
+    document.querySelectorAll('.hf-font-option').forEach(o => o.classList.toggle('active', o === opt));
+    document.documentElement.style.setProperty(opt.dataset.var || '--font-sans', opt.dataset.family);
+    const q = opt.dataset.google;
+    if (q && !document.querySelector(`link[data-hf-font="${q}"]`)) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.dataset.hfFont = q;
+      link.href = `https://fonts.googleapis.com/css2?family=${q}&display=swap`;
+      document.head.appendChild(link);
+    }
+  }
+  function save() {
+    try {
+      const sw = document.querySelector('.hf-swatch.active');
+      const fo = document.querySelector('.hf-font-option.active');
+      localStorage.setItem(STORE, JSON.stringify({ accent: sw && sw.dataset.accent, font: fo && fo.dataset.family }));
+    } catch (e) {}
+  }
+  document.querySelectorAll('.hf-swatch').forEach(sw => sw.addEventListener('click', (e) => { e.stopPropagation(); applyAccent(sw); save(); }));
+  document.querySelectorAll('.hf-font-option').forEach(opt => opt.addEventListener('click', (e) => { e.stopPropagation(); applyFont(opt); save(); }));
+  try {
+    const prefs = JSON.parse(localStorage.getItem(STORE) || 'null');
+    if (prefs) {
+      const sw = [...document.querySelectorAll('.hf-swatch')].find(s => s.dataset.accent === prefs.accent);
+      if (sw && !sw.classList.contains('active')) applyAccent(sw);
+      const fo = [...document.querySelectorAll('.hf-font-option')].find(o => o.dataset.family === prefs.font);
+      if (fo && !fo.classList.contains('active')) applyFont(fo);
+    }
+  } catch (e) {}
+
+  // ── Make lazy images print/export-safe ──
+  // loading="lazy" images below the fold are blank in PDF/long-image exports.
+  function eagerImages() { document.querySelectorAll('img[loading="lazy"]').forEach(i => { i.loading = 'eager'; }); }
+  window.addEventListener('beforeprint', eagerImages);
+  if (document.readyState === 'complete') setTimeout(eagerImages, 800);
+  else window.addEventListener('load', () => setTimeout(eagerImages, 800));
+
+  // ── Editable text ──
+  const editableSelectors = [
+    '.hero h1',
+    '.hero-subtitle',
+    '.hero-cover h1',
+    '.hero-cover .hero-subtitle',
+    '.section h2',
+    '.section h3',
+    '.section p',
+    '.section li',
+    '.pullquote p',
+    '.pullquote-swiss .pq-content p',
+    '.highlight-card p',
+    '.highlight-swiss .hl-body p',
+    '.def-card-body',
+    '.def-card-swiss .dc-body',
+    '.process-title',
+    '.process-desc',
+    '.aside-content p',
+    '.summary-item-title',
+    '.summary-item-desc',
+    'blockquote p',
+    'td',
+  ];
+  editableSelectors.forEach(sel => {
+    document.querySelectorAll(sel).forEach(el => {
+      el.setAttribute('contenteditable', 'true');
+      el.setAttribute('spellcheck', 'false');
+    });
+  });
+})();
+</script>
+</body>
+</html>
