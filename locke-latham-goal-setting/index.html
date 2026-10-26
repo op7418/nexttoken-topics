@@ -1,0 +1,2304 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-hf-style="magazine">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>目标为什么有用：Locke 与 Latham 的 35 年目标设定研究</title>
+<style>  /* ========================================
+     DESIGN TOKENS
+     Constrained palette: near-black, near-white,
+     one accent. Inspired by Dia's "print it out,
+     put it on your desk" philosophy.
+     ======================================== */
+  :root {
+    --fg: #1a1a1a;
+    --fg-secondary: #555;
+    --fg-tertiary: #888;
+    --bg: #f6f4f0;
+    --bg-card: #edeae4;
+    --bg-quote: #e8e5df;
+    --bg-highlight: #1a1a1a;
+    --fg-highlight: #f6f4f0;
+    --accent: #c45a3c;
+    --border: #d4d0c8;
+    --border-light: #e2dfd8;
+    --font-serif: 'Noto Serif SC', 'Source Han Serif SC', 'Source Han Serif CN', 'Songti SC', 'STSong', Georgia, serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+    --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+    --measure: 1200px;
+    --gutter: 20px;
+    --columns: 12;
+    --margin: 80px;
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 32px;
+    --space-xl: 48px;
+    --space-2xl: 72px;
+    --space-3xl: 96px;
+  }
+
+  /* ========================================
+     RESET & BASE
+     ======================================== */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--fg);
+    background: var(--bg);
+    line-height: 1.8;
+    letter-spacing: 0.01em; /* Latin only; :lang(zh) resets to 0 */
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--fg-highlight);
+  }
+
+  /* ========================================
+     LAYOUT — 12-column grid
+     ======================================== */
+  .container {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: 0 var(--margin);
+    /* Inner content area: 1200 - 80*2 = 1040px, 12 cols + 11 gutters */
+  }
+
+  /* Default prose spans col 3–10 (8 of 12 columns, centered) */
+  .section,
+  .hero,
+  footer,
+  .divider-dot {
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    column-gap: var(--gutter);
+  }
+
+  /* Prose content: 10 columns (col 2-11) */
+  .section > *,
+  .hero > * {
+    grid-column: 2 / 12;
+  }
+
+  /* Wide components: 12 columns full bleed within container */
+  .section > .highlight-card,
+  .section > .gallery-hint,
+  .section > .gallery,
+  .section > .gallery-grid,
+  .section > .pullquote,
+  .section > .big-number-row,
+  .section > .data-figure,
+  .section > .embed-card,
+  .section > .figure-card,
+  .section > .summary-card,
+  .section > .chart-row {
+    grid-column: 1 / -1;
+  }
+
+  /* Medium-wide: same as prose (col 2-12) — already inherited */
+
+  /* Standalone pullquote (outside section) */
+  .container > .pullquote {
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    column-gap: var(--gutter);
+  }
+
+  .container > .pullquote > p {
+    grid-column: 2 / 12;
+  }
+
+  /* Footer & divider are single-content, center them */
+  footer > *,
+  .divider-dot {
+    grid-column: 1 / -1;
+  }
+
+  /* ========================================
+     DOC CHROME — magazine-style document header
+     ======================================== */
+  .doc-chrome {
+    padding: var(--space-xl) 0 0;
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    column-gap: var(--gutter);
+  }
+
+  .doc-chrome-bar {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--fg-tertiary);
+    padding-bottom: var(--space-md);
+  }
+
+  .doc-chrome-bar .chrome-l,
+  .doc-chrome-bar .chrome-r {
+    display: flex;
+    gap: 1.6em;
+    align-items: center;
+  }
+
+  .doc-chrome-bar .chrome-sep {
+    width: 28px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.35;
+  }
+
+  .doc-chrome-bar .chrome-accent {
+    color: var(--accent-ink, var(--accent));
+    font-weight: 600;
+  }
+
+  .doc-chrome-rule {
+    grid-column: 1 / -1;
+    height: 2px;
+    background: var(--fg);
+    margin-bottom: var(--space-md);
+  }
+
+  .doc-chrome-meta {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 2em;
+    align-items: baseline;
+    flex-wrap: wrap;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fg-tertiary);
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .doc-chrome-meta .cm-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5em;
+  }
+
+  .doc-chrome-meta .cm-key {
+    opacity: 0.5;
+  }
+
+  .doc-chrome-meta .cm-val {
+    color: var(--fg-secondary);
+    font-weight: 500;
+  }
+
+  .doc-chrome-meta .cm-dot {
+    width: 2px;
+    height: 2px;
+    background: var(--fg-tertiary);
+    border-radius: 50%;
+    opacity: 0.4;
+    flex-shrink: 0;
+    align-self: center;
+  }
+
+  .doc-chrome-tags {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    padding: var(--space-md) 0 var(--space-lg);
+  }
+
+  .doc-chrome-tags .chrome-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border: 1px solid var(--border);
+    color: var(--fg-tertiary);
+  }
+
+  /* ========================================
+     HERO / HEADER
+     ======================================== */
+  .hero {
+    padding: var(--space-3xl) 0 var(--space-2xl);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-tertiary);
+    margin-bottom: var(--space-lg);
+    display: flex;
+    gap: var(--space-md);
+    align-items: center;
+  }
+
+  .hero-meta .dot {
+    width: 3px;
+    height: 3px;
+    background: var(--fg-tertiary);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-lg);
+    grid-column: 2 / 10;
+  }
+
+  .hero-subtitle {
+    font-size: 1.05rem;
+    color: var(--fg-secondary);
+    line-height: 1.7;
+    grid-column: 2 / 10;
+  }
+
+  /* Tag row under title */
+  .hero-tags {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
+    flex-wrap: wrap;
+  }
+
+  .hero-tags span {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--fg-tertiary);
+  }
+
+  /* ========================================
+     SECTION
+     ======================================== */
+  .section {
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .section:last-child {
+    border-bottom: none;
+  }
+
+  .section-number {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--fg-tertiary);
+    text-transform: uppercase;
+    margin-bottom: var(--space-sm);
+    grid-column: 1 / 3;
+    padding-top: 6px;
+  }
+
+  h2 {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin-bottom: var(--space-lg);
+    grid-column: 2 / 12;
+  }
+
+  h3 {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-md);
+    letter-spacing: 0.01em;
+  }
+
+  /* ========================================
+     PROSE
+     ======================================== */
+  p {
+    margin-bottom: var(--space-md);
+    font-size: 0.95rem;
+    line-height: 1.85;
+  }
+
+  strong {
+    font-weight: 600;
+    color: var(--fg);
+  }
+
+  a {
+    color: var(--fg);
+    text-decoration: underline;
+    text-decoration-color: var(--border);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.2s;
+  }
+
+  a:hover {
+    text-decoration-color: var(--accent);
+  }
+
+  /* ========================================
+     BLOCKQUOTE — Definition / Term card
+     ======================================== */
+  blockquote {
+    margin: var(--space-lg) 0;
+    padding: var(--space-md) var(--space-lg);
+    background: var(--bg-quote);
+    border-left: 2px solid var(--fg-tertiary);
+    border-radius: 0 2px 2px 0;
+  }
+
+  blockquote p {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--fg-secondary);
+    margin-bottom: 0;
+  }
+
+  blockquote strong {
+    color: var(--fg);
+    font-weight: 600;
+  }
+
+  /* ========================================
+     DEFINITION CARD — glossary style
+     ======================================== */
+  .def-card {
+    margin: var(--space-lg) 0;
+    padding: var(--space-md) var(--space-lg);
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 3px;
+  }
+
+  .def-card-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-tertiary);
+    margin-bottom: var(--space-xs);
+  }
+
+  .def-card-term {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+  }
+
+  .def-card-body {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--fg-secondary);
+  }
+
+  /* ========================================
+     HIGHLIGHT CARD — key insight
+     ======================================== */
+  .highlight-card {
+    margin: var(--space-md) 0;
+    padding: var(--space-lg) var(--space-lg);
+    background: var(--bg-highlight);
+    color: var(--fg-highlight);
+    border-radius: 3px;
+    position: relative;
+  }
+
+  .highlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 3px;
+    opacity: 0.04;
+    pointer-events: none;
+    /* crosshatch texture via SVG */
+    background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 8L8 0M-1 1L1 -1M7 9L9 7' stroke='%23fff' stroke-width='.5'/%3E%3C/svg%3E");
+  }
+
+  .highlight-card p {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    line-height: 1.65;
+    color: var(--fg-highlight);
+    margin-bottom: 0;
+  }
+  .highlight-card strong,
+  .highlight-card b,
+  .highlight-card a {
+    color: var(--fg-highlight);
+  }
+
+  .highlight-card .attr {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--fg-highlight); opacity: 0.55;
+    margin-top: var(--space-md);
+    text-transform: uppercase;
+  }
+
+  /* ========================================
+     LIST
+     ======================================== */
+  ul, ol {
+    margin: var(--space-md) 0 var(--space-lg);
+    padding-left: var(--space-lg);
+  }
+
+  li {
+    font-size: 0.95rem;
+    line-height: 1.85;
+    margin-bottom: var(--space-sm);
+  }
+
+  li::marker {
+    color: var(--fg-tertiary);
+  }
+
+  /* Footnote section — smaller text, more spacing between items */
+  .section-footnote {
+    border-top: 1px solid var(--border-light);
+    padding-top: var(--space-lg);
+  }
+  .section-footnote li {
+    font-size: 0.8rem;
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+    color: var(--fg-secondary);
+  }
+  .section-footnote li strong {
+    color: var(--fg);
+  }
+  .section-footnote h2 {
+    font-size: 1rem;
+  }
+
+  /* Checklist-style list */
+  .checklist {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .checklist li {
+    padding-left: 24px;
+    position: relative;
+  }
+
+  .checklist li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 2px;
+  }
+
+  /* ========================================
+     DATA FIGURE — chart area
+     ======================================== */
+  .data-figure {
+    margin: var(--space-xl) 0;
+    padding: var(--space-lg);
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 3px;
+  }
+
+  .data-figure-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-tertiary);
+    margin-bottom: var(--space-lg);
+  }
+
+  /* Bar chart with crosshatch fills */
+  .bar-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-md);
+    height: 180px;
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .bar-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    height: 100%;
+    justify-content: flex-end;
+  }
+
+  .bar {
+    width: 100%;
+    max-width: 64px;
+    border-radius: 2px 2px 0 0;
+    position: relative;
+    background: var(--fg);
+  }
+
+  /* crosshatch pattern for bars */
+  .bar.hatch {
+    background: var(--bg);
+    border: 1.5px solid var(--fg);
+  }
+
+  .bar.hatch::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 6L6 0M-1 1L1 -1M5 7L7 5' stroke='%231a1a1a' stroke-width='.8'/%3E%3C/svg%3E");
+    border-radius: 2px 2px 0 0;
+  }
+
+  /* dot pattern for bars */
+  .bar.dots {
+    background: var(--bg);
+    border: 1.5px solid var(--fg);
+  }
+
+  .bar.dots::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='3' cy='3' r='1' fill='%231a1a1a'/%3E%3C/svg%3E");
+    border-radius: 2px 2px 0 0;
+  }
+
+  .bar-value {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--fg-secondary);
+  }
+
+  .bar-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--fg-tertiary);
+    text-align: center;
+    margin-top: var(--space-sm);
+    letter-spacing: 0.02em;
+  }
+
+  .chart-legend {
+    display: flex;
+    gap: var(--space-lg);
+    margin-top: var(--space-md);
+  }
+
+  .chart-legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--fg-tertiary);
+    letter-spacing: 0.04em;
+  }
+
+  .legend-swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 1px;
+  }
+
+  .legend-swatch.solid { background: var(--fg); }
+
+  .legend-swatch.hatch {
+    background: var(--bg);
+    border: 1px solid var(--fg);
+    position: relative;
+  }
+
+  .legend-swatch.hatch::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 6L6 0M-1 1L1 -1M5 7L7 5' stroke='%231a1a1a' stroke-width='.8'/%3E%3C/svg%3E");
+  }
+
+  .legend-swatch.dots {
+    background: var(--bg);
+    border: 1px solid var(--fg);
+    position: relative;
+  }
+
+  .legend-swatch.dots::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='3' cy='3' r='1' fill='%231a1a1a'/%3E%3C/svg%3E");
+  }
+
+  /* ========================================
+     TABLE
+     ======================================== */
+  .table-wrap {
+    margin: var(--space-lg) 0;
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+
+  th {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: var(--space-sm) var(--space-md);
+    border-bottom: 2px solid var(--fg);
+    color: var(--fg-tertiary);
+    font-weight: 500;
+  }
+
+  td {
+    padding: var(--space-sm) var(--space-md);
+    border-bottom: 1px solid var(--border-light);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  tr:last-child td {
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ========================================
+     CODE BLOCK
+     ======================================== */
+  pre {
+    margin: var(--space-lg) 0;
+    padding: var(--space-md) var(--space-lg);
+    background: var(--fg);
+    color: var(--bg);
+    border-radius: 3px;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    line-height: 1.7;
+  }
+  pre code {
+    background: none;
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+  }
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    background: var(--border-light);
+    padding: 2px 5px;
+    border-radius: 2px;
+  }
+
+  /* ========================================
+     IMAGE — single & gallery
+     ======================================== */
+  figure {
+    margin: var(--space-xl) 0;
+  }
+
+  figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 2px;
+    border: 1px solid var(--border-light);
+  }
+
+  figcaption {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    color: var(--fg-tertiary);
+    margin-top: var(--space-sm);
+    text-align: center;
+  }
+
+  /* Image gallery — horizontal scroll */
+  .gallery {
+    margin: var(--space-xl) 0;
+    padding: 0;
+    display: flex;
+    gap: var(--space-md);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .gallery::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .gallery::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .gallery::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 2px;
+  }
+
+  .gallery-item {
+    flex: 0 0 auto;
+    width: 280px;
+    scroll-snap-align: start;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    border-radius: 2px;
+    border: 1px solid var(--border-light);
+  }
+
+  .gallery-cap {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    color: var(--fg-tertiary);
+    margin-top: var(--space-sm);
+    line-height: 1.5;
+  }
+
+  .gallery-hint {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--fg-tertiary);
+    letter-spacing: 0.04em;
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-sm);
+    text-align: right;
+  }
+
+  /* Image placeholder for demo */
+  .img-placeholder {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .img-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 8L8 0M-1 1L1 -1M7 9L9 7' stroke='%23d4d0c8' stroke-width='.5'/%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
+
+  .img-placeholder span {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--fg-tertiary);
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+    background: var(--bg-card);
+    padding: 2px 8px;
+  }
+
+  .gallery-item .img-placeholder {
+    aspect-ratio: 3/2;
+    height: 180px;
+  }
+
+  /* ========================================
+     GALLERY GRID — 2-up image grid (Magazine alternative to scroll gallery)
+     ======================================== */
+  .gallery-grid {
+    margin: var(--space-xl) 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+
+  .gallery-grid-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 2px;
+    border: 1px solid var(--border-light);
+  }
+
+  .gallery-grid-item .img-placeholder {
+    aspect-ratio: 16/10;
+  }
+
+  .gallery-grid-item .gallery-cap {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    color: var(--fg-tertiary);
+    margin-top: var(--space-sm);
+    line-height: 1.5;
+  }
+
+  /* ========================================
+     TOC SIDEBAR — warm palette table of contents
+     ======================================== */
+  .toc {
+    position: fixed;
+    left: 0; top: 0;
+    width: 0; height: 0;
+    overflow: visible;
+    z-index: 100;
+    pointer-events: none;
+  }
+
+  .toc-toggle {
+    position: fixed;
+    left: var(--space-lg); top: var(--space-lg);
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 3px;
+    cursor: pointer;
+    color: var(--fg-tertiary);
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    z-index: 102;
+    pointer-events: auto;
+  }
+
+  .toc-toggle:hover {
+    background: var(--fg);
+    color: var(--bg);
+    border-color: var(--fg);
+  }
+
+  .toc-panel {
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    width: 280px;
+    background: var(--bg-card);
+    border-right: 1px solid var(--border-light);
+    padding: var(--space-3xl) var(--space-lg) var(--space-2xl);
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.25s cubic-bezier(.2, 0, .38, .9);
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.06);
+    z-index: 101;
+    pointer-events: auto;
+  }
+
+  .toc-open .toc-panel {
+    transform: translateX(0);
+  }
+
+  .toc-open .toc-toggle {
+    background: var(--fg);
+    color: var(--bg);
+    border-color: var(--fg);
+  }
+
+  .toc-header {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fg-tertiary);
+    margin-bottom: var(--space-lg);
+  }
+
+  .toc-item {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+    padding: var(--space-xs) 0;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--fg-secondary);
+    text-decoration: none;
+    line-height: 1.5;
+    transition: color 0.15s;
+  }
+
+  .toc-item:hover {
+    color: var(--accent-ink, var(--accent));
+  }
+
+  .toc-item.toc-active {
+    color: var(--accent-ink, var(--accent));
+    font-weight: 600;
+  }
+
+  .toc-num {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--fg-tertiary);
+    flex-shrink: 0;
+    width: 22px;
+  }
+
+  .toc-active .toc-num {
+    color: var(--accent-ink, var(--accent));
+  }
+
+  /* ========================================
+     EMBED CARD — inline SVG / UI preview
+     ======================================== */
+  .embed-card {
+    margin: var(--space-xl) 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .embed-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-highlight);
+    padding: var(--space-xs) var(--space-md);
+    background: var(--accent);
+    display: inline-block;
+  }
+
+  .embed-body {
+    padding: var(--space-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+  }
+
+  .embed-body svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .embed-caption {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    color: var(--fg-tertiary);
+    padding: 0 var(--space-md) var(--space-md);
+  }
+
+  /* ========================================
+     FIGURE CARD — full-width image with caption
+     ======================================== */
+  .figure-card {
+    margin: var(--space-xl) 0;
+  }
+
+  .figure-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 2px;
+    border: 1px solid var(--border-light);
+    object-fit: cover;
+  }
+
+  .figure-card figcaption {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    color: var(--fg-tertiary);
+    margin-top: var(--space-sm);
+  }
+
+  /* ========================================
+     ASIDE CARD — contextual note
+     ======================================== */
+  .aside-card {
+    margin: var(--space-lg) 0;
+    padding: var(--space-md) var(--space-lg);
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 3px;
+    display: flex;
+    gap: var(--space-md);
+    align-items: flex-start;
+  }
+
+  .aside-icon {
+    flex-shrink: 0;
+    color: var(--accent-ink, var(--accent));
+    padding-top: 2px;
+  }
+  .aside-icon svg { display: block; }
+
+  .aside-title {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-ink, var(--accent));
+    margin-bottom: var(--space-xs);
+  }
+
+  .aside-content p {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--fg-secondary);
+    margin-bottom: 0;
+  }
+
+  /* ========================================
+     SUMMARY CARD — key takeaway grid
+     ======================================== */
+  .summary-card {
+    margin: var(--space-xl) 0;
+  }
+
+  .summary-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-highlight);
+    background: var(--accent);
+    display: inline-block;
+    padding: var(--space-xs) var(--space-md);
+    border-radius: 2px;
+    margin-bottom: var(--space-md);
+  }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: var(--space-sm);
+  }
+
+  .summary-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 3px;
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .summary-item-title {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .summary-item-desc {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: var(--fg-secondary);
+  }
+
+  /* ========================================
+     CHART ROW — Chart.js containers
+     ======================================== */
+  .chart-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    margin: var(--space-xl) 0;
+  }
+
+  .chart-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 3px;
+    padding: var(--space-lg);
+  }
+
+  .chart-card-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-tertiary);
+    margin-bottom: var(--space-md);
+  }
+
+  .chart-card canvas {
+    width: 100% !important;
+    height: 220px !important;
+  }
+
+  /* ========================================
+     SECTION HEADER — passthrough wrapper
+     (Swiss uses flex row for number + h2;
+      Magazine keeps them separate in the grid,
+      so this wrapper just passes children through.)
+     ======================================== */
+  .section-header {
+    display: contents;
+  }
+
+  /* ========================================
+     PULL QUOTE — big callout
+     ======================================== */
+  .pullquote {
+    margin: var(--space-lg) 0;
+    padding: var(--space-lg) 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Avoid double borders: pullquote at end of section */
+  .section > .pullquote:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+
+  /* Avoid double borders: pullquote right before/after section border */
+  .section + .pullquote {
+    border-top: none;
+    margin-top: 0;
+  }
+
+  .pullquote + .section {
+    border-top: none;
+  }
+
+  /* Avoid double borders: section ending with pullquote inherits its bottom */
+  .section:has(> .pullquote:last-child) {
+    border-bottom: none;
+  }
+
+  /* Avoid double borders: consecutive pullquotes share one rule */
+  .pullquote + .pullquote {
+    border-top: none;
+    margin-top: calc(-1 * var(--space-lg));
+  }
+
+  /* Thematic breaks (---) never stack on another rule:
+     drop them at section start/end (the section border already separates),
+     next to a pullquote (which has its own rules), or when repeated. */
+  .section > .divider:first-child,
+  .section > .section-number + h2 + .divider,
+  .section > .divider:last-child,
+  .divider + .divider,
+  .pullquote + .divider { display: none; }
+  .divider + .pullquote { border-top: none; }
+  .divider { grid-column: 2 / 12; margin: var(--space-lg) 0; }
+
+  .pullquote p {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    color: var(--fg);
+    margin-bottom: 0;
+  }
+
+  .pullquote .accent-mark {
+    color: var(--accent-ink, var(--accent));
+  }
+
+  /* ========================================
+     BIG NUMBER — data callout
+     ======================================== */
+  .big-number-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+    margin: var(--space-xl) 0;
+  }
+
+  .big-number {
+    text-align: center;
+    padding: var(--space-lg) var(--space-md);
+    border: 1px solid var(--border-light);
+    border-radius: 3px;
+  }
+
+  .big-number .num {
+    font-family: var(--font-mono);
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: var(--space-sm);
+  }
+
+  .big-number .label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-tertiary);
+  }
+
+  /* ========================================
+     TIMELINE / PROCESS
+     ======================================== */
+  .process {
+    margin: var(--space-xl) 0;
+  }
+
+  .process-step {
+    display: flex;
+    gap: var(--space-lg);
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .process-step:last-child {
+    border-bottom: none;
+  }
+
+  .process-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--fg-tertiary);
+    flex: 0 0 32px;
+    padding-top: 2px;
+  }
+
+  .process-content {
+    flex: 1;
+  }
+
+  .process-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .process-desc {
+    font-size: 0.88rem;
+    color: var(--fg-secondary);
+    line-height: 1.7;
+  }
+
+  /* ========================================
+     DIVIDER
+     ======================================== */
+  .divider {
+    margin: var(--space-2xl) 0;
+    border: none;
+    border-top: 1px solid var(--border);
+  }
+
+  .divider-dot {
+    margin: var(--space-2xl) auto;
+    width: 100%;
+    text-align: center;
+    color: var(--border);
+    font-size: 14px;
+    letter-spacing: 8px;
+  }
+
+  /* ========================================
+     FOOTER
+     ======================================== */
+  footer {
+    padding: var(--space-2xl) 0 var(--space-3xl);
+    text-align: center;
+  }
+
+  footer p {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--fg-tertiary);
+    text-transform: uppercase;
+  }
+
+  /* ========================================
+     ACCENT CARRIERS
+     The settings-panel colour switch only changes --accent. Earlier the
+     magazine theme used --accent almost nowhere visible, so switching
+     looked like it did nothing. These are the places the accent shows.
+     ======================================== */
+  .section-number,
+  .section-header .section-number { color: var(--accent-ink, var(--accent)); }
+  blockquote { border-left-color: var(--accent); }
+  li::marker { color: var(--accent-ink, var(--accent)); }
+  .process-num { color: var(--accent-ink, var(--accent)); }
+  .highlight-card { box-shadow: inset 4px 0 0 var(--accent); }
+  .pullquote { border-top-color: var(--accent); }
+  .pullquote .accent-mark, .pullquote strong { color: var(--accent-ink, var(--accent)); }
+  /* no color-mix(): keep colours plain for print/export */
+  .chrome-tag { border-color: var(--accent); }
+  a { text-decoration-color: var(--accent); }
+
+  /* ========================================
+     CJK TYPOGRAPHY — 中文排版规则（v0.8）
+     Rules + sources: references/design-rules.md §中文排版,
+     references/cjk-typography-research.md. Values here are the
+     single source of truth; change them there and here together.
+     ======================================== */
+  :root {
+    --text-size: 1.0625rem;           /* 正文字号 */
+    --text-leading: 1.85;        /* 正文行高：中文 1.5–2 倍 */
+    --text-measure: 36em;           /* 行长 ≈ 36 个汉字（推断值，见调研笔记） */
+    --para-gap: 1em;                /* 段间距：不缩进，靠段距分段（clreq 段落版式之一） */
+  }
+  :lang(zh) body {
+    letter-spacing: 0;              /* 汉字默认密排，不额外加字距 */
+    line-break: strict;             /* 避头尾：句读、闭括号等不出现在行首 */
+    word-break: normal;
+    overflow-wrap: break-word;      /* 长 URL / 长英文词允许断开，避免撑破版心 */
+    text-spacing-trim: normal;      /* 相邻标点挤压（Chrome 123+，需字体带 chws/halt） */
+    hanging-punctuation: allow-end; /* 行尾点号悬挂（目前仅 Safari） */
+    font-kerning: normal;
+  }
+  :lang(zh) .section > p,
+  :lang(zh) .section > ul,
+  :lang(zh) .section > ol,
+  :lang(zh) .section > blockquote,
+  :lang(zh) .section > h3,
+  :lang(zh) .section > .table-wrap + p {
+    max-width: var(--text-measure);
+  }
+  :lang(zh) .section > p,
+  :lang(zh) .section li {
+    font-size: var(--text-size);
+    line-height: var(--text-leading);
+    font-weight: 400;
+  }
+  :lang(zh) .section > p {
+    margin-bottom: var(--para-gap);
+    text-align: justify;            /* clreq §6.2：中文正文原则上两端对齐 */
+    text-justify: inter-character;
+  }
+  :lang(zh) .section li { margin-bottom: 0.35em; }
+  :lang(zh) .section li > p { margin-bottom: 0.35em; text-align: start; }
+  /* 汉字没有真正的斜体：*强调* 用着重号（clreq §5.3.1：横排置于字下） */
+  :lang(zh) em {
+    font-style: normal;
+    -webkit-text-emphasis: filled dot; text-emphasis: filled dot;
+    -webkit-text-emphasis-position: under right; text-emphasis-position: under right;
+  }
+  :lang(zh) em:lang(en), :lang(zh) code em { font-style: italic; text-emphasis: none; -webkit-text-emphasis: none; }
+  /* 中西文间距：render.mjs 插入 .hf-sp；支持 text-autospace 的浏览器用原生间距 */
+  .hf-sp { white-space: normal; }
+  @supports (text-autospace: normal) {
+    :lang(zh) body { text-autospace: normal; }
+    .hf-sp { display: none; }
+  }
+  /* 标题：中文不加负字距，避免笔画粘连；行高收紧 */
+  :lang(zh) h1, :lang(zh) h2, :lang(zh) h3 { letter-spacing: 0; line-break: strict; }
+  :lang(zh) h2, :lang(zh) h3 { line-height: 1.4; }
+  :lang(zh) .hero h1 { line-height: 1.3; }
+
+  /* ========================================
+     RESPONSIVE
+     ======================================== */
+  /* Tablet: collapse to single column */
+  @media (max-width: 1024px) {
+    .container { padding: 0 var(--space-xl); }
+
+    .section > *,
+    .hero > *,
+    .hero h1,
+    .hero-subtitle,
+    h2,
+    .section-number,
+    .section > .highlight-card,
+    .section > .gallery-hint,
+    .section > .gallery,
+    .section > .gallery-grid,
+    .section > .pullquote,
+    .section > .big-number-row,
+    .section > .data-figure,
+    .section > .embed-card,
+    .section > .figure-card,
+    .section > .summary-card,
+    .section > .chart-row,
+    .section > .process,
+    .section > .table-wrap,
+    .section > figure,
+    .container > .pullquote > p,
+    footer > * {
+      grid-column: 1 / -1;
+    }
+
+    .section-number {
+      padding-top: 0;
+    }
+
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .chart-row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .container { padding: 0 var(--space-lg); }
+    .hero h1 { font-size: 1.8rem; }
+    .pullquote p { font-size: 1.15rem; }
+    .big-number-row { grid-template-columns: 1fr; }
+    .big-number .num { font-size: 1.8rem; }
+    .gallery-item { width: 220px; }
+    .summary-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ========================================
+     PRINT / PDF
+     ======================================== */
+  @media print {
+    body { background: #fff; }
+    /* break rules live in ui.css (shared). Never put break-inside:avoid on
+       .section/.hero: a whole chapter that doesn't fit gets pushed to the
+       next page and leaves a half-empty page behind. */
+    .gallery { flex-wrap: wrap; overflow: visible; }
+    .gallery-item { width: 45%; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .toc { display: none; }
+  }
+
+  /* ========================================
+     v0.9 · 单一阅读栏：正文与图片同宽、整体居中
+     （旧版正文 36em 左对齐在 10 栏里，图片却撑满 10/12 栏，两者不对齐）
+     ======================================== */
+  :root { --col: calc(36 * 1.0625rem); --accent-ink: var(--accent); }
+  .section > *, .hero > * {
+    grid-column: 1 / -1 !important;
+    justify-self: center;
+    width: 100%;
+    max-width: var(--col) !important;
+  }
+  .section > .gallery, .section > .gallery-hint { max-width: none !important; }
+  .section figure img { width: 100%; }
+  body { transition: background-color .2s ease, color .2s ease; }
+
+  /* 嵌套引用 / 引用署名 */
+  blockquote > p + p { margin-top: 0.6em; }
+  blockquote .bq-nested { margin: 0.8em 0 0.4em; padding: 0.6em 1em; background: var(--bg-card); border-left: 2px solid var(--border); }
+  blockquote .bq-nested .bq-nested { background: var(--bg-quote); }
+  .bq-cite { margin-top: 0.7em; font-size: 0.82rem; color: var(--fg-tertiary); text-align: right; }
+  .bq-cite cite { font-style: normal; }
+  .pq-cite { margin-top: var(--space-md); font-family: var(--font-sans); font-size: 0.8rem; color: var(--fg-tertiary); letter-spacing: 0.02em; }
+  .pq-cite::before { content: "—— "; }
+
+  /* 破折号：两字线不断开；——插入语—— 轻度强调 */
+  .dash { white-space: nowrap; letter-spacing: 0; }
+  .dash-em { color: var(--fg); font-weight: 600; }
+  :root[data-scheme="dark"] img { opacity: 0.94; }
+  /* global `footer` (page footer) styles must not leak into quote attributions */
+  blockquote footer.bq-cite { display: block !important; padding: 0 !important; margin: 0.7em 0 0 !important; border: 0 !important; background: none !important; min-height: 0 !important; text-align: right; }
+  blockquote footer.bq-cite > * { grid-column: auto; }
+
+  /* v0.10 · 宽窄两档：正文窄栏 --col，图片/视频/图组/强调组件破出到 --wide，同一中线 */
+  .section > .figure-card,
+  .section > .img-row,
+  .section > .img-strip-wrap,
+  .section > .media-embed,
+  .section > .gallery, .section > .gallery-hint, .section > .gallery-grid,
+  .section > .pullquote,
+  .section > .highlight-card,
+  .section > .table-wrap,
+  .section > .data-figure, .section > .embed-card, .section > .chart-row { max-width: var(--wide) !important; }
+  .figure-card img { width: 100%; height: auto; display: block; }
+  .img-row { display: grid; gap: 12px; margin-top: 2.2em; margin-bottom: 2.2em; }
+  .img-row-2 { grid-template-columns: 1fr 1fr; }
+  .img-row-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .img-row .figure-card { margin: 0; }
+  .img-row .figure-card img { aspect-ratio: 4 / 3; object-fit: cover; }
+  .img-strip-wrap { margin-top: 2.2em; margin-bottom: 2.2em; }
+  .img-strip { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
+  .img-strip .figure-card { flex: 0 0 62%; margin: 0; scroll-snap-align: start; }
+  .img-strip-hint { font-family: var(--font-mono); font-size: 11px; color: var(--fg-tertiary); text-align: right; margin-top: 6px; }
+  .media-embed video, .media-embed iframe { width: 100%; aspect-ratio: 16 / 9; height: auto; display: block; border: 0; background: #000; }
+  .toc-panel { box-shadow: none !important; background: var(--bg-card) !important; }
+  @media (max-width: 760px) {
+    .img-row-3 { grid-template-columns: 1fr 1fr; }
+    .img-strip .figure-card { flex-basis: 85%; }
+  }
+  @media print { .img-strip { flex-wrap: wrap; overflow: visible; } .img-strip .figure-card { flex-basis: 48%; } .img-strip-hint { display: none; } }
+  :root { --wide: 920px; }
+  .section > blockquote { max-width: var(--wide) !important; }
+  .toc-panel { border-right: 1px solid var(--border-light); }
+  .figure-card figcaption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--fg-tertiary); margin-top: 8px; }
+  .img-row > .figure-card { grid-column: auto !important; min-width: 0; }
+
+  /* ===== v0.11 · 原生表格 + 原生条形图（纯 HTML/CSS，可导出 PDF/长图，跟随色板） ===== */
+  .section > .hchart { max-width: var(--wide) !important; }
+  .table-wrap { overflow-x: auto; margin-top: 2em; margin-bottom: 2em; }
+  .table-wrap table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: 0.9rem; }
+  .table-wrap th { text-align: left; font-weight: 600; color: var(--fg); padding: 10px 12px; border-bottom: 1.5px solid var(--fg); vertical-align: bottom; line-height: 1.35; }
+  .table-wrap td { padding: 9px 12px; color: var(--fg); border-bottom: 1px solid var(--tbl-line, rgba(0,0,0,0.09)); vertical-align: top; line-height: 1.45; background: none; }
+  .table-wrap tbody tr:nth-child(even) td { background: var(--tbl-zebra, rgba(0,0,0,0.025)); }
+  .table-wrap .al-num, .table-wrap .al-right { text-align: right; white-space: nowrap; }
+  .table-wrap .al-center { text-align: center; }
+  .table-wrap td strong { color: var(--accent-ink, var(--accent)); font-weight: 700; }
+  .table-wrap td small, .table-wrap td .sub { color: var(--fg-tertiary); font-size: 0.78em; }
+  .table-caption { caption-side: top; font-size: 0.8rem; color: var(--fg-secondary); margin-bottom: 10px; line-height: 1.5; }
+  .hchart { margin-top: 2.2em; margin-bottom: 2.2em; padding: 24px 28px; background: var(--bg-card); }
+  .hc-title { font-weight: 600; font-size: 1rem; color: var(--fg); margin-bottom: 16px; }
+  .hc-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 14px; font-size: 0.78rem; color: var(--fg-secondary); }
+  .hc-key i { display: inline-block; width: 10px; height: 10px; margin-right: 6px; vertical-align: -1px; background: var(--hc-mute); }
+  .hc-row { display: grid; grid-template-columns: minmax(120px, 30%) 1fr; gap: 12px; align-items: center; padding: 3px 0; }
+  .hc-group { padding: 8px 0; border-top: 1px solid var(--tbl-line, rgba(0,0,0,0.08)); }
+  .hc-label { font-size: 0.82rem; color: var(--fg); line-height: 1.35; }
+  .hc-bars { display: grid; gap: 3px; }
+  .hc-bar { position: relative; display: flex; align-items: center; gap: 8px; height: 18px; }
+  .hc-group .hc-bar { height: 13px; }
+  .hc-fill { display: block; height: 100%; background: var(--hc-mute); flex: none; }
+  .hc-val { font-size: 0.75rem; font-variant-numeric: tabular-nums; color: var(--fg-secondary); white-space: nowrap; }
+  .hc-group .hc-val { font-size: 0.68rem; }
+  .hc-hi .hc-fill, .hc-hi.hc-key i, .hc-key.hc-hi i { background: var(--accent); }
+  .hc-hi .hc-val, .hc-row.hc-hi .hc-label { color: var(--fg); font-weight: 600; }
+  .hc-s1.hc-hi .hc-fill, .hc-key.hc-s1.hc-hi i { background: var(--accent); opacity: 0.6; }
+  .hc-na .hc-val { color: var(--fg-tertiary); font-style: italic; }
+  .hc-cap { margin-top: 14px; font-size: 0.72rem; color: var(--fg-tertiary); line-height: 1.5; }
+  :root { --hc-mute: #b9b6ae; }
+  @media (max-width: 640px) { .hc-row { grid-template-columns: 1fr; gap: 4px; } .hchart { padding: 18px; } }
+  @media print { .hchart, .table-wrap tr { break-inside: avoid; } }
+
+  /* ===== 引用可读性：正文色 + 极浅底；普通引用回到正文宽度，只有强调组件破出 ===== */
+  .section > blockquote { max-width: var(--col) !important; }
+  blockquote p, blockquote li { color: var(--fg) !important; }
+  blockquote .bq-cite { color: var(--fg-secondary) !important; }
+  blockquote { background: var(--quote-tint, rgba(0,0,0,0.028)) !important; border-left: 2px solid var(--accent) !important; }
+  blockquote p { font-size: 0.98rem !important; line-height: 1.8 !important; }
+  :root[data-scheme="dark"] { --hc-mute: #55555b; --tbl-line: rgba(255,255,255,0.1); --tbl-zebra: rgba(255,255,255,0.03); --quote-tint: rgba(255,255,255,0.04); }
+  .table-wrap th { background: none !important; color: var(--fg) !important; }
+  .table-wrap th { font-family: var(--font-sans) !important; text-transform: none !important; letter-spacing: 0 !important; font-size: 0.78rem !important; white-space: normal !important; }
+  .table-wrap table { table-layout: auto; min-width: 0 !important; }
+  .table-wrap td:first-child { white-space: nowrap; }
+  .table-caption, .hc-cap { font-family: var(--font-sans) !important; text-transform: none !important; letter-spacing: 0 !important; text-align: left !important; }
+  .table-wrap > table { margin: 0 !important; }
+
+  /* ===== v0.12 · 共同：目录字号 ≥ 正文；条形图更疏朗 ===== */
+  .toc-panel { width: 320px !important; }
+  .toc-header { font-size: 13px !important; margin-bottom: 18px !important; }
+  .toc-item { font-size: 1.0625rem !important; line-height: 1.55 !important; padding: 9px 0 !important; gap: 12px !important; align-items: baseline !important; }
+  .toc-num { font-size: 0.8rem !important; }
+  .hchart { padding: 30px 34px !important; }
+  .hc-title { margin-bottom: 22px !important; }
+  .hc-legend { margin-bottom: 22px !important; gap: 8px 20px !important; }
+  .hc-row { padding: 7px 0 !important; gap: 18px !important; }
+  .hc-group { padding: 16px 0 !important; }
+  .hc-bars { gap: 6px !important; }
+  .hc-bar { height: 20px !important; }
+  .hc-group .hc-bar { height: 14px !important; }
+  .hc-cap { margin-top: 20px !important; }
+
+  /* ======================================================================
+     v0.12 · 杂志风 = 文学/编辑排版：居中轴、衬线正文、首字下沉、花饰分隔、
+     斜体图注、居中大引号金句。与瑞士风的“左轨非对称网格”刻意相反。
+     ====================================================================== */
+  .section p, .section li, .section td, blockquote p { font-family: var(--font-serif); }
+  .section > p, .section li { font-size: 1.08rem; line-height: 1.95; }
+  .hero { text-align: center; padding-top: 72px; padding-bottom: 40px; }
+  .hero h1 { font-size: 2.7rem; line-height: 1.3; font-weight: 600; letter-spacing: 0.01em; }
+  .hero-subtitle { font-style: italic; color: var(--fg-secondary); margin: 18px auto 0; }
+  .hero::after { content: "❦"; grid-column: 1 / -1; justify-self: center; margin-top: 34px; color: var(--accent-ink, var(--accent)); font-size: 1.4rem; }
+  .doc-chrome { text-align: center; }
+
+  /* 章节：花饰分隔 + 居中罗马式小号章节号 + 居中标题 */
+  .section { border-top: none !important; padding-top: 56px; }
+  .section::before { content: "· · ✦ · ·"; grid-column: 1 / -1; justify-self: center; color: var(--fg-tertiary); letter-spacing: 0.35em; font-size: 0.9rem; margin-bottom: 40px; }
+  .section:first-of-type::before { content: none; }
+  .section > .section-number { text-align: center; font-family: var(--font-serif); font-style: italic; font-size: 0.95rem; letter-spacing: 0.2em; color: var(--accent-ink, var(--accent)); margin-bottom: 10px; }
+  .section > .section-number::before { content: "— "; } .section > .section-number::after { content: " —"; }
+  .section > h2 { text-align: center; font-size: 1.85rem; line-height: 1.4; font-weight: 600; margin-bottom: 34px; }
+  .section > h2 + .divider, .section > hr.divider { display: none; }
+  .section > h3 { font-family: var(--font-serif); font-style: italic; font-weight: 600; text-align: center; }
+
+
+
+  /* 图注：居中斜体衬线 */
+  .figure-card figcaption, .hc-cap, .table-caption { font-family: var(--font-serif) !important; font-style: italic; text-align: center !important; font-size: 0.85rem !important; color: var(--fg-secondary) !important; }
+  .figure-card figcaption { margin-top: 12px !important; }
+
+  /* 金句：居中、大引号、上下细线 */
+  .pullquote { text-align: center; border-top: 1px solid var(--border) !important; border-bottom: 1px solid var(--border) !important; padding: 44px 48px 36px !important; position: relative; }
+  .pullquote::before { content: "“"; display: block; font-family: Georgia, var(--font-serif); font-size: 5rem; line-height: 0.6; color: var(--accent-ink, var(--accent)); margin-bottom: 8px; }
+  .pullquote p { font-size: 1.6rem !important; line-height: 1.6 !important; font-style: italic; }
+  .pq-cite { text-align: center; font-style: normal; }
+
+  /* 普通引用：居中轴上的“边注”感——左侧细线，衬线正文色 */
+  blockquote { background: none !important; border-left: 1px solid var(--accent) !important; padding: 4px 0 4px 24px !important; }
+  blockquote .bq-nested { background: var(--quote-tint, rgba(0,0,0,0.03)) !important; }
+
+  /* 表格：书籍式三线表 */
+  .table-wrap th { border-top: 1.5px solid var(--fg); }
+  .table-wrap tbody tr:nth-child(even) td { background: none !important; }
+  .table-wrap tbody tr:last-child td { border-bottom: 1.5px solid var(--fg); }
+  .hchart { background: none !important; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding-left: 0 !important; padding-right: 0 !important; }
+  .hc-title { text-align: center; font-family: var(--font-serif); font-size: 1.1rem !important; }
+  .hc-legend { justify-content: center; }
+
+  /* v0.13 · 章节头只有两件：一行“细线 ✦ 04 ✦ 细线”花饰编号 + 标题 */
+  .section::before { content: none !important; }
+  .section > .section-number { display: flex !important; align-items: center; justify-content: center; gap: 14px; font-style: normal !important; letter-spacing: 0.18em !important; font-size: 0.9rem !important; margin-bottom: 18px !important; }
+  .section > .section-number::before, .section > .section-number::after { content: "" !important; display: block; width: 56px; height: 1px; background: currentColor; opacity: 0.45; }
+  .section > .section-number { --orn: "✦"; }
+  .section > .section-number span.orn { opacity: 0.7; }
+  .section { border-bottom: none !important; padding-top: 72px !important; }
+
+  /* v0.15 · 首字下沉已删除（不适合中文）；章节号 = “04” + 右侧逐渐变小变淡的星，无横线 */
+  .section > .section-number { gap: 0 !important; align-items: baseline !important; }
+  .section > .section-number::before, .section > .section-number::after { content: none !important; display: none !important; }
+  .section > .section-number .sn-num { font-size: 1.05rem; letter-spacing: 0.12em; margin-right: 10px; }
+  .section > .section-number .sn-star { display: inline-block; line-height: 1; margin-right: 5px; }
+  .section > .section-number .s1 { font-size: 0.95rem; opacity: 0.9; }
+  .section > .section-number .s2 { font-size: 0.72rem; opacity: 0.65; }
+  .section > .section-number .s3 { font-size: 0.52rem; opacity: 0.42; }
+
+  /* ── v0.16 · 视觉调研落地（中文阅读优先） ───────────────────── */
+  :root { --col: calc(30 * 1.0625rem); --font-kai: "LXGW WenKai", "Kaiti SC", "STKaiti", "KaiTi", "BiauKai", "FangSong", "STFangsong", var(--font-serif, serif); }
+  .section > p, .section li { line-height: 1.85 !important; text-align: justify; }
+  /* 标题：越大越轻，字距放宽 */
+  .section h2, .hero h1 { font-weight: 500 !important; letter-spacing: 0.03em !important; }
+  .section h3 { font-weight: 500 !important; letter-spacing: 0.02em !important; }
+  /* 普通引用：正文栏宽，上下 1px 细线夹楷体，正文色，无底色 */
+  .section > blockquote:not(.pullquote) {
+    border: 0 !important; border-top: 1px solid var(--line, rgba(0,0,0,.18)) !important; border-bottom: 1px solid var(--line, rgba(0,0,0,.18)) !important;
+    background: none !important; padding: 18px 0.25em !important; margin: 32px auto !important;
+    font-family: var(--font-kai) !important; font-size: 1.0625rem !important; line-height: 1.9 !important; color: var(--fg) !important; font-style: normal !important; }
+  .section > blockquote:not(.pullquote) p { color: var(--fg) !important; }
+  .section > blockquote:not(.pullquote) blockquote { border-left: 1px solid var(--line, rgba(0,0,0,.2)) !important; border-top: 0 !important; border-bottom: 0 !important; padding: 2px 0 2px 1em !important; margin: 10px 0 !important; }
+  .section > blockquote footer.bq-cite { font-family: var(--font-serif) !important; font-size: 0.82rem !important; color: var(--fg-secondary, var(--fg)) !important; display: inline; margin-left: .5em; }
+  /* 图注：图下左对齐，衬线斜体 13px，首句加粗当标题 */
+  .figure-card figcaption, .img-row figcaption, .img-strip figcaption, .media-embed figcaption {
+    text-align: left !important; font-size: 13px !important; line-height: 1.6 !important; font-style: italic !important;
+    font-family: var(--font-serif) !important; color: var(--fg-secondary, var(--fg)) !important; letter-spacing: 0 !important; text-transform: none !important; }
+  figcaption .cap-lead { font-weight: 600; font-style: normal; color: var(--fg); margin-right: .35em; }
+  /* 页眉：报头居中，上下细线；标签用“[ 栏目 ]” */
+  .doc-chrome { text-align: center; }
+  .doc-chrome-bar { justify-content: center !important; gap: 28px !important; border-top: 1px solid var(--fg) !important; border-bottom: 1px solid var(--line, rgba(0,0,0,.2)) !important; padding: 10px 0 !important; }
+  .doc-chrome-rule { display: none !important; }
+  .doc-chrome-meta, .doc-chrome-tags { justify-content: center !important; }
+  .doc-chrome-tags .chrome-tag { background: none !important; border: 0 !important; padding: 0 !important; font-size: 0.7rem !important; letter-spacing: 0.2em !important; color: var(--accent-ink, var(--accent)) !important; border-radius: 0 !important; }
+  .doc-chrome-tags .chrome-tag::before { content: "[\00a0"; } .doc-chrome-tags .chrome-tag::after { content: "\00a0]"; }
+  /* 目录：窄编号列 + 等宽数字，靠留白分组，不画线 */
+  .toc-item { display: grid !important; grid-template-columns: 2.4em 1fr !important; gap: 0 10px !important; border: 0 !important; }
+  .toc-num { font-variant-numeric: tabular-nums; text-align: right; opacity: .7; }
+  @media print { .doc-chrome-bar { border-top-width: 1px !important; } }
+
+  /* ── v0.17 · 报头一行；CJK 不用斜体；章节号两侧对称星 ───────────── */
+  .doc-chrome.doc-line { display: flex !important; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 0 !important;
+    max-width: var(--col); margin: 0 auto !important; padding: 28px 0 12px !important; border: 0 !important; border-bottom: 1px solid var(--line, rgba(0,0,0,.16)) !important;
+    font-family: var(--font-serif); font-size: 13px; letter-spacing: .04em; color: var(--fg-secondary, var(--fg)); text-align: center; }
+  .doc-line .dl-sep { margin: 0 .7em; opacity: .5; }
+  .doc-line .dl-tag { color: var(--accent-ink, var(--accent)); }
+  /* 中文不倾斜（会变成伪斜体）；斜体只给拉丁文 <i>/<em lang=en> 等 */
+  .hero-subtitle, figcaption, .figure-card figcaption, .section-number, .pullquote, .pullquote *, blockquote, blockquote *, .hc-cap, .table-caption, .bq-cite, em, .toc-item { font-style: normal !important; }
+  :lang(en) em, em:lang(en), i:lang(en) { font-style: italic !important; }
+  .section > .section-number.sn-sym { display: flex !important; justify-content: center !important; align-items: center !important; gap: 0 !important; width: 100%; font-variant-numeric: tabular-nums; }
+  .sn-sym .sn-side { flex: 1 1 0; display: inline-flex; align-items: center; gap: 6px; }
+  .sn-sym .sn-l { justify-content: flex-end; } .sn-sym .sn-r { justify-content: flex-start; }
+  .sn-sym .sn-num { flex: none; margin: 0 14px !important; line-height: 1; font-size: 1.05rem; letter-spacing: .12em; padding-left: .12em; /* 抵消末尾字距，光学居中 */ }
+  .sn-sym .sn-star { margin: 0 !important; line-height: 1; display: inline-block; }
+  .section h3, h1, h2, h3, h4, .hero-subtitle, .hero p, .doc-line { font-style: normal !important; }
+  .doc-chrome.doc-line { max-width: min(var(--wide, 920px), 100%) !important; white-space: normal; } .doc-line > span { white-space: nowrap; }
+
+  /* ── v0.18 · 移动端报头：让开目录按钮，换行不挤（≤640px）；桌面不变 ── */
+  @media (max-width: 640px) {
+    html, body { overflow-x: hidden; }
+    .doc-chrome.doc-line { padding: 68px 4px 12px !important; font-size: 12px; line-height: 1.9; row-gap: 2px; }
+    .doc-line .dl-sep { margin: 0 .5em; }
+    .hero h1 { overflow-wrap: anywhere; }
+    .section > * { min-width: 0; }
+    .table-wrap { overflow-x: auto; }
+  }
+
+  /* v0.19 链接/长串不两端对齐：含链接的段落、列表项、来源/参考节一律起始对齐；长 URL / 代码可任意断行，避免 justify 把冒号前的字拉开 */
+  :lang(zh) .section li,
+  .section > p:has(a.url, a[href^="http"], code),
+  .section.refs p, .section.refs li { text-align: start !important; text-justify: auto; }
+  .section a.url { overflow-wrap: anywhere; word-break: break-word; }
+  .section code { overflow-wrap: anywhere; word-break: break-all; }
+  .section p, .section li { overflow-wrap: break-word; }
+  /* 英文段落仍两端对齐，但开启连字符断词，减少长单词造成的大空隙 */
+  .section > p:lang(en) { hyphens: auto; -webkit-hyphens: auto; }
+</style>
+<style>  /* ══════════════════════════════════════
+     UI OVERLAY — Settings, Share, Edit
+     Shared across all themes
+     ══════════════════════════════════════ */
+
+  /* ── Editable text ── */
+  [contenteditable] {
+    outline: none;
+    cursor: text;
+    transition: background 0.15s;
+    border-radius: 2px;
+  }
+  [contenteditable]:hover {
+    background: rgba(0,0,0,0.03);
+  }
+  [contenteditable]:focus {
+    background: rgba(0,0,0,0.05);
+    box-shadow: 0 0 0 2px var(--accent, #002FA7);
+  }
+
+  /* ── FAB container (bottom-right) ── */
+  .hf-fab {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+  }
+
+  .hf-fab-btn {
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--fg, #0a0a0a);
+    color: var(--bg, #fafaf8);
+    border: none; border-radius: 0; cursor: pointer;
+    transition: opacity 0.15s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .hf-fab-btn:hover { opacity: 0.85; }
+  .hf-fab-btn svg { width: 20px; height: 20px; }
+
+  /* ── Dropdown menu (share + settings) ── */
+  .hf-dropdown {
+    position: absolute;
+    background: var(--fg, #0a0a0a);
+    color: var(--bg, #fafaf8);
+    min-width: 220px;
+    padding: 8px 0;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(4px);
+    transition: opacity 0.15s, transform 0.15s;
+    z-index: 210;
+  }
+  .hf-dropdown.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  .hf-fab .hf-dropdown { right: 0; bottom: calc(100% + 6px); }
+
+  .hf-dropdown-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 16px;
+    font-family: var(--font-sans, sans-serif);
+    font-size: 13px; font-weight: 400;
+    cursor: pointer;
+    transition: background 0.1s;
+    border: none; background: none; color: inherit;
+    width: 100%; text-align: left;
+  }
+  .hf-dropdown-item:hover { background: rgba(255,255,255,0.08); }
+  .hf-dropdown-item svg { width: 16px; height: 16px; opacity: 0.5; }
+
+  .hf-dropdown-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    margin: 6px 0;
+  }
+
+  .hf-dropdown-label {
+    padding: 8px 16px 4px;
+    font-family: var(--font-mono, monospace);
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    opacity: 0.35;
+  }
+
+  /* ── Color swatches ── */
+  .hf-swatches {
+    display: flex; gap: 6px;
+    padding: 6px 16px 10px;
+  }
+  .hf-swatch {
+    -webkit-appearance: none; appearance: none; padding: 0;
+    width: 28px; height: 28px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: border-color 0.15s;
+    position: relative;
+  }
+  .hf-swatch:hover { border-color: rgba(255,255,255,0.3); }
+  .hf-swatch.active { border-color: var(--bg, #fff); }
+  .hf-swatch.active::after {
+    content: '✓';
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  }
+
+  /* ── Font options ── */
+  .hf-font-options {
+    display: flex; flex-direction: column; gap: 2px;
+    padding: 4px 16px 8px;
+  }
+  .hf-font-option {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 8px;
+    font-size: 13px;
+    cursor: pointer;
+    border: none; background: none; color: inherit;
+    width: 100%; text-align: left;
+    transition: background 0.1s;
+  }
+  .hf-font-option:hover { background: rgba(255,255,255,0.08); }
+  .hf-font-option.active { background: rgba(255,255,255,0.12); }
+  .hf-font-option .font-preview {
+    font-size: 15px; font-weight: 300;
+    opacity: 0.7;
+  }
+  .hf-font-option .font-name {
+    font-family: var(--font-mono, monospace);
+    font-size: 10px; letter-spacing: 0.08em;
+    text-transform: uppercase; opacity: 0.4;
+  }
+
+  /* ── Print hide UI ── */
+  @media print {
+    .hf-fab,.toc,.toc-scrim { display: none !important; }
+    [contenteditable] { box-shadow: none !important; background: none !important; }
+  }
+
+  /* ── TOC layout behaviour (shared) ──
+     Root cause of the old "TOC covers half the article" bug: the panel is a
+     280px fixed overlay, while the article container starts ~120px from the
+     left edge on a 1440px screen, so opening it always covered the text.
+     Fix: on wide screens opening the TOC pushes the page (body padding-left),
+     so nothing is covered; on narrow screens it is a drawer with a scrim and
+     closes on outside click / Esc. */
+  .toc { width: 0; height: 0; overflow: visible; pointer-events: none; }
+  .toc-toggle, .toc-panel { pointer-events: auto; }
+  .toc-panel { visibility: hidden; transition: transform 0.25s cubic-bezier(.2,0,.38,.9), visibility 0s linear 0.25s; }
+  .toc-open .toc-panel { visibility: visible; transition: transform 0.25s cubic-bezier(.2,0,.38,.9); }
+  body { transition: padding-left 0.25s cubic-bezier(.2,0,.38,.9); }
+  .toc-scrim { display: none; }
+  @media (min-width: 1025px) {
+    html.toc-is-open body { padding-left: 300px; }
+  }
+  @media (max-width: 1024px) {
+    .toc-scrim {
+      position: fixed; inset: 0; z-index: 99;
+      background: rgba(0,0,0,0.28);
+    }
+    html.toc-is-open .toc-scrim { display: block; }
+    .toc-panel { width: min(300px, 86vw); }
+  }
+
+  /* ══════════════════════════════════════
+     PRINT / PDF — pagination (shared by both styles)
+     Root cause of the "half-empty page" bug: style-magazine.css had
+     `.hero, .section { break-inside: avoid }`, and both themes lay sections
+     out as CSS grids; any chapter taller than the remaining space jumped to
+     the next page whole. Rules now: only small atomic blocks avoid breaking,
+     long containers flow across pages, headings stick to what follows.
+     ══════════════════════════════════════ */
+  @page { size: A4; margin: 14mm 12mm 16mm; }
+  @media print {
+    html, body, body * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    html.toc-is-open body, body { padding-left: 0 !important; }
+    .container { max-width: none !important; padding: 0 !important; }
+    /* grid fragmentation is fragile — flow sections as blocks on paper */
+    .section, .hero, footer, .container > .pullquote { display: block !important; }
+    .section-header { display: block !important; }
+    .section, .hero, .process, .gallery, .gallery-grid, .summary-card,
+    .summary-grid, .table-wrap, table, ul, ol, pre, .chart-row,
+    .embed-card, .data-figure { break-inside: auto !important; }
+
+    /* headings never end a page */
+    h1, h2, h3, h4, h5, .section-number, .section-header, .hero-kicker,
+    .def-card-label, .hl-label, .toc-header { break-after: avoid; break-inside: avoid; }
+    p { orphans: 3; widows: 3; }
+
+    /* small atomic blocks: keep whole */
+    blockquote, .def-card, .def-card-swiss, .highlight-card, .highlight-swiss,
+    .pullquote, .pullquote-swiss, .aside-card, .process-step, .big-number,
+    .summary-item, .gallery-item, li, tr, .callout { break-inside: avoid; }
+
+    /* image + caption travel together; cap height (120mm ≈ 45% of an A4 text area). Residual gap: a heading kept with a big figure can still leave up to ~half a page — intended (no orphan heading). so a figure never strands more than ~half a page */
+    figure, .figure-card { break-inside: avoid; }
+    figure img, .figure-card img, img { max-height: 120mm; width: auto; max-width: 100%; object-fit: contain; }
+    figcaption, .figure-caption, .caption { break-before: avoid; }
+    pre { white-space: pre-wrap; word-break: break-all; }
+    .section { padding-top: 12mm !important; padding-bottom: 4mm !important; }
+    a { text-decoration: none; }
+  }
+
+  /* ══════════════════════════════════════
+     PRINT v0.14 — blank-space budget (≤25% per page)
+     A block that can't split leaves at most its own height as a gap, so every
+     unsplittable block is capped well under a quarter page; everything tall
+     (tables, charts, quotes) is allowed to split. Screen layout untouched.
+     ══════════════════════════════════════ */
+  @media print {
+    .section { padding-top: 5mm !important; padding-bottom: 2mm !important; margin-top: 0 !important; border: 0 !important; }
+    .section::before { content: none !important; }
+    .section > .section-number { margin-bottom: 2mm !important; }
+    .section h2, .section-header { margin-bottom: 4mm !important; }
+    .hero { padding-top: 0 !important; padding-bottom: 4mm !important; }
+    .hero::after { margin-top: 3mm !important; }
+    .doc-chrome { padding-top: 0 !important; padding-bottom: 4mm !important; }
+    .hero-cover, .hero-cover .hero-bg { min-height: 0 !important; height: 60mm !important; }
+
+    /* media: shrink to fit instead of jumping */
+    figure img, .figure-card img, .img-row img, .img-strip img, img { max-height: 58mm !important; width: auto !important; max-width: 100% !important; object-fit: contain !important; margin-left: auto; margin-right: auto; }
+    .img-row img { max-height: 42mm !important; }
+    .media-embed video, .media-embed iframe { max-height: 58mm !important; }
+    figure, .figure-card { margin-top: 3mm !important; margin-bottom: 3mm !important; }
+    .figure-card > figcaption { margin-top: 1.5mm !important; }
+
+    /* headings stay with the next *line*, not with a whole big block */
+    h2, h3, .section-header, .section-number { break-after: avoid; }
+    .section-header + .figure-card, h2 + .figure-card, .section-number + h2 + .figure-card,
+    h2 + .table-wrap, h2 + .hchart, .section-header + .hchart, .section-header + .table-wrap { break-before: auto !important; }
+
+    /* tables: split across pages, header row repeats */
+    .table-wrap, .table-wrap table { break-inside: auto !important; overflow: visible !important; }
+    .table-wrap thead { display: table-header-group; }
+    .table-wrap tr { break-inside: avoid; }
+    .table-caption { break-after: avoid; }
+
+    /* charts: allowed to split between rows/groups */
+    .hchart { break-inside: auto !important; padding-top: 4mm !important; padding-bottom: 4mm !important; margin-top: 4mm !important; margin-bottom: 4mm !important; }
+    .hc-row, .hc-group, .hc-legend { break-inside: avoid; }
+    .hc-title, .hc-legend { break-after: avoid; }
+
+    /* quotes / cards may split when long; small ones still stay whole via orphans/widows */
+    blockquote, .pullquote, .pullquote-swiss, .highlight-card, .highlight-swiss { break-inside: auto !important; }
+    .pullquote, .pullquote-swiss { padding-top: 5mm !important; padding-bottom: 5mm !important; margin-top: 4mm !important; margin-bottom: 4mm !important; }
+    .img-row, .img-strip-wrap { margin-top: 3mm !important; margin-bottom: 3mm !important; }
+    p { orphans: 2; widows: 2; }
+  }
+  @media print {
+    figure img, .figure-card img, img { max-height: 54mm !important; }
+    .img-strip { display: grid !important; grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+    .img-strip .figure-card { flex: none !important; }
+    .img-strip img, .img-row img { max-height: 34mm !important; }
+  }
+  @media print {
+    /* heading followed directly by an unsplittable media block: don't drag the heading along */
+    .section-header:has(+ .figure-card), .section-header:has(+ .img-row), .section-header:has(+ .media-embed),
+    h2:has(+ .figure-card), h2:has(+ .img-row), h2:has(+ .media-embed),
+    .section-number:has(+ h2 + .figure-card) { break-after: auto !important; }
+  }
+  @media print { figure img, .figure-card img, img { max-height: 50mm !important; } .section-header .section-number { font-size: 20px !important; } }
+  @media print { .section-header + .figure-card img, h2 + .figure-card img { max-height: 38mm !important; } }
+  @media print { .section-header .section-number { display: inline-block !important; margin: 0 4mm 0 0 !important; } .section-header h2 { display: inline !important; } .section-header { margin-bottom: 3mm !important; } .figure-card { margin-top: 2mm !important; } }
+  @media print { h3 + .figure-card img { max-height: 38mm !important; } .hc-group { padding: 2mm 0 !important; } .hc-group .hc-bar { height: 10px !important; } .hc-bars { gap: 3px !important; } .hc-legend { margin-bottom: 3mm !important; } .hc-title { margin-bottom: 3mm !important; } .hc-row { padding: 1mm 0 !important; } .hc-bar { height: 13px !important; } }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="toc-scrim" id="toc-scrim"></div>
+<nav class="toc" id="toc">
+  <button class="toc-toggle" id="toc-toggle" aria-label="Toggle table of contents">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 4h14M2 9h10M2 14h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+  </button>
+  <div class="toc-panel" id="toc-panel">
+    <div class="toc-header">目录</div>
+    <a class="toc-item" href="#s-01"><span class="toc-num">01</span>先说清楚这是什么</a>
+<a class="toc-item" href="#s-02"><span class="toc-num">02</span>五句话读懂这篇</a>
+<a class="toc-item" href="#s-03"><span class="toc-num">03</span>当年为什么没人研究「有意识的目标」</a>
+<a class="toc-item" href="#s-04"><span class="toc-num">04</span>核心发现：越难越好，越具体越好</a>
+<a class="toc-item" href="#s-05"><span class="toc-num">05</span>和期望理论、社会认知理论的关系</a>
+<a class="toc-item" href="#s-06"><span class="toc-num">06</span>目标通过哪四条路起作用</a>
+<a class="toc-item" href="#s-07"><span class="toc-num">07</span>什么情况下目标更管用：承诺</a>
+<a class="toc-item" href="#s-08"><span class="toc-num">08</span>反馈，以及对控制理论的批评</a>
+<a class="toc-item" href="#s-09"><span class="toc-num">09</span>任务复杂时要换一种目标</a>
+<a class="toc-item" href="#s-10"><span class="toc-num">10</span>个人目标是外部激励的「中转站」</a>
+<a class="toc-item" href="#s-11"><span class="toc-num">11</span>满意感的悖论</a>
+<a class="toc-item" href="#s-12"><span class="toc-num">12</span>用到实际工作里</a>
+<a class="toc-item" href="#s-13"><span class="toc-num">13</span>新方向与局限</a>
+<a class="toc-item" href="#s-14"><span class="toc-num">14</span>结论</a>
+<a class="toc-item" href="#s-15"><span class="toc-num">15</span>原文与参考文献</a>
+  </div>
+</nav>
+<div class="container">
+
+<div class="doc-chrome doc-line"><span class="dl-tag">目标设定</span><span class="dl-sep">·</span><span class="dl-tag">动机心理学</span><span class="dl-sep">·</span><span class="dl-tag">睡前读物</span><span class="dl-sep">·</span><span>中文精读 · 原文 Locke &amp; Latham, 2002</span><span class="dl-sep">·</span><span>2026.10.26</span><span class="dl-sep">·</span><span>约 25 分钟</span></div>
+
+<header class="hero">
+  <h1>目标为什么有用：Locke 与 Latham 的 35 年目标设定研究</h1>
+  <p class="hero-subtitle">具体且有难度的目标，为什么比「尽力而为」更有效</p>
+</header>
+<section class="section" id="s-01"><div class="section-number sn-sym"><span class="sn-side sn-l"><span class="sn-star s3">✦</span><span class="sn-star s2">✦</span><span class="sn-star s1">✦</span></span><span class="sn-num">01</span><span class="sn-side sn-r"><span class="sn-star s1">✦</span><span class="sn-star s2">✦</span><span class="sn-star s3">✦</span></span></div><h2>先说清楚这是什么</h2><p>这是 Edwin A. Locke（马里兰大学）和 Gary P. Latham（多伦多大学）2002 年 9 月发表在《American Psychologist》第 57 卷第 9 期（705–717 页）上的综述，题为 Building a Practically Useful Theory of Goal Setting and Task Motivation: A 35-Year Odyssey。两位作者把自己三十多年做的目标设定实验归纳成一套理论，讲目标怎么起作用、什么时候起作用、怎么用到工作里。</p>
+<p>PDF 每页都印着美国心理学会（APA）的版权声明，注明仅供个人使用、不得广泛传播。所以这个公开页面没有放全文译文，也没有转载原文的四张图；下面是按原文章节顺序写的中文精读，用我自己的话复述要点，数字都照原文核对过。想读原文请看<a href="https://med.stanford.edu/content/dam/sm/s-spire/documents/PD.locke-and-latham-retrospective_Paper.pdf">斯坦福提供的 PDF</a>，DOI 10.1037//0003-066X.57.9.705。</p></section><section class="section" id="s-02"><div class="section-number sn-sym"><span class="sn-side sn-l"><span class="sn-star s3">✦</span><span class="sn-star s2">✦</span><span class="sn-star s1">✦</span></span><span class="sn-num">02</span><span class="sn-side sn-r"><span class="sn-star s1">✦</span><span class="sn-star s2">✦</span><span class="sn-star s3">✦</span></span></div><h2>五句话读懂这篇</h2><ul><li><strong>具体且有难度的目标，带来的表现高于「尽力而为」。</strong> 目标越难，努力和成绩越高，直到能力到顶或人不再认这个目标。</li><li><strong>目标通过四条路起作用：</strong> 指引注意力、调动努力、延长坚持、促使人去找方法和策略。</li><li><strong>效果有前提：</strong> 人要认同目标（承诺），要有进度反馈，任务太复杂时要换成「学习目标」或拆成近期小目标。</li><li><strong>满意和成绩是反着来的：</strong> 定高目标的人做得最多，却最不容易满意，因为他们对「少一点」不满意。</li><li><strong>这套理论非常稳：</strong> 一百多种任务、四万多名被试、至少八个国家，时间跨度从 1 分钟到 25 年，结果都能重复。</li></ul></section><section class="section" id="s-03"><div class="section-number sn-sym"><span class="sn-side sn-l"><span class="sn-star s3">✦</span><span class="sn-star s2">✦</span><span class="sn-star s1">✦</span></span><span class="sn-num">03</span><span class="sn-side sn-r"><span class="sn-star s1">✦</span><span class="sn-star s2">✦</span><span class="sn-star s3">✦</span></span></div><h2>当年为什么没人研究「有意识的目标」</h2><p>上世纪五六十年代，北美心理学由行为主义主导，认为动机在人之外，就是奖励和惩罚。承认内部机制的驱力降低理论，也把它看作生理现象。McClelland 虽然主张存在成就需要（need for achievement）这类内在动机，但认为它们是潜意识的，只能用投射测验去测。几派人都不认可内省，于是「人有意识地调节自己的行为」这件事几乎没法研究。</p>
+<p>例外是 Ryan。他在 1970 年写道，人的行为显然会受有意识的目的、计划、意图和任务影响，并把这些称为第一层解释概念（first-level explanatory concepts），即大多数行为最直接的动机原因。更早，Lewin 等人研究过抱负水平（level of aspiration），但只把它当作结果变量；英国学者 Mace 在 1935 年最早比较了不同类型目标对任务表现的影响，却基本被忽视。</p>
+<p>Locke 和 Latham 的理论正是从 Ryan 的前提出发、靠自己的实验归纳出来的。他们给目标的定义是：行动所指向的对象或结果，例如在限定时间内达到某个熟练标准。作为工业与组织心理学家，他们关心的是工作任务上的绩效目标和绩效水平，而不是「去读研究生」「去体检」这类具体行动意图，后者是 Fishbein 和 Ajzen 等社会心理学家的领域。</p></section><section class="section" id="s-04"><div class="section-number sn-sym"><span class="sn-side sn-l"><span class="sn-star s3">✦</span><span class="sn-star s2">✦</span><span class="sn-star s1">✦</span></span><span class="sn-num">04</span><span class="sn-side sn-r"><span class="sn-star s1">✦</span><span class="sn-star s2">✦</span><span class="sn-star s3">✦</span></span></div><h2>核心发现：越难越好，越具体越好</h2><p>第一个问题是目标难度和表现的关系。Atkinson 曾发现任务难度和表现呈倒 U 形：中等难度时最卖力。但他没测个人目标，而且一旦测量了目标，这个结果就重复不出来。Locke 和 Latham 发现的是正向的线性关系：目标越难，努力和表现越高。元分析里目标难度的效应量 d 在 .52 到 .82 之间。只有当能力到了极限，或者人对过难的目标不再投入时，表现才会持平或下降。</p>
+<p>第二个问题是具体的难目标和组织里常说的「尽力而为」（do your best）比，哪个好。结果是前者稳定胜出，效应量 .42 到 .80。作者的说法很直接：让人尽力，人其实并不会尽力。因为「尽力」没有外部参照，每个人自己定义，可接受的表现范围很宽。目标具体本身不一定带来高表现，因为具体目标也有难有易；但在表现完全可控的情况下，具体目标能减少「到底要做到什么」的模糊，从而让表现更稳定。</p>
+<p>原文脚注还区分了几个词：任务难度和目标难度不是一回事；绩效目标（performance goal）指在任务上拿到的分数，比如三分钟解出多少个字谜；学习目标（learning goal）指为完成任务学会或想出多少种方法和策略。</p></section><section class="section" id="s-05"><div class="section-number sn-sym"><span class="sn-side sn-l"><span class="sn-star s3">✦</span><span class="sn-star s2">✦</span><span class="sn-star s1">✦</span></span><span class="sn-num">05</span><span class="sn-side sn-r"><span class="sn-star s1">✦</span><span class="sn-star s2">✦</span><span class="sn-star s3">✦</span></span></div><h2>和期望理论、社会认知理论的关系</h2><p>Vroom 1964 年的效价—工具性—期望理论（valence–instrumentality–expectancy theory）认为，行动的力量是三者相乘：预期满意度、相信表现能换来回报、相信努力能带来表现。按这个理论，期望越高表现越好；可难目标更难达成，成功期望更低，看起来和目标理论矛盾。</p>
+<p>Locke、Motowidlo 和 Bobko 1986 年的解释是区分「同一目标水平之内」和「不同目标水平之间」。目标难度固定时，期望越高表现越好，这正是期望理论默认的情形；跨不同目标水平比较，更高的目标对应更低的期望，却带来更高的表现。</p>
+<p>Bandura 的社会认知理论里没有这个矛盾，因为自我效能感（self-efficacy，即针对具体任务的信心）是在一整串可能的表现水平上测的。自我效能在目标理论里很重要：自己定目标时，效能感高的人定得更高；他们更认同别人分配的目标，更会找好策略，面对负面反馈也反应更积极。</p></section><section class="section" id="s-06"><div class="section-number sn-sym"><span class="sn-side sn-l"><span class="sn-star s3">✦</span><span class="sn-star s2">✦</span><span class="sn-star s1">✦</span></span><span class="sn-num">06</span><span class="sn-side sn-r"><span class="sn-star s1">✦</span><span class="sn-star s2">✦</span><span class="sn-star s3">✦</span></span></div><h2>目标通过哪四条路起作用</h2><p><strong>一是指引方向。</strong> 目标把注意力和努力引向相关的事，远离无关的事，在认知和行为上都如此。有学习目标的学生对相关段落看得更仔细、学得更好；在模拟驾驶任务里，人只在有目标的那几项指标上进步。</p>
+<p><strong>二是调动能量。</strong> 高目标比低目标带来更多努力，这在测功计这类体力任务、反复做加法这类简单认知任务、主观努力评分和生理指标上都得到了验证。</p>
+<p><strong>三是延长坚持。</strong> 允许人自己决定花多长时间时，难目标会让人坚持更久。不过时间和强度之间常有取舍：面对难目标，可以短时间内拼命干，也可以长时间慢慢干。截止时间紧，工作节奏就快，实验室和现场都是这样。</p>
+<p><strong>四是间接地促使人调用、发现或使用相关知识和策略。</strong> 作者总结了六条：</p>
+<ol><li>面对目标，人会自动调用已经掌握的相关技能。伐木工有了伐木目标，就直接用自己的伐木经验，不需要额外规划。</li><li>如果靠熟练技能达不到，人会从以往类似情境里借来技能。被要求提高装载量的卡车司机，自己改装卡车，好在去地磅前先估出重量。</li><li>任务是新的，人会刻意规划，制定策略。</li><li>自我效能高的人更可能找到有效策略。分配目标到产生效果之间可能有一段时滞，因为人在找方法。</li><li>任务对人来说很复杂时，「尽力而为」有时反而比具体的难绩效目标带来更好的策略。因为绩效目标会让人急于成功，乱找方法，学不到什么有效，造成评价压力和表现焦虑。解药是定具体而有挑战的学习目标，比如「找出若干种不同的策略」。</li><li>受过正确策略训练的人，有了具体的高绩效目标更会用这些策略；但策略本身不对时，难的结果目标反而比容易的目标表现更差。</li></ol></section><section class="section" id="s-07"><div class="section-number sn-sym"><span class="sn-side sn-l"><span class="sn-star s3">✦</span><span class="sn-star s2">✦</span><span class="sn-star s1">✦</span></span><span class="sn-num">07</span><span class="sn-side sn-r"><span class="sn-star s1">✦</span><span class="sn-star s2">✦</span><span class="sn-star s3">✦</span></span></div><h2>什么情况下目标更管用：承诺</h2><p>目标和表现的关系在人真正认同目标时最强。目标承诺（goal commitment）问卷的信度效度都很高。目标越难，承诺越关键，因为难目标要花更多力气、成功概率也更低。</p>
+<p>促进承诺的因素有两大类：让人觉得达成目标很重要，以及让人相信自己能做到。</p>
+<p><strong>让目标显得重要。</strong> 公开承诺会增强投入，大概因为这让行动关乎自己在他人和自己眼中的诚信。领导者描绘有感召力的愿景、给予支持，也能增强承诺。上级分配目标的正当权威本身就会形成一种要求。</p>
+<p><strong>参与定目标好不好。</strong> 一种看法是让下属参与制定目标，目标就是「自己的」，会更重要。Latham 的一系列研究发现，在目标难度相同时，参与制定和被分配的目标效果没有显著差别；Erez 的研究却得出相反结论。两人在 Locke 居中协调下合作查找原因，结论是：只要说明了目标的目的和理由，分配的目标和参与制定的一样有效；如果只是冷冰冰地下令「去做这个」，效果就明显差于参与制定。以客观指标衡量绩效的研究里，参与决策对绩效的元分析效应量只有 .11。</p>
+<p>后来的研究发现，参与的主要好处是认知上的，不是动机上的：它促进信息交流。在控制目标难度后，参与定目标本身没带来好处；但和别人一起制定任务策略的人，表现和自我效能都显著更高。</p>
+<p><strong>钱的作用。</strong> 金钱激励能提高承诺，但有条件。钱越多承诺越高；而且目标和激励方式会相互影响。目标很难时，只在达标才给奖金（任务加奖金制）反而可能伤害表现：一旦人发现拿不到奖金，个人目标和效能感都会下滑，表现跟着下降。如果目标中等难度，或者按表现计酬（比如计件）而不是按是否达标计酬，就不会出现这种下滑。</p>
+<p>Latham 还设计了一个「同理心盒子」（empathy box），帮管理者找出员工接受或拒绝某个难目标时预期的非金钱后果。在一项以减少偷窃为目标的研究里，当员工对诚实行为的效能感高时，改变他们对后果的预期显著减少了被盗物资。</p>
+<p><strong>提升自我效能。</strong> 领导者可以通过三种方式提高下属的效能感：给足培训让人积累成功经验；做榜样或找到对方能认同的榜样；用有说服力的沟通表达「你能做到」的信心，其中可以包括告诉对方达成目标的策略。变革型领导通过鼓舞人心的信息和激发思考来提升员工效能。</p></section><section class="section" id="s-08"><div class="section-number sn-sym"><span class="sn-side sn-l"><span class="sn-star s3">✦</span><span class="sn-star s2">✦</span><span class="sn-star s1">✦</span></span><span class="sn-num">08</span><span class="sn-side sn-r"><span class="sn-star s1">✦</span><span class="sn-star s2">✦</span><span class="sn-star s3">✦</span></span></div><h2>反馈，以及对控制理论的批评</h2><p>目标要有效，人需要看得到相对于目标的进度汇总。不知道自己做得怎么样，就没法调整努力的程度和方向，也没法调整策略。原文的例子是：目标是一天砍 30 棵树，不知道已经砍了几棵就无从判断是否在轨道上。发现落后时，人通常会加把劲或换个策略。目标加反馈比单有目标更有效，所以反馈是一个调节变量。</p>
+<p>控制理论（control theory）也强调目标和反馈，但作者认为它的前提站不住。它基于控制论工程里的机器模型，把动机来源说成像恒温器那样消除目标与表现差距的负反馈回路，等于暗示生物的自然状态是静止。作者说这实际上是早已被放弃的 Hull 驱力降低理论的机械版。机器没有内在动机，也没有自己的目标，它的「目标」是制造者的。而且减少差距是目标导向行为的结果，而不是原因。借用 Bandura 的话，目标设定首先是一个制造差距的过程：人达成一个目标后，通常会给自己定更高的目标，这是在制造而不是消除差距。动机既需要反馈，也需要前馈。</p></section><section class="section" id="s-09"><div class="section-number sn-sym"><span class="sn-side sn-l"><span class="sn-star s3">✦</span><span class="sn-star s2">✦</span><span class="sn-star s1">✦</span></span><span class="sn-num">09</span><span class="sn-side sn-r"><span class="sn-star s1">✦</span><span class="sn-star s2">✦</span><span class="sn-star s3">✦</span></span></div><h2>任务复杂时要换一种目标</h2><p>第三个调节变量是任务复杂度。任务越复杂、所需技能还没变成自动化时，目标的效果就越依赖能否找到合适策略；人和人在这方面差别很大，所以复杂任务上的效应量更小。元分析显示，目标难度效应在最复杂的任务上是 .48，最简单的任务上是 .67；具体难目标对比「尽力而为」，最复杂任务上是 .41，最简单任务上是 .77。</p>
+<p>复杂任务上人用的策略更多样，所以策略指标往往比目标难度更能预测表现，而且目标和策略常有交互：用对策略时，目标效果最强。</p>
+<p>Kanfer 和 Ackerman 1989 年在空中交通管制模拟（一个高度复杂的任务）里发现，绩效结果目标反而妨碍了人学习完成任务所需的知识，让人「尽力而为」时表现更好。但 Winters 和 Latham 1996 年指出，问题出在目标的类型，而不是理论本身：改成具体的难学习目标后，高目标在复杂任务上的表现显著好于「尽力而为」。</p>
+<p>另一个帮助是近期目标（proximal goals）。Latham 和 Seijts 1999 年用商业模拟游戏发现，只设远期目标时还不如「尽力而为」；但在远期结果目标之外加上近期结果目标，自我效能和利润都显著高于另外两种情况。在动态环境里，要主动找反馈、快速反应。Dorner 指出，动态任务上的错误往往是因为没把远期目标拆好；近期目标能改善 Frese 和 Zapf 所说的错误管理（error management），关于错误的及时反馈能让人判断自己对现实的理解是否对得上目标的要求。</p></section><section class="section" id="s-10"><div class="section-number sn-sym"><span class="sn-side sn-l"><span class="sn-star s3">✦</span><span class="sn-star s2">✦</span><span class="sn-star s1">✦</span></span><span class="sn-num">10</span><span class="sn-side sn-r"><span class="sn-star s1">✦</span><span class="sn-star s2">✦</span><span class="sn-star s3">✦</span></span></div><h2>个人目标是外部激励的「中转站」</h2><p>Locke 把个人目标（含目标承诺）和自我效能称为动机枢纽（motivation hub），也就是真正发生作用的地方。它们往往是行动最直接、有意识的动机来源，因此可以中介外部激励的效果。</p>
+<p>例如，被分配的目标之所以起作用，是通过人为此给自己定下的个人目标和效能感。原文图 1 画的就是分配目标难度、自定目标难度、自我效能和表现之间的关系（图改编自两人 1990 年的专著，这里不转载）。作者特别指出：只是分配一个有挑战的目标，就能提高效能感，因为这相当于领导者在暗示「我相信你做得到」；没有分配目标时，自定目标和效能感的相关更高。</p>
+<p>但并不是所有激励研究都发现了这种中介：Wood、Atkins 和 Bright 1999 年发现，奖金效果是通过工具性或结果预期中介的，而不是目标和效能。只给反馈不给目标时，反馈的效果通过人看到反馈后自己定的目标起作用；也有研究发现目标和效能共同中介了反馈效果。负面反馈之后，效能感尤其关键，它决定人接下来是调高还是调低目标。</p>
+<p>参与决策的好处虽然主要在认知上，但也有研究发现，被允许参与制定目标的员工定了更高的目标、表现也更好，目标越高表现越高。还有研究发现，愿景型领导对员工表现的影响也是经由目标和效能感中介的。</p></section><section class="section" id="s-11"><div class="section-number sn-sym"><span class="sn-side sn-l"><span class="sn-star s3">✦</span><span class="sn-star s2">✦</span><span class="sn-star s1">✦</span></span><span class="sn-num">11</span><span class="sn-side sn-r"><span class="sn-star s1">✦</span><span class="sn-star s2">✦</span><span class="sn-star s3">✦</span></span></div><h2>满意感的悖论</h2><p>目标同时是要追求的结果，也是评判满意与否的标准。说自己要达成 X，就意味着达不到 X 不会满意。所以目标是满意与不满的分界点：单次来看，超出目标越多越满意，差得越多越不满；多次来看，成功次数越多，总体越满意。</p>
+<p>悖论在于：产出最多的人，也就是定难目标的人，为什么最不满意？答案就在问题里：他们做得多，正是因为对少的结果不满意。他们的满意门槛定得高。</p>
+<p>那人为什么还愿意定高目标？因为达成高目标能带来许多心理和实际的好处。Mento、Locke 和 Klein 1992 年让商学院本科生估计拿 A、B、C 不同绩点的好处，学生列出四类：对表现的自豪、学业上的好处（如读研、奖学金）、未来好处（好工作、高起薪）和人生好处（职业成功）。目标越高，预期好处越多；而预期满意度正好相反：目标是 C 的学生平均预期满意度最高，目标是 A 的学生最低。原文图 2 呈现的就是这组关系。此外，具体有挑战的目标还能提升对任务的兴趣，帮人发现活动中有乐趣的部分。</p></section><section class="section" id="s-12"><div class="section-number sn-sym"><span class="sn-side sn-l"><span class="sn-star s3">✦</span><span class="sn-star s2">✦</span><span class="sn-star s1">✦</span></span><span class="sn-num">12</span><span class="sn-side sn-r"><span class="sn-star s1">✦</span><span class="sn-star s2">✦</span><span class="sn-star s3">✦</span></span></div><h2>用到实际工作里</h2><p><strong>绩效评估。</strong> 为自己的行为指标定目标的工程师和科学家，后来的表现好于被要求「尽力而为」的同事。有工会的电信员工在设定具体高目标时，表现和对评估过程的满意度都很高，自我效能与后续表现正相关。目标越高，评估结果越好。</p>
+<p><strong>生产率和成本。</strong> 大量研究表明具体难目标能显著提高生产率。伐木工砍了更多树；有工会的伐木卡车司机在被分配目标后，装载量从法定允许重量的 60% 提高到 90%，9 个月为公司省了 25 万美元（原文图 3 就是这项研究的装载率曲线）。后来一项研究给司机定下增加每日往返木材厂趟数的目标，18 周省了 270 万美元。打字员有了具体高目标，不论目标是分配的还是参与制定的，表现都提高了。一项基于 Dun's Business Rankings 的企业调查发现，目标设定和公司盈利能力显著相关。</p>
+<p><strong>招聘选拔。</strong> Latham 等人 1980 年开发了情境面试（situational interview）：根据岗位分析给求职者设计情境，每道题都包含一个两难，考察求职者面对这种情况时打算怎么做，也就是他的目标或意图。元分析显示情境面试的效标关联效度很高，有研究认为它的平均效度高于其他所有面试形式。</p>
+<p><strong>工作中的自我调节。</strong> 出勤是工作表现的前提。Frayne 和 Latham 1987 年为有工会的州政府雇员设计了自我调节培训：为出勤定具体高目标，留意环境中哪些因素帮助或阻碍目标，并为进步设定奖励、为退步设定惩罚。培训不仅帮他们应对来上班时的个人和社交障碍，还提高了自我效能，效能的提升与之后出勤的提升显著相关。三个月后，培训组出勤显著高于对照组；九个月的追踪显示效果保持住了。对照组后来接受同样培训，三个月后出勤和效能感升到了同样水平。</p>
+<p>类似地，为同伴评价定了具体高目标、并接受言语自我指导训练的 MBA 学生，团队合作技能更好。心理练习（mental practice）是不动身体、在头脑里有指导地演练任务；在一项改善主管与工会沟通能力的研究中，接受心理练习加目标设定训练的主管，六个月后自我效能显著高于对照组，而效能与目标承诺和实际沟通技能显著相关。</p>
+<p><strong>高绩效循环。</strong> 这些研究催生了高绩效循环（high-performance cycle）模型：高目标带来高表现，高表现带来认可、晋升等回报，回报带来高满意度和更高的效能感，人于是敢定更高的目标。这个模型解释了心理学家长期困惑的一件事：工作满意度和之后的生产率为什么没有直接关系。在这个循环里，回报与表现相称时，高满意是高表现的结果而不是原因；满意度对行动的影响是间接的，只有当它带来组织承诺、这种承诺指向具体有挑战的目标，并且前面那些调节因素都考虑到时，满意才会转化成表现。</p>
+<p>目标设定也成功用于运动、健康管理等非工作领域，适用于任何需要自我调节的活动。</p></section><section class="section" id="s-13"><div class="section-number sn-sym"><span class="sn-side sn-l"><span class="sn-star s3">✦</span><span class="sn-star s2">✦</span><span class="sn-star s1">✦</span></span><span class="sn-num">13</span><span class="sn-side sn-r"><span class="sn-star s1">✦</span><span class="sn-star s2">✦</span><span class="sn-star s3">✦</span></span></div><h2>新方向与局限</h2><p><strong>目标冲突。</strong> 组织目标和个人目标有时冲突，比如经理的奖金更多取决于下属的表现而不是整个组织的表现。目标冲突如果引发互相矛盾的行动倾向，就会损害表现。有研究发现，个人的具体难目标和团队最大化绩效的目标一致时，团队表现提高；不一致时，个人目标会拖累团队。</p>
+<p><strong>学习目标和绩效目标并用。</strong> 复杂任务上学习目标可能更好，但几乎没有研究同时使用两者。Harackiewicz 等人 1997 年对大学生的研究发现，绩效目标提高了成绩但不影响兴趣，学习目标提高了兴趣但不影响成绩。前者和 Dweck 认为绩效目标对各种教育结果都有害的观点相反。</p>
+<p><strong>目标与冒险。</strong> 组织要冒险才能保持竞争力。前景理论（prospect theory）和目标理论一样强调参照点，但没有纳入抱负水平的概念。有研究发现，在电脑游戏里难的绩效目标让人选更冒险的策略，也提高了表现；当然高风险策略有时结果更差，什么条件下更好或更差还需要研究。</p>
+<p><strong>人格。</strong> 一个问题是目标和效能感是否中介了人格的作用。作者先提醒，人格测验分数的含义本身有争议：如果特质只是过去行为的总结，它能预测但不能解释行为；如果把特质看作底层动机的反映，才算解释。不管怎么看，多项研究发现目标和效能中介了人格对工作表现的影响：控制自定目标难度后，问卷测得的成就动机和表现的关系就消失了；尽责性对销售业绩的影响部分经由目标和目标承诺；目标取向对学生成绩的影响经由目标和效能。</p>
+<p>另一个问题是目标是否比特质更能预测行为。有综述认为绩效目标是一个「强变量」，会掩盖人格差异；有研究发现目标比成就需要更能预测表现和满意度。Dweck 等人区分了学习目标取向（LGO）和绩效目标取向（PGO），前者在学业上表现更好。工业组织心理学里，PGO 被测成「想要稳妥或容易的成功以获得表扬」，目标理论本来就预测这种取向表现差。Seijts 和 B. W. Latham 2001 年发现，PGO 高的人只要被分配了具体的难学习目标，表现就和 LGO 高的人一样，即分配的目标能抵消目标取向的影响。另一项弹珠机实验也表明高目标会形成「强情境」：不论成就需要高低，配上强调绩效取向理由的具体高绩效目标，带来的内在动机更高；没有说明目的时，强调学习取向的具体高目标带来的内在兴趣最高。</p>
+<p><strong>目标与潜意识动机。</strong> McClelland 曾和 Locke 等人合作检验两者关系。在印刷业创业者中，用主题统觉测验（TAT，一种投射测验）测的成就需要，与企业绩效既无同期关系也无纵向关系，与创业者自定目标也无关；而目标效应在两种分析里都高度显著。Howard 和 Bray 在 AT&T 做了 25 年的管理者追踪，与 McClelland 合作从 TAT 构建了领导动机模式分数，补充数据、调整计分后重新分析，结果这个分数与晋升次数无显著关系；而「抱负」显著预测了 25 年里的晋升次数。Howard 说抱负因子的核心只是一道面试题：「你想往上升几级？」这其实就是管理者有意识的晋升目标，而它和动机模式无关。作者据此给出两个暂定结论：即使在很长时间跨度上，有意识的目标可能比潜意识动机更可靠、更直接地联系着行动；成就动机的有意识和潜意识部分互不相关。</p>
+<p>尽管如此，作者承认潜意识储存着大量当下意识不到的知识和价值，人可能在不清楚动机的情况下行动，缺少对潜意识的关注是目标理论的一个局限。19 世纪的维尔茨堡学派就已表明，分配的任务可以在人不知情时影响之后的行动。需要研究潜意识对目标的影响，以及目标如何调动潜意识中的知识；已有研究发现难目标会自动加快信息处理速度。不过理论的立场是：不论潜意识如何，有意识的动机都会影响表现和满意度，对那些选择有目的、主动行动的人尤其如此。</p></section><section class="section" id="s-14"><div class="section-number sn-sym"><span class="sn-side sn-l"><span class="sn-star s3">✦</span><span class="sn-star s2">✦</span><span class="sn-star s1">✦</span></span><span class="sn-num">14</span><span class="sn-side sn-r"><span class="sn-star s1">✦</span><span class="sn-star s2">✦</span><span class="sn-star s3">✦</span></span></div><h2>结论</h2><p>原文图 4 总结了目标理论的要素和高绩效循环。目标理论和社会认知理论完全相容，都重视有意识的目标和自我效能，差别在重点和范围：目标理论关注有效目标的核心属性，包括具体性和难度，个人、团队和组织层面的效果，学习目标与绩效目标的正确使用，中介和调节因素，目标作为其他激励的中介，以及目标来源（分配、自定、参与制定）的影响，主要针对工作场景。社会认知理论则主要研究自我效能本身，也涉及模仿、认知发展、道德判断、语言发展等。</p>
+<p>目标设定的效果非常可靠。重复不出来，通常是做错了：目标和绩效指标对不上、没给反馈、没取得承诺、没测人自己定的目标、没传授任务知识、该用学习目标时用了绩效目标、环境不确定时没设近期目标，或者目标难度的范围不够大。</p>
+<p>在推广性上，具体难目标已在一百多种任务、四万多名被试、至少八个国家的实验室、模拟和现场研究中被证明能提高表现；因变量包括数量、质量、时间、成本、工作行为等；时间跨度从 1 分钟到 25 年；对个人、团队、组织单位乃至整个组织都适用；实验、准实验和相关研究都得到了效果；无论目标是分配的、自定的还是参与制定的。作者据此认为，目标设定理论是组织心理学里最有效、最实用的员工动机理论之一。</p>
+<p>全文最后一句是一个反问：心理学家是不是该认真对待意识，包括有意识的动机了？</p></section><section class="section refs" id="s-15"><div class="section-number sn-sym"><span class="sn-side sn-l"><span class="sn-star s3">✦</span><span class="sn-star s2">✦</span><span class="sn-star s1">✦</span></span><span class="sn-num">15</span><span class="sn-side sn-r"><span class="sn-star s1">✦</span><span class="sn-star s2">✦</span><span class="sn-star s3">✦</span></span></div><h2>原文与参考文献</h2><p>原文：Locke, E. A., & Latham, G. P. (2002). Building a practically useful theory of goal setting and task motivation: A 35-year odyssey. American Psychologist, 57(9), 705–717. 原文共引用约 150 篇文献，完整列表请看<a href="https://med.stanford.edu/content/dam/sm/s-spire/documents/PD.locke-and-latham-retrospective_Paper.pdf">原文 PDF</a> 第 714–717 页。</p>
+<p>本页是中文精读，不是译文，版权归原作者与 APA 所有。</p></section>
+<div class="divider-dot">· · ·</div>
+<footer><p>归藏 Page · Built with constrained HTML</p></footer>
+
+</div>
+
+
+<script>
+(function(){
+  const toggle = document.getElementById('toc-toggle');
+  const panel = document.getElementById('toc-panel');
+  const toc = document.getElementById('toc');
+  const scrim = document.getElementById('toc-scrim');
+  const narrow = window.matchMedia('(max-width: 1024px)');
+  let open = false;
+  function setOpen(v) {
+    open = v;
+    toc.classList.toggle('toc-open', v);
+    document.documentElement.classList.toggle('toc-is-open', v);
+    toggle.setAttribute('aria-expanded', String(v));
+  }
+  toggle.addEventListener('click', (e) => { e.stopPropagation(); setOpen(!open); });
+  if (scrim) scrim.addEventListener('click', () => setOpen(false));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && open) setOpen(false); });
+  panel.addEventListener('click', (e) => {
+    // On narrow screens the drawer covers the text, so close it after jumping;
+    // on wide screens it sits beside the text and can stay open.
+    if (e.target.closest('.toc-item') && narrow.matches) setOpen(false);
+  });
+  // Scroll spy
+  const sections = document.querySelectorAll('.section[id]');
+  const links = document.querySelectorAll('.toc-item');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('toc-active'));
+        const active = panel.querySelector('a[href="#'+entry.target.id+'"]');
+        if (active) active.classList.add('toc-active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => observer.observe(s));
+})();
+</script>
+
+<div class="hf-fab">
+  <button class="hf-fab-btn" id="hf-settings-toggle" type="button" title="设置" aria-haspopup="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></button>
+  <div class="hf-dropdown" id="hf-settings-dropdown">
+    <div class="hf-dropdown-label">配色</div>
+    <div class="hf-swatches"><button type="button" class="hf-swatch active" data-accent="#c45a3c" data-accent-bright="" data-accent-on="#ffffff" data-vars="{}" data-scheme="light" style="background:#c45a3c" title="Terracotta" aria-label="Terracotta"></button><button type="button" class="hf-swatch" data-accent="#3d6b4f" data-accent-bright="" data-accent-on="#ffffff" data-vars="{&quot;--bg&quot;:&quot;#eff3ee&quot;,&quot;--bg-card&quot;:&quot;#e2e9e0&quot;,&quot;--bg-quote&quot;:&quot;#d9e2d6&quot;,&quot;--border&quot;:&quot;#c3cfc0&quot;,&quot;--border-light&quot;:&quot;#d6dfd3&quot;,&quot;--accent-ink&quot;:&quot;#3d6b4f&quot;}" data-scheme="light" style="background:#3d6b4f" title="Forest" aria-label="Forest"></button><button type="button" class="hf-swatch" data-accent="#3f4d8c" data-accent-bright="" data-accent-on="#ffffff" data-vars="{&quot;--bg&quot;:&quot;#f0f1f7&quot;,&quot;--bg-card&quot;:&quot;#e3e5f0&quot;,&quot;--bg-quote&quot;:&quot;#d9dcea&quot;,&quot;--border&quot;:&quot;#c4c8db&quot;,&quot;--border-light&quot;:&quot;#d8dbe8&quot;,&quot;--accent-ink&quot;:&quot;#3f4d8c&quot;}" data-scheme="light" style="background:#3f4d8c" title="Indigo" aria-label="Indigo"></button><button type="button" class="hf-swatch" data-accent="#d9a05b" data-accent-bright="" data-accent-on="#1b1b1d" data-vars="{&quot;--bg&quot;:&quot;#1b1b1d&quot;,&quot;--bg-card&quot;:&quot;#26262a&quot;,&quot;--bg-quote&quot;:&quot;#2d2d32&quot;,&quot;--fg&quot;:&quot;#e9e6df&quot;,&quot;--fg-secondary&quot;:&quot;#bdb9b0&quot;,&quot;--fg-tertiary&quot;:&quot;#8f8b83&quot;,&quot;--bg-highlight&quot;:&quot;#e9e6df&quot;,&quot;--fg-highlight&quot;:&quot;#1b1b1d&quot;,&quot;--border&quot;:&quot;#3d3d42&quot;,&quot;--border-light&quot;:&quot;#313136&quot;,&quot;--accent-ink&quot;:&quot;#e0ac6c&quot;}" data-scheme="dark" style="background:#2a2a2d" title="Charcoal (Dark)" aria-label="Charcoal (Dark)"></button></div>
+    <div class="hf-dropdown-divider"></div>
+    <div class="hf-dropdown-label">字体</div>
+    <div class="hf-font-options"><button type="button" class="hf-font-option active" data-var="--font-serif" data-family="'Noto Serif SC','Source Han Serif SC','Songti SC',Georgia,serif" data-google="Noto+Serif+SC:wght@400;600;700"><span class="font-preview" style="font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',Georgia,serif">衬线 Aa</span><span class="font-name">Noto Serif SC</span></button><button type="button" class="hf-font-option" data-var="--font-serif" data-family="'Playfair Display','Noto Serif SC','Songti SC',Georgia,serif" data-google="Playfair+Display:wght@400;600;700"><span class="font-preview" style="font-family:'Playfair Display','Noto Serif SC','Songti SC',Georgia,serif">衬线 Aa</span><span class="font-name">Playfair Display</span></button><button type="button" class="hf-font-option" data-var="--font-serif" data-family="'Source Serif 4','Noto Serif SC','Songti SC',Georgia,serif" data-google="Source+Serif+4:wght@400;600;700"><span class="font-preview" style="font-family:'Source Serif 4','Noto Serif SC','Songti SC',Georgia,serif">衬线 Aa</span><span class="font-name">Source Serif 4</span></button></div>
+  </div>
+</div>
+<script>(function () {
+  'use strict';
+
+  // Theme options live in assets/themes.json; render.mjs writes the controls
+  // into the HTML statically, so this file only wires up behaviour.
+  const style = document.documentElement.dataset.hfStyle || 'swiss';
+  const $ = (id) => document.getElementById(id);
+  const STORE = 'hf-page-prefs:' + style;
+
+  // ── Helpers ──
+  function closeAllDropdowns() {
+    document.querySelectorAll('.hf-dropdown.open').forEach(d => d.classList.remove('open'));
+  }
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.hf-dropdown') && !e.target.closest('.hf-fab-btn')) {
+      closeAllDropdowns();
+    }
+  });
+
+  // PDF / long-image export is no longer in the page: the model runs scripts/export.mjs.
+
+  document.getElementById('hf-settings-toggle').addEventListener('click', (e) => {
+    e.stopPropagation();
+    const dd = document.getElementById('hf-settings-dropdown');
+    const wasOpen = dd.classList.contains('open');
+    closeAllDropdowns();
+    if (!wasOpen) dd.classList.add('open');
+  });
+
+  // ── Color switching ──
+  // Old bug: magazine CSS only used --accent in ~10 low-visibility places
+  // (hover states, a 10px label), so switching looked like "nothing happens".
+  // style-magazine.css now routes section numbers, quote rules, list markers,
+  // highlight labels etc. through --accent; this just sets the variables.
+  function applyAccent(sw) {
+    document.querySelectorAll('.hf-swatch').forEach(s => s.classList.toggle('active', s === sw));
+    const root = document.documentElement;
+    root.style.setProperty('--accent', sw.dataset.accent);
+    if (sw.dataset.accentBright) root.style.setProperty('--accent-bright', sw.dataset.accentBright);
+    else root.style.removeProperty('--accent-bright');
+    root.style.setProperty('--accent-on', sw.dataset.accentOn || '#ffffff');
+    // Background/surface palette follows the colour theme (tinted bg; dark theme = dark bg).
+    // Clear vars set by the previous swatch first so stylesheet defaults come back.
+    (root.dataset.hfVars || '').split(',').filter(Boolean).forEach(k => root.style.removeProperty(k));
+    let vars = {};
+    try { vars = JSON.parse(sw.dataset.vars || '{}'); } catch (_) {}
+    Object.entries(vars).forEach(([k, v]) => root.style.setProperty(k, v));
+    root.dataset.hfVars = Object.keys(vars).join(',');
+    root.dataset.scheme = sw.dataset.scheme || 'light';
+    root.style.colorScheme = root.dataset.scheme;
+  }
+  // ── Font switching ──
+  // Old bug: Google Fonts URL was built from the display name with weights 200–800;
+  // "Noto Serif"/"Source Serif" are not real family names and Playfair has no 200,
+  // so the CSS request 400'd and the font never changed. Each option now carries
+  // an exact Google Fonts query (themes.json).
+  function applyFont(opt) {
+    document.querySelectorAll('.hf-font-option').forEach(o => o.classList.toggle('active', o === opt));
+    document.documentElement.style.setProperty(opt.dataset.var || '--font-sans', opt.dataset.family);
+    const q = opt.dataset.google;
+    if (q && !document.querySelector(`link[data-hf-font="${q}"]`)) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.dataset.hfFont = q;
+      link.href = `https://fonts.googleapis.com/css2?family=${q}&display=swap`;
+      document.head.appendChild(link);
+    }
+  }
+  function save() {
+    try {
+      const sw = document.querySelector('.hf-swatch.active');
+      const fo = document.querySelector('.hf-font-option.active');
+      localStorage.setItem(STORE, JSON.stringify({ accent: sw && sw.dataset.accent, font: fo && fo.dataset.family }));
+    } catch (e) {}
+  }
+  document.querySelectorAll('.hf-swatch').forEach(sw => sw.addEventListener('click', (e) => { e.stopPropagation(); applyAccent(sw); save(); }));
+  document.querySelectorAll('.hf-font-option').forEach(opt => opt.addEventListener('click', (e) => { e.stopPropagation(); applyFont(opt); save(); }));
+  try {
+    const prefs = JSON.parse(localStorage.getItem(STORE) || 'null');
+    if (prefs) {
+      const sw = [...document.querySelectorAll('.hf-swatch')].find(s => s.dataset.accent === prefs.accent);
+      if (sw && !sw.classList.contains('active')) applyAccent(sw);
+      const fo = [...document.querySelectorAll('.hf-font-option')].find(o => o.dataset.family === prefs.font);
+      if (fo && !fo.classList.contains('active')) applyFont(fo);
+    }
+  } catch (e) {}
+
+  // ── Make lazy images print/export-safe ──
+  // loading="lazy" images below the fold are blank in PDF/long-image exports.
+  function eagerImages() { document.querySelectorAll('img[loading="lazy"]').forEach(i => { i.loading = 'eager'; }); }
+  window.addEventListener('beforeprint', eagerImages);
+  if (document.readyState === 'complete') setTimeout(eagerImages, 800);
+  else window.addEventListener('load', () => setTimeout(eagerImages, 800));
+
+  // ── Editable text ──
+  const editableSelectors = [
+    '.hero h1',
+    '.hero-subtitle',
+    '.hero-cover h1',
+    '.hero-cover .hero-subtitle',
+    '.section h2',
+    '.section h3',
+    '.section p',
+    '.section li',
+    '.pullquote p',
+    '.pullquote-swiss .pq-content p',
+    '.highlight-card p',
+    '.highlight-swiss .hl-body p',
+    '.def-card-body',
+    '.def-card-swiss .dc-body',
+    '.process-title',
+    '.process-desc',
+    '.aside-content p',
+    '.summary-item-title',
+    '.summary-item-desc',
+    'blockquote p',
+    'td',
+  ];
+  editableSelectors.forEach(sel => {
+    document.querySelectorAll(sel).forEach(el => {
+      el.setAttribute('contenteditable', 'true');
+      el.setAttribute('spellcheck', 'false');
+    });
+  });
+})();
+</script>
+</body>
+</html>
