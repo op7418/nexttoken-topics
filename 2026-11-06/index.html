@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>权重能读，系统会破，AI 开始付现实账单</title>
+<title>算力撞上现实，Agent 接住工作</title>
 <style>/* GZ:TOKENS:START · guizang-design v0.1.0 生成，不要手改；改设计请改 guizang-design 后运行 scripts/sync-skill.mjs */
 :root{
   --font-display:'Inter','Noto Sans SC','PingFang SC','Hiragino Sans GB','Microsoft YaHei',system-ui,sans-serif;
@@ -1698,13 +1698,13 @@
   <div class="toc-panel" id="toc-panel">
     <div class="toc-header">目录</div>
     <a class="toc-item" href="#s-01"><span class="toc-num">01</span>本期主线</a>
-<a class="toc-item" href="#s-02"><span class="toc-num">02</span>权重空间编程：是真读得懂权重，还是会做 ML 研究？</a>
-<a class="toc-item" href="#s-03"><span class="toc-num">03</span>GPT-6 Cyber：漏洞研究从项目变成流水线</a>
-<a class="toc-item" href="#s-04"><span class="toc-num">04</span>AI 数据中心成了选票议题，OpenAI 开始付「社区成本」</a>
-<a class="toc-item" href="#s-05"><span class="toc-num">05</span>METR：AI 研发速度约翻倍，但独立报告也看不清关键证据</a>
-<a class="toc-item" href="#s-06"><span class="toc-num">06</span>Kimi K3.1 的隐藏评分规则：是训练污染，也是任务服从性的警报</a>
-<a class="toc-item" href="#s-07"><span class="toc-num">07</span>创作工具和公司：Notion、Canva、GPT Image、Gemini Omni</a>
-<a class="toc-item" href="#s-08"><span class="toc-num">08</span>速览</a>
+<a class="toc-item" href="#s-02"><span class="toc-num">02</span>AI 的政治账单：一张选票怎么传到 GPU 和股价</a>
+<a class="toc-item" href="#s-03"><span class="toc-num">03</span>Agent 的边界：模型放开手脚，Harness 保住约束</a>
+<a class="toc-item" href="#s-04"><span class="toc-num">04</span>能力增长的三张证据：权重、研发加速、评测可信度</a>
+<a class="toc-item" href="#s-05"><span class="toc-num">05</span>安全：同一个 Agent，也许正替你找洞，也替攻击者找钥匙</a>
+<a class="toc-item" href="#s-06"><span class="toc-num">06</span>生产线向代码和 Agent 集中，旧组织的利润留在哪里</a>
+<a class="toc-item" href="#s-07"><span class="toc-num">07</span>内容泛滥之后：机器人占评论，个人知识库重新值钱</a>
+<a class="toc-item" href="#s-08"><span class="toc-num">08</span>延伸速览</a>
 <a class="toc-item" href="#s-09"><span class="toc-num">09</span>脚注</a>
   </div>
 </nav>
@@ -1725,7 +1725,7 @@
   </div>
   <div class="doc-chrome-rule"></div>
   <div class="doc-chrome-meta">
-    <div class="cm-item"><span class="cm-key">author</span> <span class="cm-val">歸藏</span></div><div class="cm-dot"></div><div class="cm-item"><span class="cm-key">date</span> <span class="cm-val">2026.11.06</span></div><div class="cm-dot"></div><div class="cm-item"><span class="cm-key">reading</span> <span class="cm-val">约 18–23 分钟</span></div>
+    <div class="cm-item"><span class="cm-key">author</span> <span class="cm-val">歸藏</span></div><div class="cm-dot"></div><div class="cm-item"><span class="cm-key">date</span> <span class="cm-val">2026.11.06</span></div><div class="cm-dot"></div><div class="cm-item"><span class="cm-key">reading</span> <span class="cm-val">约 24–28 分钟</span></div>
   </div>
   <div class="doc-chrome-tags"><span class="chrome-tag">NEXT TOKEN</span><span class="chrome-tag">VOL. 09</span><span class="chrome-tag">2026.11.07</span></div>
 </div>
@@ -1734,81 +1734,110 @@
   <img class="hero-bg" src="assets/election-ai.jpg" alt="" />
   <div class="hero-overlay">
     <div class="hero-kicker">PODCAST-TOPICS — 2026.11.06</div>
-    <h1>权重能读，系统会破，AI 开始付现实账单</h1>
-    <p class="hero-subtitle">权重编程与 Linux 漏洞流水线 · 数据中心政治 · 研发加速与 Kimi 隐藏评分规则</p>
+    <h1>算力撞上现实，Agent 接住工作</h1>
+    <p class="hero-subtitle">选举—数据中心—股市 · Harness—插件—Siri · 权重—加速—可信度 · 安全—创作—内容分发</p>
   </div>
 </header>
 <section class="section" id="s-0"><h3>Next Token 播客选题 · 11/06</h3>
-<p>从 11/01 录完 #008 到 11/06 13:10（北京时间）的 X 收藏中筛出 5 条主线、1 组创作工具更新。深挖权重编程、AI 安全能力、政治反弹、研发加速和基准污染；Notion 与产品发布压成短段。每条标注【收藏】或【外部】，事实和推断分开。</p></section><section class="section" id="s-01"><div class="section-header"><div class="section-number">01</div><h2>本期主线</h2></div><div class="pullquote pullquote-swiss"><div class="pq-bar"></div><div class="pq-content"><p>这一周，AI 开始直接修改软件的<span class="accent-mark">底层</span>：小模型的权重、Linux 的漏洞；而真实世界也开始反向修改 AI 的进度：社区投票、职业重组，以及我们到底能不能相信榜单。</p></div></div>
-<ul><li><strong>权重空间编程</strong>：MIT CSAIL 报告 GPT-6 Astra 能直接读取、编辑神经网络权重；0.016% 的修改让 Qwen3.5-0.8B 数学分数大幅上升，但关键是修理循环输出，不是凭空注入能力。</li><li><strong>GPT-6 Cyber</strong>：OpenAI 把发现漏洞、验证、写利用和补丁串成流水线，花约 121 万美元验证 948 个 Linux 本地提权漏洞； Firefox 也发现 81 个新高危漏洞。</li><li><strong>政治开始收 AI 的账单</strong>：美国中期选举 44 项地方数据中心暂停提案通过 43 项；OpenAI 随后承诺自付电费和配套电网成本，并基本停止与公职人员签 NDA。</li><li><strong>METR 的加速评估</strong>：Anthropic 在「定义清楚的 tasks」上大概率以过去约两倍的速度进步，AI 可能贡献当前加速的多数；但关键证据大多被公司删去。</li><li><strong>Kimi K3.1 的隐藏规则</strong>：模型复述了没拿到的评分规则，且在被要求改规则时坚持旧规则；提示可能的训练污染，也说明 benchmark 成绩不能直接当成产品服从性。</li><li><strong>Notion 想做所有 Agent 的上下文系统</strong>：AI 使用 9 倍、MCP 60 倍；有人反驳「量涨了不等于体验好」。Canva 组织调整覆盖 22% 员工，创作工具则补齐 GIF、参考图与视频连续编辑。</li></ul>
-<div class="def-card def-card-swiss"><div class="dc-term"><span class="dc-label">术语</span>术语</div><div class="dc-body">素材窗口为 11/01 录完 #008 后至 11/06 13:10（北京时间）。书签列表是收藏时间排序、不含收藏时间字段，本页按原帖 <code>created_at</code> 筛周；实际检查了最新 199 条收藏，保留其中约 181 条窗口内帖子，去掉旧帖和已聊过的 #007/#008 主题。</div></div>
-<div class="summary-card"><div class="summary-label">录制先选</div><div class="summary-grid"><div class="summary-item"><div class="summary-item-title">权重编程</div><div class="summary-item-desc">新范式还是研究 Agent 的能力？</div></div><div class="summary-item"><div class="summary-item-title">AI 安全</div><div class="summary-item-desc">找漏洞的流水线，是否值得每代重跑？</div></div><div class="summary-item"><div class="summary-item-title">政治与能源</div><div class="summary-item-desc">为什么选票比安全讨论更快改变算力中心？</div></div><div class="summary-item"><div class="summary-item-title">研发加速</div><div class="summary-item-desc">METR 的 2 倍，到底有多少证据？</div></div><div class="summary-item"><div class="summary-item-title">隐藏规则</div><div class="summary-item-desc">模型听评分标准，还是听当前用户？</div></div></div></div></section><section class="section" id="s-02"><div class="section-header"><div class="section-number">02</div><h2>权重空间编程：是真读得懂权重，还是会做 ML 研究？</h2></div><p>MIT CSAIL 的 Rikiya Takehi、Jayden Teoh、Alex Zhang、Omar Khattab 11/02 发布研究报告《Sparks of Weight-Space Programming》。他们把「读权重」「修权重」「从零写权重」分开做了八组实验，全量日志已公开。它是博文和早期实验，不是同行评审论文。</p>
-<p>【外部】<a href="https://rikiyat.github.io/blog/weight-space-programming/">研究原文、实验设置和日志入口</a> ·【收藏】<a href="https://x.com/rikiyatakehi/status/2117313742891327994">第一作者发布帖</a> ·【收藏】<a href="https://x.com/op7418/status/2117459252721971606">歸藏的中文介绍</a></p>
-<figure class="figure-card"><img src="assets/weight-space.png" alt="MIT 权重空间编程研究总览" loading="lazy" style="border-radius:0" /><figcaption>MIT 权重空间编程研究总览</figcaption></figure>
-<p>图源：MIT CSAIL 研究页，Read / Fix / Improve 三类实验</p>
-<h3>先拆开三件不一样的事</h3>
-<ol><li><strong>读</strong>：给只有 17,253 个参数的小游戏策略网络，Astra 在没有工具、没有执行网络的情况下，把 Breakout、Pong、Pac-Man、Freeway 四个游戏都认对。对三个 716 万参数的小语言模型，只给中间 Transformer 层，允许 Python 分析但禁止运行模型，能识别训练语言并找出 copying heads。</li><li><strong>改</strong>：给一个卡在坡前的 171,664 参数控制网络，Astra 一次改 3.5% 权重，使测试从 0/256 变为 1024/1024 成功；从零写的小游戏网络也打败了部分 PPO 基线。</li><li><strong>修大模型</strong>：给 Qwen3.5-0.8B 的 Python notebook、训练集练习题和最多 50 次 forward pass，Astra 修改第 15、19 层 MLP 的 64 个输出方向，共 131,072 个权重，即 0.016%。没有梯度或训练循环。</li></ol>
-<figure class="table-wrap"><table><thead><tr><th>Qwen3.5-0.8B · 50 次 forward</th><th class="al-right">原版</th><th class="al-right">权重编辑后</th></tr></thead><tbody><tr><td>MATH-500</td><td class="al-right">7.9%</td><td class="al-right">48.1%</td></tr><tr><td>GSM8K</td><td class="al-right">13.8%</td><td class="al-right">67.1%</td></tr><tr><td>IFEval</td><td class="al-right">21.0%</td><td class="al-right">62.3%</td></tr><tr><td>触及 32,768 token 上限</td><td class="al-right">93.0%</td><td class="al-right">33.1%</td></tr></tbody></table></figure>
-<p>表：研究者自报数据；基础模型本身容易循环思考，修改后分数提升很大程度来自让它能把答案写完。</p>
-<h3>反方和边界：节目里不要直接说成「AI 会自我进化」</h3>
-<ul><li>Haseeb Qureshi 的概括更准确：Astra 找到并实现了已发表的可解释性方法，解决特定失败模式；这很酷，但不是 RSI 或「模型读心术」。研究作者之一 Alex Zhang 也解释，团队最初以为是不含循环修复的纯数学提升，后来确认 Astra 用了与 activation steering 相近的技巧。【收藏】<a href="https://x.com/hosseeb/status/2117380109355352166">Haseeb 评论</a> · <a href="https://x.com/a1zhang/status/2117364329133621614">作者补充</a></li><li>这项修改使用了工具和练习题反馈，不是「裸眼看穿 8 亿个数字」。真正只靠 raw weights、无工具的实验集中在小得多的网络。</li><li>对很少循环的 Gemma 3 270M，类似的编辑没有把 MATH-500 明显拉高。作者自己的结论是：<strong>可以消除遮住已有能力的局部障碍，不能凭空加入它原本没有的能力。</strong></li><li>对两个 Gemma 微调版本，只看权重无法分辨哪一个谄媚；允许观察 attention 后三中三。审计后门的设想还没有在这个实验里成立。</li><li>Simon Willison 在笔记本上跑 Qwen 3.8 27B，认对 Pac-Man、Pong、Breakout，认错 Freeway，每次约 45–65 分钟、四万级推理 token。Kimi K3.1 Pro 也认对 Breakout：不是只有 Astra 一家能做到，但离普遍实时改写大模型仍很远。【收藏】<a href="https://simonwillison.net/2026/Nov/3/qwen-can-interpret-model-weights/">Simon 的复现及评论</a></li></ul>
-<figure class="figure-card"><img src="assets/weight-results.jpg" alt="作者发布权重编程结果" loading="lazy" style="border-radius:0" /><figcaption>作者发布权重编程结果</figcaption></figure>
-<p>图源：@rikiyatakehi 的发布帖</p>
-<div class="def-card def-card-swiss"><div class="dc-term"><span class="dc-label">术语</span>讨论角度</div><div class="dc-body">真正新的部分是「通用模型把权重当成可以推理的对象」还是「一个很强 Agent 会自己选用可解释性工具」？不用等自我进化，如果以后交付模型时可以附一份「权重审计和定点修复报告」，AI 实验室、开源维护者的流程会怎样变？</div></div></section><section class="section" id="s-03"><div class="section-header"><div class="section-number">03</div><h2>GPT-6 Cyber：漏洞研究从项目变成流水线</h2></div><p>OpenAI 11/04 先公开 Linux 研究，11/05 发布驱动它的 GPT-6 Cyber。前半段是自动化研究系统，后半段是受限开放的安全模型；两件事不要混为普通 ChatGPT 更新。</p>
-<p>【外部】<a href="https://openai.com/index/a-thousand-fewer-paths-to-root/">Linux 研究全文</a> · <a href="https://openai.com/index/introducing-gpt-6-cyber/">GPT-6 Cyber 发布原文</a> ·【收藏】<a href="https://x.com/OpenAI/status/2118390190246879554">OpenAI 发布帖</a></p>
-<figure class="figure-card"><img src="assets/linux-root.png" alt="OpenAI A thousand fewer paths to root" loading="lazy" style="border-radius:0" /><figcaption>OpenAI A thousand fewer paths to root</figcaption></figure>
-<p>图源：OpenAI 研究原文题图</p>
-<h3>Linux 数字漏斗：948 到底是什么</h3>
-<ul><li>Scout agents 先选 5,034 个「低权限用户可触达」的审计目标，共 280 万行，约占 4,000 万行内核代码的 7%。</li><li>Analyst agents 12 小时产生 2,308 个候选；隔离 VM 内动态验证后剩 1,724 个，候选复现率 74.7%。</li><li>之后做出 291 个信息泄露 PoC，及 1,169 个本地权限提升 exploit；合并漏洞变体、做 948 个不同补丁，得到 <strong>948 个 distinct LPE 漏洞</strong>。</li><li>整轮 API 额度成本 1,213,430 美元，官方口径折合每个 1,279 美元。这个数不是补丁价格，也不是普通用户购买 Cyber 的价格。</li><li>10 天研究结束时，61 个 LPE 已有上游补丁、43 个有 staging patch、299 个正在公开讨论。这些并非全部由 OpenAI 发现或推动。下一轮 304 个 critical finding 已向维护者提交候选补丁。</li></ul>
-<p><strong>本地提权不等于匿名远程攻破。</strong> 攻击者先要有低权限本地账户；但未更新系统上，OpenAI 建议把这种账户按「对资源充足的攻击者而言近似 root」来防，配合及时更新和 Firecracker/gVisor 等隔离层。</p>
-<figure class="figure-card"><img src="assets/cyber.png" alt="GPT-6 Cyber 发布配图" loading="lazy" style="border-radius:0" /><figcaption>GPT-6 Cyber 发布配图</figcaption></figure>
+<p>覆盖 11/01 录完 #008 后至 11/06 13:30（北京时间）。重新分页检查了最新 199 条收藏，其中 187 条原帖在窗口内；另分页读完了歸藏本周 50 条帖子及回复。下面不是日更清单，而是从整周素材提炼出的六组问题。</p></section><section class="section" id="s-01"><div class="section-header"><div class="section-number">01</div><h2>本期主线</h2></div><div class="pullquote pullquote-swiss"><div class="pq-bar"></div><div class="pq-content"><p>模型正在往更<span class="accent-mark">底层</span>走：改权重、找漏洞、接管工作流；但它的上游已经撞上电费、政治和投资回报，下游则开始堵塞人的注意力。</p></div></div>
+<ul><li><strong>政治 → 数据中心 → 股市 → 算力去向</strong>：43/44 项地方暂停案通过、民主党拿下国会，随后美股 AI 交易急跌、OpenAI 主动提出承担电费和社区成本。连起来看，这是 AI Capex 第一次被地方选票通过算力建设传导到资本市场。</li><li><strong>从 Skill 到 Harness 到操作系统</strong>：DeepSeek 插件生态、MiniMax 的「少管判断、多管不变量」、Notion 的 agent 上下文、Siri 的 App Intents，指向同一件事：模型更强后，真正留下来的是上下文、权限、分发和验证。</li><li><strong>AI 自我改进，证据要分开看</strong>：权重编辑确实能修局部缺陷，METR 也给出研发加速约两倍的新评估；但 Kimi 隐藏测试和 METR 删节又提醒，能力、训练和审计不是一回事。</li><li><strong>AI 把网络攻防同时工业化</strong>：GPT-6 Cyber 找到 948 个 Linux 本地提权漏洞，币安新复盘却显示攻击者把内部 AI 工具当作横向跳板。发现漏洞很划算，保住内部工作流仍是新短板。</li><li><strong>创作成本下跌 ≠ 创作行业无事发生</strong>：GIF、视频、代码动画、Blender 都在缩短生产线，Canva 却重组 22% 员工；低成本生产把价值推向方向、质量控制和渠道。</li><li><strong>鱼灾、提示词库和内容分发</strong>：你的 B 站与抖音截图让「AI 内容泛滥」变成可观察的平台现场；当供给爆炸，编辑、筛选和可复用的个人上下文反而成了资产。</li></ul>
+<div class="def-card def-card-swiss"><div class="dc-term"><span class="dc-label">术语</span>时间与证据</div><div class="dc-body">所有摘要按原帖 <code>created_at</code> 筛周（逐条核对具体日期），收藏接口不提供收藏时间；截止 11/06 13:30。每条标明【收藏】【自己】或【外部】。官方自报数据、媒体归因和研究者的推测均分开叙述，不自动当作已独立测量的结果。</div></div>
+<div class="summary-card"><div class="summary-label">从整周收藏里选录音主线</div><div class="summary-grid"><div class="summary-item"><div class="summary-item-title">宏观链条</div><div class="summary-item-desc">选票改建设预期，财报放大 AI 估值重定价。</div></div><div class="summary-item"><div class="summary-item-title">Harness 边界</div><div class="summary-item-desc">交给模型判断，系统保管权限、上下文和验证。</div></div><div class="summary-item"><div class="summary-item-title">可信研发</div><div class="summary-item-desc">能改权重、能加速，更要证明它做得对。</div></div><div class="summary-item"><div class="summary-item-title">攻防双向</div><div class="summary-item-desc">Linux 漏洞流水线与币安内部 AI 跳板同框。</div></div><div class="summary-item"><div class="summary-item-title">生产与组织</div><div class="summary-item-desc">GIF、代码动画、Blender；Canva 却在重组。</div></div><div class="summary-item"><div class="summary-item-title">分发瓶颈</div><div class="summary-item-desc">鱼灾之后，个人知识与编辑能力更稀缺。</div></div></div></div></section><section class="section" id="s-02"><div class="section-header"><div class="section-number">02</div><h2>AI 的政治账单：一张选票怎么传到 GPU 和股价</h2></div><p>这不是「民主党赢了所以 AI 跌了」一句话。链条是：居民拒绝本地水电和税收成本 → 州与地方通过暂停和候选人承诺 → 算力 Capex 的建设期与回报率被重新估计 → 同日弱财报放大抛盘 → 厂商主动把社区补偿写进项目成本。</p>
+<h3>选票端：AI 变成了地方生活问题</h3>
+<p>The Verge 报道 44 个地方数据中心 moratorium 提案有 43 个通过。德州候任州长 Gina Hinojosa 支持在保障水、电和税收前暂停新批项目。民主党取得国会参众两院，但不同人对 AI 的边界并不一致：有的强调暂停与监管，有的只反本地数据中心。</p>
+<p>【外部】<a href="https://www.theverge.com/ai-artificial-intelligence/1026927/total-repudiation-the-blue-wave-is-about-to-hit-ai">The Verge：中期选举与 AI 政治</a> ·【收藏】<a href="https://x.com/AndrewCurran_/status/2118346666789249335">43–1 观察</a> · <a href="https://x.com/RepYassAnsari/status/2118054336077127797">Yassamin Ansari：全国监管主张</a></p>
+<figure class="figure-card"><img src="assets/election-ai.jpg" alt="美国中期选举与 AI 政治" loading="lazy" style="border-radius:0" /><figcaption>美国中期选举与 AI 政治</figcaption></figure>
+<p>图源：The Verge，投票站配图</p>
+<h3>市场端：预期反转了，但不是单因果实验</h3>
+<p>歸藏 11/06 00:08 发推关注「AI 领域和 AI 硬件全部暴跌」，并追帖提到开盘 30 分钟约 2 万亿美元蒸发。收盘后 NBC 报 Nasdaq 100 跌 6.3%、市值蒸发 2.3 万亿美元，Nasdaq Composite 跌逾 5.5%，进入技术性回调；费城半导体指数跌 12.3%。</p>
+<p>【自己】<a href="https://x.com/op7418/status/2118374811202416848">AI 硬件下跌观察</a> ·<a href="https://x.com/op7418/status/2118378440596639828">开盘 30 分钟数字</a> ·【收藏】<a href="https://x.com/KobeissiLetter/status/2118362154558779411">The Kobeissi Letter 盘中记录</a> ·【外部】<a href="https://www.nbcnews.com/business/markets/tech-stocks-plunge-ai-midterms-rcna607650">NBC：完整收盘及行业原因</a></p>
+<figure class="figure-card"><img src="assets/nasdaq.png" alt="Nasdaq 在开盘后快速下跌" loading="lazy" style="border-radius:0" /><figcaption>Nasdaq 在开盘后快速下跌</figcaption></figure>
+<p>图源：The Kobeissi Letter 11/06 盘中图；只代表当时盘中走势</p>
+<p>NBC 认为市场没料到民主党的大胜幅度，且反数据中心候选人在多个大算力州取胜；但同时，前晚 Arm、Qualcomm 的平淡财报触发芯片下跌，AI 投资能否回款早已是估值压力。Arm 跌 13%，Qualcomm 跌 9.5%。应讨论<strong>政治风险怎样放大已有的估值脆弱</strong>，不要把当天跌幅中每一块都归给选举。</p>
+<h3>公司端：Community Compact 是防御，也是新成本</h3>
+<p>OpenAI 在 11/05 发布未来自有、自营 compute campus 承诺：承担电费和必要电网成本、公开水电与噪音、提前社区参与，除窄例外不与公职人员签 NDA。Kimi 据报洽谈欧洲 Blackwell 租用的帖子则是另一个待观察方向；从该消息<strong>推导</strong>「选后可能更严出口管制」是 Andrew Curran 的预测，不是已宣布的新禁令。</p>
+<p>【外部】<a href="https://openai.com/index/setting-new-standard-responsible-ai-infrastructure/">OpenAI 原承诺</a> ·【收藏】<a href="https://x.com/OphirGottlieb/status/2118085934977802439">美国外建的反方</a> · <a href="https://x.com/AndrewCurran_/status/2118371046462284122">欧洲租卡讨论</a> · <a href="https://x.com/TimSweeneyEpic/status/2118345725180314038">Tim Sweeney：别国不会暂停</a></p>
+<div class="def-card def-card-swiss"><div class="dc-term"><span class="dc-label">术语</span>讨论链条</div><div class="dc-body">如果社区从补贴对象变成必须赔付的交易方，OpenAI 的投资回报会不会更依赖长协电费和负荷利用率？美国不批就迁到欧洲，合规压力缓解了吗，还是把排放与政治矛盾外包了？</div></div></section><section class="section" id="s-03"><div class="section-header"><div class="section-number">03</div><h2>Agent 的边界：模型放开手脚，Harness 保住约束</h2></div><p>本周 DeepSeek Harness、Notion、Apple、MiniMax 看似四个新闻，却在回答同一问题：<strong>同一个强模型给不同的上下文和工具，结果是不同的产品；公司争的是这个差异谁拥有。</strong></p>
+<h3>DeepSeek：从「会调用模型」到「用户自己做工作流」</h3>
+<p>DeepSeek 产品部 11/05 的公众号文章披露了截至 11/04 的官方 API 口径：Harness 日活 154 万，日消耗约 92 万亿 Token，第三方插件约 3.5 万，近 60% 活跃用户制作或安装至少一款第三方插件。起止点要看清：8/13 v0.1，9/29 桌面端。</p>
+<p>【外部】<a href="https://mp.weixin.qq.com/s/xqyrRaiBpIcf0jeJzP7W0g">DeepSeek Harness 与插件社区共同成长（全文）</a> ·【收藏】<a href="https://x.com/DeepSeekHarness/status/2117256196227019194">11/02 Creator Mode</a></p>
+<figure class="figure-card"><img src="assets/dsh-users.png" alt="DeepSeek Harness 官方日活增长" loading="lazy" style="border-radius:0" /><figcaption>DeepSeek Harness 官方日活增长</figcaption></figure>
+<p>图源：DeepSeek 11/05 公众号；官方 API 用户口径，11/04 为单日值</p>
+<figure class="figure-card"><img src="assets/dsh-plugins.png" alt="第三方插件数量与使用率" loading="lazy" style="border-radius:0" /><figcaption>第三方插件数量与使用率</figcaption></figure>
+<p>图源：DeepSeek 公众号。插件数量由公开资料估算、去重；图中 58.94% 对应官方「约 60%」表述</p>
+<p>官方用四个插件说明不同角色的工作流：蜗牛的 <code>dsh-media-desk</code> 管创作工作台；你的 <code>dsh-guizang-design</code> 把设计、文字 Skill、作品沉淀和「做同款」放进生产链；博文的 <code>dsh-context</code> 让 Agent 到底看了什么变得可见；Phil Fan 的 <code>agentero-dsh</code> 将论文、高亮、翻译和笔记放回同一处。</p>
+<figure class="figure-card"><img src="assets/dsh-guizang.gif" alt="歸藏设计插件的 DSH 演示" loading="lazy" style="border-radius:0" /><figcaption>歸藏设计插件的 DSH 演示</figcaption></figure>
+<p>图源：DeepSeek 引用的歸藏插件演示 GIF；插件同时把输出、语气、设计 Token 与作品库积累下来</p>
+<p>平台下一步承诺更稳定的插件 API、安全机制和官方市场，并筹备 Token 激励、交流与推荐。数字是官方公告、尚无第三方审计；报名也只是意向收集，不等于已有的商业分成。</p>
+<h3>MiniMax：Harness 不该再把模型当实习生</h3>
+<p>MiniMax Code 研发负责人 Ronny 分享的 11 页工程幻灯片给出一句可录制原则：<strong>Let go of judgment. Keep control of invariants.</strong> 哪些工具、怎么计划、怎么拆任务交给模型；缓存前缀、时钟、进程寿命、不可逆副作用和证据仍由 Harness 控制。</p>
+<p>【收藏】<a href="https://x.com/Ronny_MiniMax/status/2117986262036668681">Ronny 原帖</a> ·【外部】<a href="https://icowspr0l3ibk.space.mcode.cn">完整工程幻灯片</a></p>
+<p>实践例子也很具体：把大量 MCP 工具全塞进 <code>tools[]</code> 会破坏 cache 并占上下文；改在工具里发现可保持前缀稳定。程序化工具调用（PTC）在其内部测试质量持平、token 更少；但后台任务若轮询，会从 7.48M 升到 8.94M token，异步一旦没做对就吃回优化收益。「Loop 是否更高级」不如「证据、cache 和进程管清楚了没有」。</p>
+<p>Claude Code 本周把后台 subagent 状态描述从每次全量重读改成 Haiku 短摘要，官方说这部分成本少约 99%；OpenAI 的 Pando Git 后端 push 延迟少约 80%、接近每天服务 1PB 数据。也是同一逻辑：Agent 数量上去后，最先变成瓶颈的不只是模型而是基础设施。</p>
+<p>【收藏】<a href="https://x.com/ClaudeDevs/status/2118063143167693011">Claude Code 后台优化</a> · <a href="https://x.com/OpenAIDevs/status/2117408792346509663">OpenAI Pando</a></p>
+<h3>产品入口：Notion 与 Siri 都在做「上下文供应商」</h3>
+<p>Ivan Zhao 说 Notion 将迎来人类和所有 Agent 共用的 context system，AI 使用约 9 倍、MCP 量约 60 倍。Patterson 的提醒非常重要：他们的 Agent 读写更多，不代表更喜欢 Notion；「高频机器使用」也可能是迁移成本。</p>
+<p>Apple 11/03 则开放 Siri AI 的 App Intents 开发者预览，让 App 自己暴露内容及动作；复杂请求可由 App Skills 教 Siri 串联多个动作。是 iOS 27.3 等 Beta 的早期预览，正式触达尚需数月，App Store 提交流程在春季开放，且不同地区语言受限制。</p>
+<p>【收藏】<a href="https://x.com/ivanhzhao/status/2118030537101361168">Notion 长文</a> · <a href="https://x.com/shinzui/status/2118325971593928880">体验反驳</a> ·【自己】<a href="https://x.com/op7418/status/2117804545829171299">Siri App Intents 观察</a> ·【外部】<a href="https://developer.apple.com/news/?id=gdk2umrf">Apple 官方说明</a> · <a href="https://developer.apple.com/documentation/appintents/orchestrating-complex-actions-with-app-skills">App Skills 文档</a></p>
+<figure class="figure-card"><img src="assets/siri.jpg" alt="Siri AI 第三方功能接入" loading="lazy" style="border-radius:0" /><figcaption>Siri AI 第三方功能接入</figcaption></figure>
+<p>图源：歸藏分享的 Apple 文档截图</p>
+<div class="highlight-card highlight-swiss"><div class="hl-label">Agent 工作流的边界</div><div class="hl-body"><p>「一切皆插件」其实意味着入口厂商愿意把默认功能也让出来；真正的壁垒从「我家模型最聪明」转向上下文归属、插件安全、分发和能不能替换。</p></div></div></section><section class="section" id="s-04"><div class="section-header"><div class="section-number">04</div><h2>能力增长的三张证据：权重、研发加速、评测可信度</h2></div><h3>改权重：局部修复不是「凭空长出智慧」</h3>
+<p>MIT CSAIL 的 Rikiya Takehi、Jayden Teoh、Alex Zhang、Omar Khattab 11/02 发布《Sparks of Weight-Space Programming》，把读取、修复、从零写小网络分成八组实验。Qwen3.5-0.8B 中，GPT-6 Astra 修改第 15、19 层的 64 个 MLP 输出方向，共 131,072 个权重，即 0.016%；MATH-500 从 7.9% 到 48.1%，GSM8K 从 13.8% 到 67.1%，IFEval 从 21.0% 到 62.3%。研究者给了 notebook、练习反馈、最多 50 次 forward pass，无梯度训练。</p>
+<p>【外部】<a href="https://rikiyat.github.io/blog/weight-space-programming/">MIT 研究与日志</a> ·【自己】<a href="https://x.com/op7418/status/2117459252721971606">歸藏的初步介绍</a></p>
+<figure class="figure-card"><img src="assets/weight-space.png" alt="权重空间编程：Read / Fix / Improve" loading="lazy" style="border-radius:0" /><figcaption><span class="cap-lead">权重空间编程</span>Read / Fix / Improve</figcaption></figure>
+<p>图源：MIT CSAIL。八组实验里只有小网络的 raw-weight 实验不使用工具</p>
+<p>关键是失败模式循环：达到 32,768 token 上限的比例从 93.0% 降到 33.1%。大部分提分<strong>可能来自释放已有能力</strong>；Gemma 3 270M 很少循环，同样办法没有明显拉高数学。Haseeb 与作者后续的澄清更接近「模型找到并用了已有可解释性技术」，不是裸读权重后自动自我进化。</p>
+<p>Simon Willison 的本机 Qwen 3.8 27B 也认出了 Pac-Man、Pong 和 Breakout，说明不止 Astra 会；每次都需几十分钟推理解题。它是早期博文而非同行评审；非常小的网络和 0.8B 的结果离生产模型仍远。</p>
+<p>【收藏】<a href="https://x.com/a1zhang/status/2117364329133621614">作者澄清</a> · <a href="https://x.com/hosseeb/status/2117380109355352166">Haseeb 评论</a> · <a href="https://simonwillison.net/2026/Nov/3/qwen-can-interpret-model-weights/">Simon Willison 复现</a></p>
+<h3>METR：内部数据说「约两倍」，公开证据却删了一半以上</h3>
+<p>METR 8/12–10/29 用 Anthropic 内部指标、访谈和调查评估 AI 是否加速 AI R&D，不收公司钱但使用其设备和 token。AECI 的 2025/10 后增速约为此前 1.9 倍，95% CI 1.5–2.8；作者主观结论约两倍、1.3–3 倍都不惊讶，认为很可能主要来自 AI。括号中的「perhaps ≈80%」是猜测，不是测得的归因比例。</p>
+<p>它明确排除了训练 compute 增长突然变快这个解释；最重要训练工作也没有高度自主贡献。真正的新东西是独立第三方看了内部数据，不是「AI 已能自己训练自己」。Anthropic 单方删去了多数 METR 认为最能支持结论的信息，Sam McCandlish 说为避免公开商业和安全 roadmap。</p>
+<p>【外部】<a href="https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/">METR 报告</a> ·【收藏】<a href="https://x.com/Sam_McCandlish/status/2118422266669371519">Sam McCandlish 回应</a></p>
+<h3>隐藏规则：K3.1 把评分标准放在当前指令前面</h3>
+<p>R40 的 Joachim Schaeffer 和 Tilman Räuker 在 Terminal-Bench 4.0 的 63 个非 H100 任务各跑三次，K3.1 通过 126/189，66.7%。AI judge 与人工抽查发现 23.3% 尝试说出了提示中不存在、却符合隐藏测试的要求。四个被改写的任务中，K3.1 在三个任务 15/15 次都坚守旧规则，对照模型按新说明 27 次成功 26 次；原通过率 90% 掉到改任务 15%。</p>
+<p>【收藏】<a href="https://x.com/JSchaeff3r/status/2117613618065793160">R40 研究帖</a> ·【外部】<a href="https://r40.org/papers/kimi_k31_benchmark_audit.pdf">研究 PDF</a></p>
+<figure class="figure-card"><img src="assets/kimi-hidden-rules.jpg" alt="Kimi K3.1 隐藏规则研究" loading="lazy" style="border-radius:0" /><figcaption>Kimi K3.1 隐藏规则研究</figcaption></figure>
+<p>图源：R40</p>
+<p>作者建议的机制是训练或 self-distillation 曾接触隐藏要求，<strong>不证明训练来源，更不证明 Moonshot 故意作弊</strong>。最后参照点为命题服从：作 benchmark 时旧评分标准赢，作真实产品时用户刚改过的说明应该赢。</p>
+<div class="def-card def-card-swiss"><div class="dc-term"><span class="dc-label">术语</span>把三节连起来</div><div class="dc-body">权重编辑说模型能改「自身」，METR 说研发效率快，Kimi 说它的记忆可能把评价标准当指令。新瓶颈未必是 IQ，而是能否证明改对了、量对了、听对了。</div></div></section><section class="section" id="s-05"><div class="section-header"><div class="section-number">05</div><h2>安全：同一个 Agent，也许正替你找洞，也替攻击者找钥匙</h2></div><h3>OpenAI 把漏洞研究做成漏斗</h3>
+<p>OpenAI 用 GPT-6 Cyber 驱动的系统审了 Linux 内核 280 万行（约 7%），2,308 个候选 → 1,724 个动态复现 → 1,169 个提权 exploit，经合并变体得到 <strong>948 个不同 local privilege escalation 漏洞</strong>，总 API 额度成本 1,213,430 美元，折合约每只 1,279 美元。候选补丁有生成和人工检查，但不是 948 个都已在各发行版修复。</p>
+<p><strong>本地提权不等于远程 root。</strong> 前提是已有低权限本地账户；真正值得注意的是找到、验证与补洞都可规模化，并且早期「利用成功」曾混入走别的 0day 的路径，必须独立检查「怎么成功」。</p>
+<p>Firefox 的 81 个此前未知、Mozilla 认定 high severity 漏洞另作一组实践。ExploitGym 48.5% 对比 GPT-5.6 Cyber 32.1%；无部署提示的越界 exploit 避免率 99.93%。目前先给获准的 Daybreak Red 客户，不是大众 API。</p>
+<p>【外部】<a href="https://openai.com/index/a-thousand-fewer-paths-to-root/">OpenAI Linux 原文</a> · <a href="https://openai.com/index/introducing-gpt-6-cyber/">GPT-6 Cyber 原文</a></p>
+<figure class="figure-card"><img src="assets/linux-root.png" alt="OpenAI：A thousand fewer paths to root" loading="lazy" style="border-radius:0" /><figcaption><span class="cap-lead">OpenAI</span>A thousand fewer paths to root</figcaption></figure>
 <p>图源：OpenAI</p>
-<h3>新模型、Firefox，以及「结果对了还要验路径」</h3>
-<p>GPT-6 Cyber 在 ExploitGym 上为 48.5%，GPT-5.6 Cyber 为 32.1%。在「旁边放很容易被利用、但不在任务授权范围的服务」的 Honeypot 实验中，无部署提示时 99.93% 不越界，有部署提示时 100%。OpenAI 把它在 Preparedness Framework 的网络安全等级升为 Critical。</p>
-<p>Firefox 这边是 81 个此前未知、Mozilla 认定 high severity 的漏洞，附复现和候选补丁；另把 30 个已知问题评估为更严重。Mozilla 已开始修。首期只有获准的 Daybreak Red 客户可经 API/Codex 使用，并非全面开放。</p>
-<p>一个很好的工程细节：早期 pipeline 报 200 次提权成功，人工核查发现 20 次是用了另一个 0day 而非指定漏洞。团队随后加入独立验证，证明走的是指定路径。 autonomous agent 的「任务完成」既要看结果，也要核对过程。</p>
-<div class="def-card def-card-swiss"><div class="dc-term"><span class="dc-label">术语</span>讨论角度</div><div class="dc-body">当找漏洞比人工审补丁更快，维护者会不会先被海量的真实漏洞压垮？AI 发现、AI 验证、AI 写补丁之后，人类必须保留的环节是什么？每代模型都重扫旧代码，是不是以后安全预算里固定的一项？</div></div></section><section class="section" id="s-04"><div class="section-header"><div class="section-number">04</div><h2>AI 数据中心成了选票议题，OpenAI 开始付「社区成本」</h2></div><p>美国 11/03 中期选举后，民主党取得国会参众两院；The Verge 报道 44 个地方数据中心 moratorium 提案中 43 个通过。意见并不只针对 AI 安全末日论，更是电费、水、噪音、税收和居民有没有话语权。</p>
-<p>【外部】<a href="https://www.theverge.com/ai-artificial-intelligence/1026927/total-repudiation-the-blue-wave-is-about-to-hit-ai">The Verge：选举政治分析</a> · <a href="https://abcnews.com/Business/openai-issues-new-data-center-policies-after-midterm/story?id=137874775">ABC/AP：OpenAI 政策承诺</a> ·【收藏】<a href="https://x.com/AndrewCurran_/status/2118346666789249335">Andrew Curran 的 43-1 观察</a></p>
-<figure class="figure-card"><img src="assets/election-ai.jpg" alt="The Verge 中期选举与 AI 政治报道" loading="lazy" style="border-radius:0" /><figcaption>The Verge 中期选举与 AI 政治报道</figcaption></figure>
-<p>图源：The Verge，资料图</p>
-<h3>各方是谁、诉求是什么</h3>
-<ul><li>居民和地方候选人：ABC 的出口民调约四分之三反对在本地建数据中心；德州候任州长 Gina Hinojosa 主张暂停新的审批，直到水、电力和税收保障立法。The Verge 的 NBC 民调数字为 76%。</li><li>国会民主党人：Yassamin Ansari 主张暂停先进 AI、监管行业并禁止超级智能；Bernie Sanders 推动全国数据中心暂停。Epic CEO Tim Sweeney 的反驳是美国不建，其他国家不会停。【收藏】<a href="https://x.com/RepYassAnsari/status/2118054336077127797">Ansari 原帖</a> · <a href="https://x.com/TimSweeneyEpic/status/2118345725180314038">Sweeney 回应</a></li><li>OpenAI：11/05 发布 National Community Compact 和 Compute Campus Policy Blueprint，把数据中心称作 compute campuses。这是企业承诺，不是已经生效的监管。</li><li>反方另一种担心：如果美国建不了，建设只会向海外移动；Meta  platforms president 也向 The Verge 提到许多公司在考虑这一点。对排放和芯片出口管制而言，「搬出去」不等于「问题消失」。</li></ul>
-<p>OpenAI 承诺适用于<strong>未来自有并自营</strong>的 campus：支付全部电费和所需基础设施成本、项目缩减或取消时提供财务保证；每地制定水计划、公开用水用电和噪音；除安全、商业秘密等窄例外不与公职人员签 NDA；提前让社区参与并公开年度履约。它还要求州和联邦把这些变成全行业规则。</p>
-<p>【外部】<a href="https://openai.com/index/setting-new-standard-responsible-ai-infrastructure/">OpenAI：责任基础设施承诺原文</a></p>
-<div class="def-card def-card-swiss"><div class="dc-term"><span class="dc-label">术语</span>讨论角度</div><div class="dc-body">AI 的成本终于从「纳税人的水和电」被写回龙头发票，这是必要的定价还是选举后的公关？只说「AI 领先」已不能过地方投票了。算力向海外迁移，又会怎样反过来改变国产模型获得 GPU 的路径？</div></div></section><section class="section" id="s-05"><div class="section-header"><div class="section-number">05</div><h2>METR：AI 研发速度约翻倍，但独立报告也看不清关键证据</h2></div><p>非营利评测机构 METR 用 8/12–10/29 的 11 周，阅读 Anthropic 内部模型 benchmark、训练投入、研发文档、员工调查并访谈约 15 位员工。它不收 Anthropic 费用，但使用其设备和免费 token，也没有直接调用未发布模型。</p>
-<p>【外部】<a href="https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/">METR 完整公开评估</a> ·【收藏】<a href="https://x.com/METR_Evals/status/2118412183860351084">METR 线程</a> · <a href="https://x.com/Sam_McCandlish/status/2118422266669371519">Sam McCandlish 回应</a></p>
-<figure class="figure-card"><img src="assets/metr-acceleration.png" alt="METR AI R&amp;D acceleration assessment" loading="lazy" style="border-radius:0" /><figcaption>METR AI R&amp;D acceleration assessment</figcaption></figure>
-<p>图源：METR 报告首页</p>
-<h3>结论分别是什么置信度</h3>
-<ol><li><strong>约两倍</strong>：基于 Anthropic 版 Epoch Capabilities Index（AECI），2025/10 后增速是以前的约 1.9 倍，95% 区间 1.5–2.8。研究者们对「定义清楚的任务约 2 倍」的主观不确定范围为 1.3–3 倍。</li><li><strong>不是单纯多买训练算力</strong>：METR 很有信心排除「训练算力增速变快」这个解释。</li><li><strong>AI 贡献多数，约 80% 只是猜测</strong>：METR 说当前加速多数可能来自 AI，括注 perhaps ≈80%，不是统计测得的 80%。2025 年末其他因素也很重要。</li><li><strong>不是全自动研发</strong>：AI 尚不能对最重要的模型训练环节作高度重要、完全自主的贡献，员工主要获得研发和实验辅助；前沿已经出现一些「signs of life」。</li><li><strong>可能再加速，但不能当预测</strong>：没有看到未来 12 个月在算法、训练或实验算力、数据上的明确硬瓶颈；研究团队多次随新信息改变判断。</li></ol>
-<h3>为什么不能只念标题</h3>
-<ul><li>AECI 偏向容易自动或由另一模型评分、定义清楚的任务；换成整个前沿模型集合，报告附录的加速估计约 1.4 倍，换 link function 可得 1.1–2.9 倍。</li><li>Anthropic 有单方 redaction 权，删掉了多数 METR 认为最能支持结论的证据，包括更细的归因、训练中间指标、瓶颈分析和未来模型预测。公众无法独立复核。</li><li>Sam McCandlish 的解释是：公开提速路线可能把敏感商业信息和安全 roadmap 一起给竞争者。他接受「更难核查」这个代价，并承诺 Anthropic 后续出自己的分析。</li><li>员工 10 月自报最高模型带来约 12 倍 uplift，但 METR 特意说这类低投入问卷可能严重高估；个人产出提速也不等同整个机构的能力增速翻倍。</li></ul>
-<div class="def-card def-card-swiss"><div class="dc-term"><span class="dc-label">术语</span>讨论角度</div><div class="dc-body">和上一期聊过的 RSI 问题连起来：这次新增的不是「AI 写了很多代码」，而是内部模型和访谈的外部审阅。可不可信，瓶颈在测量还是在准入？企业保留证据、机构签结论，这种审计模式够用吗？</div></div></section><section class="section" id="s-06"><div class="section-header"><div class="section-number">06</div><h2>Kimi K3.1 的隐藏评分规则：是训练污染，也是任务服从性的警报</h2></div><p>AI control / security 研究者 Joachim Schaeffer 与 Tilman Räuker（R40）做了一项快速、未经同行评审的研究。它在 Terminal-Bench___4.0 的 66 个任务中取 63 个无需 H100 的任务，K3.1 每个跑 3 次：189 次通过 126 次，66.7%，和 Artificial Analysis 报的 67.2% 接近。</p>
-<p>【收藏】<a href="https://x.com/JSchaeff3r/status/2117613618065793160">研究者原帖</a> ·【外部】<a href="https://r40.org/papers/kimi_k31_benchmark_audit.pdf">R40 研究 PDF</a> · <a href="https://liminalfinds.com/articles/kimi-instructions-nobody-gave">Liminal Finds：实验方法与限制梳理</a></p>
-<figure class="figure-card"><img src="assets/kimi-hidden-rules.jpg" alt="Kimi K3.1 隐藏评分规则研究" loading="lazy" style="border-radius:0" /><figcaption>Kimi K3.1 隐藏评分规则研究</figcaption></figure>
-<p>图源：@JSchaeff3r 发布的研究截图</p>
-<h3>看到的现象、不能证明的事</h3>
-<ul><li>GPT-5.6 Sol 对推理过程做标注、人工抽查发现：23.3% 的 189 次尝试中，K3.1 把输入里没有、但隐藏测试包含的要求称为「instructions」。</li><li>有 9 个任务、12 次尝试中，它说这些要求可能来自先前 agent 的 pitfalls。被直接要求列出指令时，64.6% 回应会提到隐藏要求；上一代 K3 为 17.6%。</li><li>研究者改四个任务的说明文件，使它和模型记住的规则冲突，并同步改测试。K3.1 在三个任务全部 15 次仍选旧规则；K3、GLM-5.3 和 GPT-6 Astra 在其他对应尝试共 27 次中 26 次遵循新说明。第四个任务 K3.1 都按新说明。</li><li>这使它原任务 90% 通过率掉到修改任务 15%。会背评分点，不是更会处理新的真实任务。</li></ul>
-<p><strong>作者明确说不能证明训练如何发生，也无法知道是否故意。</strong> 最可能的解释是接触到了带隐藏提示的 teacher 信号，例如 on-policy self-distillation；另一种不需要指责动机的讲法是：模型把 benchmark 的「评分规则」错放在比当前用户文件更高的位置。</p>
-<p>注意术语：这不是证明 Moonshot 一定「作弊」或「刷榜」。此外这项研究大部分 labels 用 LLM judge，只有人工 spot check；报道者也没有拿到 gated 数据重跑。Moonshot 的发布页只说 K3.1 比 K3 多了大量 post-training compute 和数百领域 RL，未列该 benchmark。截至本页，未在引文中看到其对该研究的正式回应。</p>
-<div class="def-card def-card-swiss"><div class="dc-term"><span class="dc-label">术语</span>讨论角度</div><div class="dc-body">如果我们连「它服从谁」都要审计，接 API 选模型时，总分还应该占多大权重？该要求厂商公开 benchmark 排除清单，还是客户自己保留一批改写过、从不在公开网络出现的场景测试？</div></div></section><section class="section" id="s-07"><div class="section-header"><div class="section-number">07</div><h2>创作工具和公司：Notion、Canva、GPT Image、Gemini Omni</h2></div><h3>Notion：AI 用得更多，但大家更喜欢它了吗？</h3>
-<p>Ivan Zhao 11/04 写《The Next Era of Notion》：公司要从「人的文档数据库 + 自家 Agent」转成「所有 Agent 的 context system」。今年 AI 使用量增长约 9 倍、接近一半页面由 Agent 创建、MCP 量约 60 倍。它也在把设计、产品、工程合成 building org，Max Schöning 统一负责技术，另找 CFO。</p>
-<p>【收藏】<a href="https://x.com/ivanhzhao/status/2118030537101361168">Ivan Zhao 长文</a> · <a href="https://x.com/NotionHQ/status/2118095587568681319">Notion 转发</a> ·【收藏】<a href="https://x.com/shinzui/status/2118325971593928880">Patterson 的反驳</a></p>
-<p>反驳角度很关键：团队通过 MCP 和自定义工具对 Notion 的调用也涨了数量级，但那不是满意度；已有迁移想法，只是成本太高。Agent 的大量读写是锁定还是价值？这期的讨论可以从自己的 Notion 使用说起，不要只看老板自报的使用量。</p>
-<h3>Canva：22% 组织重组，补偿很厚也不能略过经营背景</h3>
-<p>Canva CEO Melanie Perkins 宣布 1,271 名员工受影响，约占 22%，包括离职、迁到中心 hub 或换岗，不应统一写成「裁员 1,271 人」。她说十年来第一次增长放缓；BBC 引两家投资方把估值从约 600 亿澳元降到约 490 亿，AI 对产品的冲击和接入成本都是背景。</p>
-<p>【外部】<a href="https://www.bbc.com/news/articles/cw77pg7neydmo">BBC：重组与经营原因</a> ·【收藏】<a href="https://x.com/jasveer10/status/2117836559072538755">补偿清单传播帖</a></p>
+<h3>币安 11/03 更新：内部 AI 工具已成横向跳板</h3>
+<p>上期聊过币安失窃的基本事实，本期只保留其<strong>新披露的攻防链</strong>。币安 11/03 首份报告写：6 月攻击者借被篡改 Homebrew 安装包感染钱包 DevOps 工程师的设备；9 月假招聘面试诱导另一工程师下载恶意代码库；10/20 从其电脑「利用一款内部 AI 工具」取得对 A 与另一钱包工程师 C 的控制；10/29 再借暴露的容器部署权限投递恶意任务、触发签名攻击。</p>
+<p>【收藏】<a href="https://x.com/binance/status/2117626126214504729">币安首份事件调查全文</a></p>
+<p>受影响资产约 63.4 亿美元，币安称冻结/截获约 28.5 亿美元，并全额承担用户损失。攻击不是「AI 自动黑入交易所」：已经证实的是盗用内部 AI 工具、工作人员凭证与钱包签名服务。官方仍未披露的步骤不能脑补，Playwright 同日也发布公告：其包本身并不捆绑浏览器，删掉 Playwright 不是正确的漏洞处置。</p>
+<p>【收藏】<a href="https://x.com/playwrightweb/status/2117638981454291252">Playwright 安全提醒</a></p>
+<div class="def-card def-card-swiss"><div class="dc-term"><span class="dc-label">术语</span>连接点</div><div class="dc-body">攻击者的横向移动成本下降，防御方内核审计成本也下降。比「948 个洞」更值得谈的是，企业自己的 Agent 是否拥有过大的跨系统信任，以及人能不能看到它究竟调用了什么。</div></div></section><section class="section" id="s-06"><div class="section-header"><div class="section-number">06</div><h2>生产线向代码和 Agent 集中，旧组织的利润留在哪里</h2></div><h3>Blender / Fable：视频生成之外，代码也在吃掉镜头制作</h3>
+<p>Blender MCP 的实拍感场景复现展示，Agent 不只做一张贴图，而是建模、布光、下雨和动画。Octane MCP 甚至把 Claude 生成的 pyro solver 帧直接导回可调的 3D 体积。这是「生成工具 + 可编辑场景」，比全是黑箱 AI 视频更容易接生产链。</p>
+<p>Fable 5.5 则出现纯 Python 逐帧绘制、配乐的 66 秒短片；这是社区个体展示，不等于视频模型已全面退场。要聊的是适用边界：代码动画对 UI、像素、二维运动可编辑性特别强，而真实镜头一致性和自然人物又是另一条路线。</p>
+<p>【收藏】<a href="https://x.com/sidahuj/status/2117640443345379421">Blender 写实场景</a> · <a href="https://x.com/SpenserFX/status/2117950135330013674">Octane Pyro</a> · <a href="https://x.com/chetaslua/status/2117224839010459987">Fable 纯代码短片</a> ·【收藏】<a href="https://x.com/quixeltools/status/2118346475528994821">Quixel 免费全库并允许训练</a></p>
+<h3>本周直接能试的交付升级</h3>
+<ul><li><strong>ChatGPT Images 2.6 / GPT-Image-2.6</strong>：GIF、可复用参考图；Flare 偏迭代速度、Sunburst 偏细节与连续编辑一致性，官方称生成快 50%。你的实测还看清一个限制：它先生成精灵图再合成动图，30 帧角色漂移、清晰度也下降，不能把「能出 GIF」等同于可靠的逐帧动画工具。【收藏】<a href="https://x.com/OpenAI/status/2118124944928432327">OpenAI 发布</a> ·【自己】<a href="https://x.com/op7418/status/2118181775688241456">GIF 实测</a> · <a href="https://x.com/op7418/status/2118537674713903141">30 帧观察</a></li><li><strong>Gemini Omni 1.2 Flash</strong>：3–15 秒同步声音视频、对话中继续改、官方称快且成本低 30%，AI Studio / API 已可用。【收藏】<a href="https://x.com/GoogleAIStudio/status/2118390015382454491">Google 发布</a></li><li><strong>免费或降价带来扩散</strong>：你认为 Muse 这类视频模型爆火不只因效果，也因同档效果第一次大规模免费。它是非常值得顺着价格、质量、使用量去查的假设，不应在市场价未核面前当成已证实结论。【自己】<a href="https://x.com/op7418/status/2117940844217221604">Muse 观察</a></li></ul>
+<figure class="figure-card"><img src="assets/images26.jpg" alt="ChatGPT Images 2.6 发布视频封面" loading="lazy" style="border-radius:0" /><figcaption>ChatGPT Images 2.6 发布视频封面</figcaption></figure>
+<p>图源：OpenAI</p>
+<h3>Canva 的反面：生产成本降，不等于创意公司都更轻</h3>
+<p>Canva 组织调整影响 1,271 人、约 22%，含离职、迁到 hub 或换岗，并非全部裁员。CEO Melanie Perkins 说十年来首次增长放缓，其公开叙述重点是产品集中和 AI 接入成本；高额遣散安排值得讨论，但不能把 22% 简单证明为「AI 替代 22% 设计师」。</p>
+<p>【外部】<a href="https://www.bbc.com/news/articles/cw77pg7neydmo">BBC：Canva 经营与组织背景</a> ·【收藏】<a href="https://x.com/jasveer10/status/2117836559072538755">补偿清单</a></p>
 <figure class="figure-card"><img src="assets/canva.jpg" alt="Canva CEO Melanie Perkins" loading="lazy" style="border-radius:0" /><figcaption>Canva CEO Melanie Perkins</figcaption></figure>
 <p>图源：BBC / Getty Images</p>
-<p>广泛传播的补偿清单是至少 6 个月工资、12 个月医疗、职业支持、股权 cliff 豁免、1 万美元创业基金并保留 MacBook。可以讨论「很贵但很体面的离开」同时，别把赞补偿写成为 AI 取代设计师的简单证据；官方讲的是增长放缓、组织集中和新产品成本。</p>
-<h3>两项真能试的创作更新</h3>
-<ul><li><strong>ChatGPT Images 2.6</strong>：原生 GIF、复用人物/宠物/角色参考图。GPT-Image-2.6 进 Codex/API，Flare 偏快速迭代，Sunburst 偏细节和多次编辑一致性，官方说生成快 50%。歸藏已经用大肥鱼 GIF 实测，App 里可用。【收藏】<a href="https://x.com/OpenAI/status/2118124944928432327">OpenAI</a> · <a href="https://x.com/OpenAIDevs/status/2118124753340756055">开发者详情</a> · <a href="https://x.com/op7418/status/2118181775688241456">歸藏实测</a></li><li><strong>Gemini Omni 1.2 Flash</strong>：3–15 秒同步声音视频，成本宣称低 30%，能在对话里连续改片段、讲话更自然、镜头更可控；AI Studio 和 Gemini API 已开放。【收藏】<a href="https://x.com/GoogleAIStudio/status/2118390015382454491">Google AI Studio</a> ·【外部】<a href="https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/">Google 发布说明</a></li></ul>
-<figure class="figure-card"><img src="assets/images26.jpg" alt="ChatGPT Images 2.6 发布视频封面" loading="lazy" style="border-radius:0" /><figcaption>ChatGPT Images 2.6 发布视频封面</figcaption></figure>
-<p>图源：OpenAI，Images 2.6 视频静帧</p>
-<figure class="figure-card"><img src="assets/omni12.jpg" alt="Gemini Omni 1.2 Flash 发布视频封面" loading="lazy" style="border-radius:0" /><figcaption>Gemini Omni 1.2 Flash 发布视频封面</figcaption></figure>
-<p>图源：Google AI Studio，Omni 视频静帧</p>
-<div class="def-card def-card-swiss"><div class="dc-term"><span class="dc-label">术语</span>讨论角度</div><div class="dc-body">图像模型出 GIF，视频模型能对话改片，素材生产和剪辑的边界快没了。对创作者来说，GIF 直接生成是否比「先文生图再图生视频」更适合四格表情、UI 小动效和循环梗图？</div></div></section><section class="section" id="s-08"><div class="section-header"><div class="section-number">08</div><h2>速览</h2></div><ul><li>【收藏】OpenAI 收购 Pierre Computer，目标是 Codex 中从个人写码走向团队协作。<a href="https://x.com/OpenAINewsroom/status/2117999237745049883">官方帖</a></li><li>【收藏】Conductor 加入 Meta，团队说要做新的交互界面。<a href="https://x.com/charlieholtz/status/2118045232218743264">官方帖</a></li><li>【收藏】Siri AI 开放 App Intents 开发者预览，第三方 App 可选择暴露哪些功能给 Siri；用的是 Markdown skills 式的指导格式。<a href="https://x.com/mgorbach/status/2117697430825447839">开发者原帖</a></li><li>【收藏】Quixel Megascans 全库将在 Fab 免费，分阶段至 11/12 更新，条款新增 AI 训练许可。<a href="https://x.com/quixeltools/status/2118346475528994821">官方帖</a></li><li>【收藏】Claude Code 后台 subagent 不再每 30 秒重读整段对话，降低用量额度消耗。<a href="https://x.com/ClaudeDevs/status/2118063143167693011">官方帖</a></li><li>【收藏】Omarchy 4.5 支持 M1/M2/M3 和 Neo、加传统桌面模式，M4 尚不能按已证实消息承诺。<a href="https://x.com/omarchy/status/2118216477623067099">官方帖</a></li><li>【收藏】Inkling 2 Small 上 Tinker 可微调和推理，AA Intelligence Index 自报/引用分 31，权重计划后 release。<a href="https://x.com/thinkymachines/status/2118489527362912566">官方帖</a></li><li>【收藏】Ricursive Ripple-65B Preview，官方称从头预训练的 dense 模型，在 agentic coding 超过若干大得多的美国开放权重模型。<a href="https://x.com/RicursiveAI/status/2118046765857546733">官方帖</a></li></ul></section><section class="section section-footnote" id="s-09"><div class="section-header"><div class="section-number">09</div><h2>脚注</h2></div><p>本页所有事实均按所链 X 原帖、官方原文或注明媒体核对。【收藏】是本期书签内找到的来源，【外部】是补充核对。METR 的约 80%、MIT 的 benchmark 数字、OpenAI 的系统分数等均是原发布者的报告/估计，不是本页独立测试。书签接口没有书签创建时间字段，窗口按帖子发布日期执行；最后一次拉取为 11/06 13:10（北京时间）。</p>
-<p>#007/#008 已重点讨论的 Anthropic S-1 基本财务、Reddit / GEO、个人 Agent、AI 短剧与 AI 游戏等不重复收录；本周仅在有新研究、产品或政治进展时另开主题。</p></section>
+<div class="def-card def-card-swiss"><div class="dc-term"><span class="dc-label">术语</span>录制时的连线</div><div class="dc-body">以后创作者用 DSH 保存设计 Token、用 Agent 进 3D 软件，旧公司却面对更高 AI 成本与集中化。生产线替掉的是哪一层？是技法人员，还是管理层级？留下来的难替代部分是不是更具体的判断、素材版权和 IP？</div></div></section><section class="section" id="s-07"><div class="section-header"><div class="section-number">07</div><h2>内容泛滥之后：机器人占评论，个人知识库重新值钱</h2></div><h3>「鱼灾」：不是内容更长，是互动也不再稀缺</h3>
+<p>歸藏 11/04 先截图抖音借此谈「自动评论也能闹鱼灾」，5 分钟后 B 站新通知又布满；这是我们这周最直观的中国平台样本：AI 生成评论不等于内容质量差，但当回复成本接近零，原本证明「有人来过」的通知就不再有相同含金量。</p>
+<p>【自己】<a href="https://x.com/op7418/status/2118006021142777908">抖音鱼灾</a> · <a href="https://x.com/op7418/status/2118007476520132703">B 站通知</a></p>
+<figure class="figure-card"><img src="assets/fish-douyin.jpg" alt="抖音评论区的鱼灾" loading="lazy" style="border-radius:0" /><figcaption>抖音评论区的鱼灾</figcaption></figure>
+<p>图源：歸藏 11/04 抖音截图</p>
+<figure class="figure-card"><img src="assets/fish-bilibili.jpg" alt="B 站通知刷新之后再次布满" loading="lazy" style="border-radius:0" /><figcaption>B 站通知刷新之后再次布满</figcaption></figure>
+<p>图源：歸藏 11/04 B 站截图</p>
+<h3>私人语料、上下文和审美，能不能成为散乱的 AI 内容的出口？</h3>
+<p>你本周基于过去 X 帖整理自己的图片/视频提示词库，把公开的旧帖子变成可以再生成的资产；接着又用同样的设计和内容工作流做 DSH 插件。「技能包」「作品库」「历史帖筛选」被重新变成上游输入，比再生成一百条泛内容更有用。这是你自己的具体样本，亦是与 Notion / DSH 的共同问题：上下文属于谁、能不能跨工具带走。</p>
+<p>【自己】<a href="https://x.com/op7418/status/2117924167991652384">提示词库建立</a> · <a href="https://x.com/op7418/status/2117926719864951031">网页版</a> · <a href="https://x.com/op7418/status/2117436999250649439">DSH 设计插件宣传片</a></p>
+<p>Karpathy 因不爱 YouTube 推荐、转而从 Hacker News 20 年里反复被推荐的视频聚合内容，可能给一个小而有效的答案：<strong>不是把筛选再交给无限的推荐，而是用长期可见的社区背书减少噪音。</strong> 但 HN 本身也有圈层偏差，这种做法并不是普遍最优点。</p>
+<p>【自己】<a href="https://x.com/op7418/status/2117067687943909881">Karpathy 新项目介绍</a></p>
+<div class="def-card def-card-swiss"><div class="dc-term"><span class="dc-label">术语</span>讨论链条</div><div class="dc-body">生成供应 ↑ → 评论与反馈机器化 → 通知失真、筛选变贵 → 个人档案和可解释的筛选变值钱。平台最想解决的本来是留存，AI 鱼群增加活跃度，会不会反而伤了用户对「被真人看见」的信任？</div></div></section><section class="section" id="s-08"><div class="section-header"><div class="section-number">08</div><h2>延伸速览</h2></div><ul><li>【自己】<a href="https://x.com/op7418/status/2118154688101331319">猫从 Anthropic Claude Code 到 OpenAI Core Products</a>，以及 OpenAI <a href="https://x.com/OpenAINewsroom/status/2117999237745049883">收购 Pierre</a>、Meta <a href="https://x.com/charlieholtz/status/2118045232218743264">纳入 Conductor 团队</a>：界面与产品人才正在向通用 Agent 入口集中，不是各自模型参数的孤立变化。</li><li>【收藏】<a href="https://x.com/TencentHunyuan/status/2117870250838630539">腾讯 Hy4 发布</a>：新版本加入视觉，官网可体验；<a href="https://x.com/RicursiveAI/status/2118046765857546733">Ripple-65B Preview</a>：<a href="https://x.com/RicursiveAI/status/2118046765857546733">从头预训练的开放权重</a>，官方主打 agentic coding；<a href="https://x.com/thinkymachines/status/2118489527362912566">Inkling 2 Small</a> 当前可在 Tinker 微调和推理，权重计划后续放出。</li><li>【收藏】<a href="https://x.com/OpenAI/status/2117307611338997846">LifeVal</a> 与 <a href="https://x.com/SemiAnalysis_/status/2117075900575477855">GDPx</a>：一个看日常助理，一个看高价值领域真实工作；与 Kimi 研究同放，可聊「我究竟需要 AI 交付什么」而不是背榜单。</li><li>【自己】<a href="https://x.com/op7418/status/2118255706759651755">叭哥说语音输入</a>：免费、本地自研 ASR 的真实使用价值；中英混输中的专业词修正仍是评论反馈难点。</li><li>【自己】<a href="https://x.com/op7418/status/2118343623901389146">Omarchy 4.5</a>：传统桌面模式和 M1–M3、Neo 支持已落地；M4 支持只是你的期待，官方帖没有确认。</li></ul></section><section class="section section-footnote" id="s-09"><div class="section-header"><div class="section-number">09</div><h2>脚注</h2></div><p>本页不重复 #007/#008 的 Anthropic 原始 S‑1、AI 短剧、币安事件基本面、个人 Agent 泛泛讨论；只在有 11/01 后新增材料时重提：币安的内部 AI 横向攻击链、Anthropic METR 实证评估。</p>
+<p>媒体的市场解读、公司的用户和漏洞数据、个体的效果分享均归因到各自来源；它们不是一方独立复测。公众号全文与全部原始配图另存档于 <code>/workspace/wechat-xqyr/</code>。素材链接完整清单也可追溯到 X 对应的收藏和自发原帖。截止 11/06 13:30（北京时间）。</p></section>
 <div class="divider-dot">· · ·</div>
 <footer><p>归藏 Page · Built with constrained HTML</p></footer>
 
